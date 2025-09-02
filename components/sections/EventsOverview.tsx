@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ScrollText,
@@ -47,6 +47,43 @@ const backgroundIcons = [
 ];
 
 const EventsOverview = () => {
+  // Solution 1: Using useEffect to generate client-side only random values
+  const [backgroundElements, setBackgroundElements] = useState<any[]>([]);
+  const [floatingElements, setFloatingElements] = useState<any[]>([]);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+    
+    // Generate background icons with consistent random values
+    const bgElements = Array.from({ length: 25 }).map((_, index) => ({
+      id: index,
+      IconComponent: backgroundIcons[index % backgroundIcons.length],
+      size: Math.random() * 80 + 40,
+      duration: Math.random() * 30 + 20,
+      initialTop: Math.random() * 100,
+      initialLeft: Math.random() * 100,
+      initialRotate: Math.random() * 360,
+      animateRotate1: Math.random() * 360,
+      animateRotate2: Math.random() * 360 + 180,
+      animateRotate3: Math.random() * 360 + 360,
+      animateX: Math.random() * 100 - 50,
+      animateY: Math.random() * 100 - 50,
+      delay: Math.random() * 10,
+    }));
+    setBackgroundElements(bgElements);
+
+    // Generate floating elements with consistent random values
+    const floatElements = Array.from({ length: 8 }).map((_, index) => ({
+      id: index,
+      top: Math.random() * 100,
+      left: Math.random() * 100,
+      duration: Math.random() * 15 + 10,
+      delay: Math.random() * 5,
+    }));
+    setFloatingElements(floatElements);
+  }, []);
+
   const events = [
     {
       id: "litwit",
@@ -104,47 +141,41 @@ const EventsOverview = () => {
 
   return (
     <section className="relative bg-black min-h-screen py-20 sm:py-24 overflow-hidden">
-      {/* Animated Background Icons */}
-      <div className="absolute inset-0 z-0">
-        {Array.from({ length: 25 }).map((_, index) => {
-          const IconComponent = backgroundIcons[index % backgroundIcons.length];
-          const size = Math.random() * 80 + 40;
-          const duration = Math.random() * 30 + 20;
+      {/* Animated Background Icons - Solution 1: useEffect generated */}
+      <div className="absolute inset-0 z-0" suppressHydrationWarning>
+        {isMounted && backgroundElements.map((element) => {
+          const IconComponent = element.IconComponent;
 
           return (
             <motion.div
-              key={index}
+              key={element.id}
               className="absolute text-gray-800/30"
               initial={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                rotate: Math.random() * 360,
+                top: `${element.initialTop}%`,
+                left: `${element.initialLeft}%`,
+                rotate: element.initialRotate,
                 opacity: 0,
                 scale: 0.5,
               }}
               animate={{
                 opacity: [0, 0.1, 0.2, 0.1, 0],
-                rotate: [
-                  Math.random() * 360,
-                  Math.random() * 360 + 180,
-                  Math.random() * 360 + 360,
-                ],
+                rotate: [element.animateRotate1, element.animateRotate2, element.animateRotate3],
                 scale: [0.5, 1, 0.8, 1, 0.5],
-                x: [0, Math.random() * 100 - 50, 0],
-                y: [0, Math.random() * 100 - 50, 0],
+                x: [0, element.animateX, 0],
+                y: [0, element.animateY, 0],
               }}
               transition={{
-                duration: duration,
+                duration: element.duration,
                 repeat: Infinity,
                 repeatType: "loop",
-                delay: Math.random() * 10,
+                delay: element.delay,
                 ease: "easeInOut",
               }}
               style={{
                 transform: `translate(-50%, -50%)`,
               }}
             >
-              <IconComponent style={{ width: size, height: size }} />
+              <IconComponent style={{ width: element.size, height: element.size }} />
             </motion.div>
           );
         })}
@@ -335,15 +366,15 @@ const EventsOverview = () => {
         </motion.div>
       </div>
 
-      {/* Additional Floating Elements */}
-      <div className="absolute inset-0 z-5">
-        {Array.from({ length: 8 }).map((_, index) => (
+      {/* Additional Floating Elements - Solution 3: suppressHydrationWarning */}
+      <div className="absolute inset-0 z-5" suppressHydrationWarning>
+        {isMounted && floatingElements.map((element) => (
           <motion.div
-            key={`floating-${index}`}
+            key={`floating-${element.id}`}
             className="absolute"
             initial={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
+              top: `${element.top}%`,
+              left: `${element.left}%`,
               scale: 0,
             }}
             animate={{
@@ -352,9 +383,9 @@ const EventsOverview = () => {
               opacity: [0, 0.3, 0],
             }}
             transition={{
-              duration: Math.random() * 15 + 10,
+              duration: element.duration,
               repeat: Infinity,
-              delay: Math.random() * 5,
+              delay: element.delay,
               ease: "easeInOut",
             }}
           >
