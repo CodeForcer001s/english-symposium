@@ -1,242 +1,678 @@
 "use client";
-
 import React from "react";
 import { motion } from "framer-motion";
+import LocationMap from "./LocationMap"; // Import your existing map component
 import {
   BookOpen,
   MapPin,
   Mail,
   Phone,
   User,
-  Users,
-  Link,
   Crown,
+  Feather,
+  Scroll,
+  Bookmark,
+  BookMarked,
+  Library,
+  PenTool,
+  FileText,
+  Sparkles,
+  Star,
+  Instagram,
+  Bus,
+  Users,
+  GraduationCap,
+  BookOpenCheck,
+  Palette,
+  Music,
+  Theater,
 } from "lucide-react";
 
-// Placeholder for Google Maps API Key
-const GOOGLE_MAPS_API_KEY = "YOUR_GOOGLE_MAPS_API_KEY"; // Replace with your actual API key
-
 const ContactPage = () => {
+  // St. Joseph's Institute coordinates
+  const collegePosition = [12.86933255684727, 80.21849633481266];
+
   const overallCoordinators = [
     {
       name: "Kailash S",
       year: "IV Year CSE",
-      phone: "+91 93397 85032",
-      image: "https://i.imgur.com/example-kailash.jpg",
-    }, // Placeholder image
+      phone: "+919339785032",
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+    },
     {
       name: "Susritha M",
       year: "IV Year CSE",
-      phone: "+91 70101 68721",
-      image: "https://i.imgur.com/example-susritha.jpg",
-    }, // Placeholder image
+      phone: "+917010168721",
+      image:
+        "https://images.unsplash.com/photo-1494790108755-2616b612b19c?w=150&h=150&fit=crop&crop=face",
+    },
   ];
 
-  const eventCoordinators = [
+  const staffCoordinators = [
     {
-      name: "Aravind Krishna B",
-      year: "IV Year CSE",
-      phone: "+91 98406 98896",
-      image: "https://i.imgur.com/example-aravind.jpg",
-    }, // Placeholder image
+      name: "Dr. Priya Venkatesh",
+      department: "Department of English Literature",
+      phone: "+919876543210",
+    },
     {
-      name: "Lochana N",
-      year: "IV Year CSE",
-      phone: "+91 73389 56391",
-      image: "https://i.imgur.com/example-lochana.jpg",
-    }, // Placeholder image
+      name: "Prof. Ramesh Kumar",
+      department: "Department of Creative Writing",
+      phone: "+919876543211",
+    },
+    {
+      name: "Dr. Lakshmi Narayan",
+      department: "Department of Comparative Literature",
+      phone: "+919876543212",
+    },
   ];
 
-  const mapUrl = `https://www.google.com/maps/embed/v1/place?key=${GOOGLE_MAPS_API_KEY}&q=St.+Joseph's+Institute+of+Technology,+Chennai,+Tamil+Nadu`;
+  const literaryIcons = [
+    { Icon: Feather, x: "8%", y: "15%", delay: 0 },
+    { Icon: Scroll, x: "88%", y: "10%", delay: 1 },
+    { Icon: BookMarked, x: "82%", y: "70%", delay: 3 },
+    { Icon: Library, x: "45%", y: "85%", delay: 4 },
+    { Icon: PenTool, x: "92%", y: "40%", delay: 5 },
+    { Icon: FileText, x: "3%", y: "45%", delay: 6 },
+    { Icon: Bookmark, x: "78%", y: "25%", delay: 7 },
+    { Icon: Sparkles, x: "20%", y: "8%", delay: 8 },
+    { Icon: Star, x: "72%", y: "55%", delay: 9 },
+    { Icon: BookOpenCheck, x: "35%", y: "20%", delay: 10 },
+    { Icon: Palette, x: "65%", y: "80%", delay: 11 },
+  ];
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50, scale: 0.9 },
+    visible: (delay = 0) => ({
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        delay,
+        type: "spring",
+        stiffness: 100,
+      },
+    }),
+  };
+
+  const coordinatorVariants = {
+    hidden: { opacity: 0, x: -30 },
+    visible: (delay = 0) => ({
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.6, delay: delay * 0.2 },
+    }),
+  };
+
+  const iconVariants = {
+    animate: {
+      y: [-15, 15, -15],
+      rotate: [-8, 8, -8],
+      opacity: [0.2, 0.5, 0.2],
+    },
+  };
 
   return (
-    <section className="bg-slate-950 min-h-screen py-16 sm:py-20 relative overflow-hidden">
-      {/* Background glowing elements */}
-      <motion.div
-        className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"
-        animate={{ x: [-20, 20, -20], y: [-20, 20, -20] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-blue-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"
-        animate={{ x: [20, -20, 20], y: [20, -20, 20] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute top-1/2 left-1/2 w-64 h-64 bg-amber-500 rounded-full mix-blend-multiply filter blur-xl opacity-15 animate-blob animation-delay-4000"
-        animate={{ x: [-15, 15, -15], y: [15, -15, 15] }}
-        transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
-      />
+    <section
+      className="bg-black min-h-screen py-16 sm:py-20 relative overflow-hidden border-4 border-amber-500/30"
+      style={{ fontFamily: "Times New Roman, serif" }}
+    >
+      {/* Animated Literary Background Icons */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {literaryIcons.map(({ Icon, x, y, delay }, index) => (
+          <motion.div
+            key={index}
+            className="absolute text-amber-500/20"
+            style={{ left: x, top: y }}
+            variants={iconVariants}
+            animate="animate"
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: delay * 0.7,
+            }}
+          >
+            <Icon size={32} />
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Subtle Background Glow */}
+      <div className="absolute inset-0 z-0">
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-gradient-to-r from-amber-600/10 to-yellow-600/10 rounded-full filter blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.1, 0.2, 0.1],
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] bg-gradient-to-r from-orange-600/8 to-red-600/8 rounded-full filter blur-3xl"
+          animate={{
+            scale: [1.1, 1, 1.1],
+            opacity: [0.08, 0.15, 0.08],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 5,
+          }}
+        />
+      </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
+        {/* Literary Header */}
         <motion.div
-          initial={{ opacity: 0, y: -50 }}
+          initial={{ opacity: 0, y: -60 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12 md:mb-16"
+          transition={{ duration: 1.2, type: "spring", stiffness: 80 }}
+          className="text-center mb-16 md:mb-20 border-b-2 border-amber-500/30 pb-12"
         >
           <motion.div
-            className="inline-block p-4 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 mb-4 shadow-lg"
-            animate={{ scale: [1, 1.1, 1] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          ></motion.div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-manuscript text-amber-100 mb-4 drop-shadow-lg">
-            Contact the Ministry
-          </h1>
-          <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-manuscript">
-            Reach Out to Our Magical Coordinators
-          </p>
+            className="inline-flex items-center justify-center p-8 rounded-full bg-gradient-to-r from-amber-600 via-yellow-600 to-orange-600 text-black mb-8 shadow-2xl shadow-amber-500/50 border-4 border-amber-300/40"
+            animate={{
+              scale: [1, 1.05, 1],
+              rotate: [0, 5, -5, 0],
+              boxShadow: [
+                "0 0 30px rgba(245, 158, 11, 0.5)",
+                "0 0 60px rgba(245, 158, 11, 0.7)",
+                "0 0 30px rgba(245, 158, 11, 0.5)",
+              ],
+            }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <BookOpen size={48} />
+          </motion.div>
+          <motion.h1
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-amber-300 via-yellow-400 to-orange-400 py-4 mb-8 leading-tight"
+            style={{ fontFamily: "Brush Script MT, cursive" }}
+            animate={{
+              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+          >
+            Literary Sanctum
+          </motion.h1>
+          <motion.p
+            className="text-xl md:text-2xl text-amber-200 max-w-4xl mx-auto leading-relaxed italic border-l-4 border-amber-500/50 pl-6"
+            style={{ fontFamily: "Times New Roman, serif" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 1 }}
+          >
+            "In every word lies a universe waiting to be discovered. Connect
+            with our guardians of literary wisdom."
+          </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Two Column Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
           {/* Left Column: Coordinators */}
-          <div className="lg:col-span-1 space-y-8">
-            {/* Overall Coordinators Card */}
+          <div className="space-y-12">
+            {/* Overall Coordinators */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              custom={0.2}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="bg-slate-900 border border-purple-500/30 rounded-2xl shadow-xl p-6 md:p-8 hover:shadow-purple-400/20 transition-all duration-300"
+              className="group bg-black/90 backdrop-blur-md border-4 border-amber-500/60 rounded-3xl shadow-2xl p-8 md:p-10 hover:shadow-amber-400/60 hover:border-amber-400/80 transition-all duration-500 hover:scale-[1.02]"
             >
-              <h2 className="text-2xl font-bold font-manuscript text-amber-200 mb-6 flex items-center">
-                <Users className="w-6 h-6 mr-3 text-purple-400" /> Overall
-                Coordinators
-              </h2>
-              <div className="space-y-6">
+              <motion.div
+                className="flex items-center mb-10 border-b-2 border-amber-500/30 pb-6"
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="p-4 rounded-full bg-gradient-to-r from-amber-600 to-yellow-600 mr-6 shadow-xl border-2 border-amber-400/50">
+                  <Crown className="w-8 h-8 text-black" />
+                </div>
+                <h2
+                  className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-yellow-400"
+                  style={{ fontFamily: "Brush Script MT, cursive" }}
+                >
+                  Literary Guardians
+                </h2>
+              </motion.div>
+
+              <div className="space-y-8">
                 {overallCoordinators.map((coord, idx) => (
-                  <div key={idx} className="flex items-center space-x-4">
-                    <img
-                      src={`https://api.dicebear.com/8.x/initials/svg?seed=${coord.name}`} // DiceBear for initials avatar
-                      alt={coord.name}
-                      className="w-16 h-16 rounded-full object-cover border-2 border-amber-400 shadow-md"
-                    />
-                    <div>
-                      <p className="text-xl font-semibold text-slate-100">
-                        {coord.name}
-                      </p>
-                      <p className="text-sm text-slate-300">{coord.year}</p>
-                      <p className="text-sm text-blue-400 flex items-center">
-                        <Phone className="w-4 h-4 mr-2" /> {coord.phone}
-                      </p>
+                  <motion.div
+                    key={idx}
+                    custom={idx}
+                    variants={coordinatorVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    className="group/card flex items-center space-x-6 p-5 rounded-2xl transition-all duration-300 hover:bg-amber-900/20 cursor-pointer border-2 border-transparent hover:border-amber-400/40"
+                    whileHover={{ x: 15 }}
+                  >
+                    <div className="relative">
+                      <motion.img
+                        src={coord.image}
+                        alt={coord.name}
+                        className="w-24 h-24 rounded-full object-cover border-4 border-amber-400 shadow-xl"
+                        whileHover={{ scale: 1.15, rotate: 10 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      />
+                      <div className="absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg border border-amber-300">
+                        <Sparkles className="w-4 h-4 text-black" />
+                      </div>
                     </div>
-                  </div>
+                    <div className="flex-1">
+                      <motion.p
+                        className="text-2xl md:text-3xl font-bold text-amber-200 group-hover/card:text-amber-100 transition-colors"
+                        style={{ fontFamily: "Times New Roman, serif" }}
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        {coord.name}
+                      </motion.p>
+                      <p className="text-amber-300/80 font-medium mb-3 text-lg border-l-2 border-amber-500/30 pl-3">
+                        {coord.year}
+                      </p>
+                      <motion.a
+                        href={`tel:${coord.phone}`}
+                        className="text-yellow-400 flex items-center hover:text-yellow-300 transition-colors group text-lg border border-yellow-500/30 rounded-lg px-3 py-1 hover:border-yellow-400/50"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <Phone className="w-5 h-5 mr-3 group-hover:animate-pulse" />
+                        {coord.phone}
+                      </motion.a>
+                    </div>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
 
-            {/* Event Coordinators Card */}
+            {/* Staff Coordinators */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              custom={0.4}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              className="bg-slate-900 border border-blue-500/30 rounded-2xl shadow-xl p-6 md:p-8 hover:shadow-blue-400/20 transition-all duration-300"
+              className="group bg-black/90 backdrop-blur-md border-4 border-orange-500/60 rounded-3xl shadow-2xl p-8 md:p-10 hover:shadow-orange-400/60 hover:border-orange-400/80 transition-all duration-500 hover:scale-[1.02]"
             >
-              <h2 className="text-2xl font-bold font-manuscript text-amber-200 mb-6 flex items-center">
-                <User className="w-6 h-6 mr-3 text-blue-400" /> Event
-                Coordinators
-              </h2>
+              <motion.div
+                className="flex items-center mb-10 border-b-2 border-orange-500/30 pb-6"
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="p-4 rounded-full bg-gradient-to-r from-orange-600 to-red-600 mr-6 shadow-xl border-2 border-orange-400/50">
+                  <GraduationCap className="w-8 h-8 text-white" />
+                </div>
+                <h2
+                  className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-red-400"
+                  style={{ fontFamily: "Brush Script MT, cursive" }}
+                >
+                  Faculty Mentors
+                </h2>
+              </motion.div>
+
               <div className="space-y-6">
-                {eventCoordinators.map((coord, idx) => (
-                  <div key={idx} className="flex items-center space-x-4">
-                    <img
-                      src={`https://api.dicebear.com/8.x/initials/svg?seed=${coord.name}`} // DiceBear for initials avatar
-                      alt={coord.name}
-                      className="w-16 h-16 rounded-full object-cover border-2 border-amber-400 shadow-md"
-                    />
-                    <div>
-                      <p className="text-xl font-semibold text-slate-100">
-                        {coord.name}
+                {staffCoordinators.map((staff, idx) => (
+                  <motion.div
+                    key={idx}
+                    custom={idx}
+                    variants={coordinatorVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    className="group/card flex items-center justify-between p-5 rounded-2xl transition-all duration-300 hover:bg-orange-900/20 cursor-pointer border-2 border-transparent hover:border-orange-400/40"
+                    whileHover={{ x: 10 }}
+                  >
+                    <div className="flex-1">
+                      <motion.p
+                        className="text-xl md:text-2xl font-bold text-amber-200 group-hover/card:text-amber-100 transition-colors mb-2"
+                        style={{ fontFamily: "Times New Roman, serif" }}
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        {staff.name}
+                      </motion.p>
+                      <p className="text-orange-300/80 font-medium text-base mb-3 border-l-2 border-orange-500/30 pl-3">
+                        {staff.department}
                       </p>
-                      <p className="text-sm text-slate-300">{coord.year}</p>
-                      <p className="text-sm text-blue-400 flex items-center">
-                        <Phone className="w-4 h-4 mr-2" /> {coord.phone}
-                      </p>
+                      <motion.a
+                        href={`tel:${staff.phone}`}
+                        className="text-yellow-400 flex items-center hover:text-yellow-300 transition-colors group border border-yellow-500/30 rounded-lg px-3 py-1 hover:border-yellow-400/50 w-fit"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <Phone className="w-4 h-4 mr-3 group-hover:animate-pulse" />
+                        {staff.phone}
+                      </motion.a>
                     </div>
-                  </div>
+                    <div className="text-orange-400/60 group-hover/card:text-orange-300/80 transition-colors">
+                      <Users size={24} />
+                    </div>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
           </div>
 
-          {/* Right Column: Institution Details & Map */}
-          <div className="lg:col-span-2 space-y-8">
-            {/* Institution Details Card */}
+          {/* Right Column: Institution, Map & Social Media */}
+          <div className="space-y-12">
+            {/* Institution Details */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              custom={0.3}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="bg-slate-900 border border-amber-500/30 rounded-2xl shadow-xl p-6 md:p-8 hover:shadow-amber-400/20 transition-all duration-300"
+              className="group bg-black/90 backdrop-blur-md border-4 border-yellow-500/60 rounded-3xl shadow-2xl p-8 md:p-10 hover:shadow-yellow-400/60 hover:border-yellow-400/80 transition-all duration-500 hover:scale-[1.01]"
             >
-              <h2 className="text-2xl font-bold font-manuscript text-amber-200 mb-6 flex items-center">
-                <BookOpen className="w-6 h-6 mr-3 text-amber-400" /> Institution
-                Details
-              </h2>
-              <div className="space-y-4 text-slate-200">
-                <p className="flex items-start">
-                  <Crown className="w-5 h-5 mr-3 mt-1 text-amber-400 flex-shrink-0" />
-                  St. Joseph's Institute of Technology
-                </p>
-                <p className="flex items-start">
-                  <MapPin className="w-5 h-5 mr-3 mt-1 text-red-400 flex-shrink-0" />
-                  OMR, Chennai - 600 119
-                </p>
-                <p className="flex items-start">
-                  <Link className="w-5 h-5 mr-3 mt-1 text-green-400 flex-shrink-0" />
-                  <a
-                    href="https://stjosephstechnology.ac.in/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-green-400 hover:underline"
+              <motion.div
+                className="flex items-center mb-8 border-b-2 border-yellow-500/30 pb-6"
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="p-4 rounded-full bg-gradient-to-r from-yellow-600 to-amber-600 mr-6 shadow-xl border-2 border-yellow-400/50">
+                  <Library className="w-8 h-8 text-black" />
+                </div>
+                <h2
+                  className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-400"
+                  style={{ fontFamily: "Brush Script MT, cursive" }}
+                >
+                  Literary Sanctuary
+                </h2>
+              </motion.div>
+
+              <div
+                className="space-y-6 text-amber-200 text-lg"
+                style={{ fontFamily: "Times New Roman, serif" }}
+              >
+                <motion.div
+                  className="space-y-5"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  <motion.p
+                    className="flex items-start group/item cursor-pointer p-4 rounded-xl hover:bg-amber-900/25 transition-all border border-transparent hover:border-amber-500/30"
+                    whileHover={{ x: 10 }}
                   >
-                    https://stjosephstechnology.ac.in/
-                  </a>
-                </p>
-                <p className="flex items-start">
-                  <Mail className="w-5 h-5 mr-3 mt-1 text-blue-400 flex-shrink-0" />
-                  <a
-                    href="mailto:contact@stjosephstechnology.ac.in"
-                    className="text-blue-400 hover:underline"
+                    <Crown className="w-6 h-6 mr-4 mt-1 text-amber-400 flex-shrink-0 group-hover/item:animate-bounce" />
+                    <span className="font-semibold text-xl text-amber-100">
+                      St. Joseph's Institute of Technology
+                    </span>
+                  </motion.p>
+                  <motion.p
+                    className="flex items-start group/item cursor-pointer p-4 rounded-xl hover:bg-amber-900/25 transition-all border border-transparent hover:border-amber-500/30"
+                    whileHover={{ x: 10 }}
                   >
-                    contact@stjosephstechnology.ac.in
-                  </a>
-                </p>
+                    <MapPin className="w-6 h-6 mr-4 mt-1 text-amber-400 flex-shrink-0 group-hover/item:animate-bounce" />
+                    <span className="text-amber-200">
+                      Old Mahabalipuram Road, Chennai - 600 119
+                    </span>
+                  </motion.p>
+                  <motion.p
+                    className="flex items-start group/item cursor-pointer p-4 rounded-xl hover:bg-amber-900/25 transition-all border border-transparent hover:border-amber-500/30"
+                    whileHover={{ x: 10 }}
+                  >
+                    <Mail className="w-6 h-6 mr-4 mt-1 text-amber-400 flex-shrink-0 group-hover/item:animate-bounce" />
+                    <a
+                      href="mailto:literary@stjosephstechnology.ac.in"
+                      className="text-yellow-400 hover:text-yellow-300 hover:underline transition-colors"
+                    >
+                      literary@stjosephstechnology.ac.in
+                    </a>
+                  </motion.p>
+                </motion.div>
               </div>
             </motion.div>
 
-            {/* Locate Us on the Map Card */}
+            {/* Interactive Map */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              custom={0.5}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.7, delay: 0.5 }}
-              className="bg-slate-900 border border-red-500/30 rounded-2xl shadow-xl p-6 md:p-8 hover:shadow-red-400/20 transition-all duration-300"
+              className="group bg-black/90 backdrop-blur-md border-4 border-amber-600/60 rounded-3xl shadow-2xl p-8 md:p-10 hover:shadow-amber-400/60 hover:border-amber-400/80 transition-all duration-500 hover:scale-[1.01]"
             >
-              <h2 className="text-2xl font-bold font-manuscript text-amber-200 mb-6 flex items-center">
-                <MapPin className="w-6 h-6 mr-3 text-red-400" /> Locate Us on
-                the Map
-              </h2>
-              <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden border border-slate-700 shadow-md">
-                <iframe
-                  src={mapUrl}
-                  width="100%"
-                  height="450"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
+              <motion.div
+                className="flex items-center mb-8 border-b-2 border-amber-500/30 pb-6"
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="p-4 rounded-full bg-gradient-to-r from-amber-600 to-orange-600 mr-6 shadow-xl border-2 border-amber-400/50">
+                  <MapPin className="w-8 h-8 text-black" />
+                </div>
+                <h2
+                  className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-400"
+                  style={{ fontFamily: "Brush Script MT, cursive" }}
+                >
+                  Literary Haven Location
+                </h2>
+              </motion.div>
+
+              {/* Your Existing LocationMap Component */}
+              <motion.div
+                className="h-[400px] w-full rounded-2xl overflow-hidden border-4 border-amber-500/50 shadow-2xl shadow-amber-500/25 group-hover:border-amber-400/70 transition-all duration-500"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <LocationMap position={collegePosition} />
+              </motion.div>
+
+              <motion.div
+                className="mt-8 text-center border-t-2 border-amber-500/30 pt-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 }}
+              >
+                <p
+                  className="text-amber-300 text-lg italic"
+                  style={{ fontFamily: "Times New Roman, serif" }}
+                >
+                  "Navigate to where words weave their magic"
+                </p>
+              </motion.div>
+            </motion.div>
+
+            {/* Social Media & Transportation */}
+            <motion.div
+              custom={0.6}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              className="group bg-black/90 backdrop-blur-md border-4 border-orange-500/60 rounded-3xl shadow-2xl p-8 md:p-10 hover:shadow-orange-400/60 hover:border-orange-400/80 transition-all duration-500 hover:scale-[1.01]"
+            >
+              <motion.div
+                className="flex items-center mb-8 border-b-2 border-orange-500/30 pb-6"
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="p-4 rounded-full bg-gradient-to-r from-orange-600 to-red-600 mr-6 shadow-xl border-2 border-orange-400/50">
+                  <Instagram className="w-8 h-8 text-white" />
+                </div>
+                <h2
+                  className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-red-400"
+                  style={{ fontFamily: "Brush Script MT, cursive" }}
+                >
+                  Digital Scrolls
+                </h2>
+              </motion.div>
+
+              <div className="space-y-6">
+                <motion.a
+                  href="https://instagram.com/sjit_literary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/link flex items-center p-5 rounded-2xl bg-gradient-to-r from-orange-800/30 to-red-800/30 border-2 border-orange-400/40 hover:border-orange-300/70 transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-700/40 hover:to-red-700/40"
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Instagram className="w-8 h-8 text-orange-400 mr-4 group-hover/link:animate-pulse" />
+                  <div>
+                    <p
+                      className="text-amber-100 font-bold text-lg"
+                      style={{ fontFamily: "Times New Roman, serif" }}
+                    >
+                      Instagram
+                    </p>
+                    <p className="text-orange-300 text-sm">@sjit_literary</p>
+                  </div>
+                </motion.a>
+
+                <motion.div
+                  className="group/link flex items-center p-5 rounded-2xl bg-gradient-to-r from-blue-800/30 to-indigo-800/30 border-2 border-blue-400/40 hover:border-blue-300/70 transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-700/40 hover:to-indigo-700/40 cursor-pointer"
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Bus className="w-8 h-8 text-blue-400 mr-4 group-hover/link:animate-pulse" />
+                  <div>
+                    <p
+                      className="text-amber-100 font-bold text-lg"
+                      style={{ fontFamily: "Times New Roman, serif" }}
+                    >
+                      Transportation
+                    </p>
+                    <p className="text-blue-300 text-sm">
+                      Bus Routes & Guidelines
+                    </p>
+                  </div>
+                </motion.div>
               </div>
-              <p className="text-xs text-slate-500 mt-4 text-center">
-                Ensure your Google Maps API key is correctly configured for the
-                map to display.
-              </p>
             </motion.div>
           </div>
         </div>
+
+        {/* Literary Quote Card - Full Width */}
+        <motion.div
+          custom={0.7}
+          variants={cardVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="col-span-1 lg:col-span-2 group bg-black/95 backdrop-blur-md border-4 border-amber-500/60 rounded-3xl shadow-2xl p-8 md:p-12 hover:shadow-amber-400/60 hover:border-amber-400/80 transition-all duration-500 mt-12"
+        >
+          <motion.div className="text-center" whileHover={{ scale: 1.02 }}>
+            <motion.div
+              className="mb-8 border-4 border-amber-500/40 rounded-full w-24 h-24 mx-auto flex items-center justify-center bg-gradient-to-r from-amber-600/20 to-yellow-600/20"
+              animate={{ rotate: [0, 5, -5, 0] }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <Scroll className="w-12 h-12 text-amber-400" />
+            </motion.div>
+            <blockquote
+              className="text-2xl md:text-4xl italic text-amber-200 leading-relaxed mb-8 border-l-4 border-r-4 border-amber-500/50 px-8 py-6"
+              style={{ fontFamily: "Times New Roman, serif" }}
+            >
+              "Literature is the most agreeable way of ignoring life."
+            </blockquote>
+            <p
+              className="text-amber-300 text-xl border-t-2 border-amber-500/30 pt-6"
+              style={{ fontFamily: "Times New Roman, serif" }}
+            >
+              — Fernando Pessoa
+            </p>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Enhanced Call-to-Action */}
+      <motion.div
+        className="mt-20 md:mt-24 text-center border-t-4 border-amber-500/30 pt-16"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 1 }}
+      >
+        <motion.div
+          className="inline-flex items-center space-x-6 bg-gradient-to-r from-amber-600 via-yellow-600 to-orange-600 text-black px-12 py-8 rounded-full shadow-2xl font-bold text-xl cursor-pointer border-4 border-amber-300/50"
+          style={{ fontFamily: "Times New Roman, serif" }}
+          whileHover={{
+            scale: 1.08,
+            boxShadow: "0 0 60px rgba(245, 158, 11, 0.9)",
+            borderColor: "rgba(252, 211, 77, 0.8)",
+          }}
+          whileTap={{ scale: 0.95 }}
+          animate={{
+            boxShadow: [
+              "0 0 30px rgba(245, 158, 11, 0.5)",
+              "0 0 50px rgba(245, 158, 11, 0.7)",
+              "0 0 30px rgba(245, 158, 11, 0.5)",
+            ],
+          }}
+          transition={{
+            boxShadow: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+          }}
+        >
+          <Feather className="w-8 h-8" />
+          <span className="text-2xl">Embark on Your Literary Odyssey</span>
+          <BookOpen className="w-8 h-8" />
+        </motion.div>
+        <motion.p
+          className="mt-8 text-amber-400 text-xl italic border border-amber-500/30 rounded-2xl p-6 bg-amber-900/10"
+          style={{ fontFamily: "Times New Roman, serif" }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+        >
+          "Every great story begins with a single word..."
+        </motion.p>
+      </motion.div>
+
+      {/* Enhanced floating literary elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+          >
+            <motion.div
+              className="w-4 h-4 bg-gradient-to-r from-amber-400/30 to-yellow-400/30 rounded-full border border-amber-500/20"
+              animate={{
+                y: [-40, 40, -40],
+                x: [-20, 20, -20],
+                opacity: [0.2, 0.6, 0.2],
+                scale: [0.5, 1.5, 0.5],
+              }}
+              transition={{
+                duration: 8 + Math.random() * 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: Math.random() * 3,
+              }}
+            />
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Literary symbols floating animation */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        {["📚", "✒️", "📝", "🎭", "🎨", "📖", "🖋️", "📜"].map((emoji, i) => (
+          <motion.div
+            key={i}
+            className="absolute text-4xl opacity-15"
+            style={{
+              left: `${10 + Math.random() * 80}%`,
+              top: `${10 + Math.random() * 80}%`,
+            }}
+            animate={{
+              y: [-50, 50, -50],
+              rotate: [-15, 15, -15],
+              opacity: [0.05, 0.2, 0.05],
+            }}
+            transition={{
+              duration: 10 + Math.random() * 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: Math.random() * 5,
+            }}
+          >
+            {emoji}
+          </motion.div>
+        ))}
       </div>
     </section>
   );

@@ -114,7 +114,53 @@ body {
   border-radius: 50%;
   box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.2), 0 4px 8px rgba(0, 0, 0, 0.3);
 }
+/* Custom styles for the Leaflet popup */
 
+/* 1. Style the main popup container */
+.leaflet-popup-content-wrapper {
+  background-color: #ffffff;
+  /* A clean white background */
+  border-radius: 12px;
+  /* Soft, rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  /* A subtle shadow for depth */
+  padding: 0;
+  /* Remove default padding */
+  border: none;
+}
+
+/* 2. Remove the default padding from the content holder */
+.leaflet-popup-content {
+  margin: 0 !important;
+  padding: 16px;
+  /* Add our own padding */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* 3. Style the popup's "tail" or "tip" */
+.leaflet-popup-tip-container {
+  display: none;
+  /* Hiding the default tail for a cleaner look */
+}
+
+/* 4. Style for the close button */
+.leaflet-popup-close-button {
+  color: #555 !important;
+  font-size: 20px !important;
+  padding: 10px 10px 0 0 !important;
+}
+
+.leaflet-popup-close-button:hover {
+  color: #000 !important;
+  background-color: transparent !important;
+}
+
+/* This is the custom class we added in the JSX */
+.custom-popup {
+  color: #333;
+}
 .candlelight-flicker {
   animation: flicker 2s ease-in-out infinite;
   filter: drop-shadow(0 0 10px rgba(255, 193, 7, 0.5));

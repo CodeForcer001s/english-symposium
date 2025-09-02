@@ -1,147 +1,157 @@
 "use client";
-
 import React from "react";
 import { motion } from "framer-motion";
-import { BookText, GraduationCap, MapPin, Clock, Users } from "lucide-react";
+import {
+  BookOpen,
+  GraduationCap,
+  MapPin,
+  Users,
+  Feather,
+  Library,
+} from "lucide-react";
 
 const About = () => {
-  const containerVariants = {
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const staggerContainer = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.2,
       },
     },
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
+  const infoItems = [
+    {
+      icon: GraduationCap,
+      label: "Institution",
+      value: "St. Joseph's College of Arts & Science",
+    },
+    {
+      icon: BookOpen,
+      label: "Department",
+      value: "English Language & Literature",
+    },
+    {
+      icon: MapPin,
+      label: "Location",
+      value: "Chennai, Tamil Nadu, India",
+    },
+    {
+      icon: Users,
+      label: "Audience",
+      value: "Undergraduate & Postgraduate Students",
+    },
+  ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-black text-slate-200 overflow-hidden py-16 px-4 sm:px-8">
-      {/* Background Ornate Border */}
-      <div className="absolute inset-3 sm:inset-4 md:inset-6 lg:inset-8 border-2 sm:border-3 md:border-4 border-double border-amber-500/30 rounded-lg md:rounded-xl">
-        <div className="absolute inset-2 sm:inset-3 md:inset-4 border border-amber-400/20 rounded-md lg:rounded-lg"></div>
-      </div>
-
-      {/* Subtle Background Pattern */}
+    <section className="min-h-screen bg-black text-slate-200 py-20 px-4 sm:px-6 lg:px-8">
+      {/* Subtle background pattern */}
       <div
         className="absolute inset-0 opacity-5"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e2e8f0' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23fbbf24' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }}
       />
 
-      {/* Main Content Container */}
-      <motion.div
-        className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-center bg-slate-900/70 backdrop-blur-md rounded-2xl p-6 sm:p-10 md:p-12 border border-amber-600/30 shadow-3xl"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {/* Left Side: Image */}
+      <div className="relative max-w-7xl mx-auto">
         <motion.div
-          className="w-full h-80 sm:h-96 lg:h-full rounded-xl overflow-hidden shadow-2xl border border-amber-700/40"
-          variants={itemVariants}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
         >
-          {/* Placeholder for the image */}
-          <img
-            src="https://st3.depositphotos.com/16174436/18954/i/450/depositphotos_189547686-stock-photo-old-book-pen-inkwell-wooden.jpg" // Replace with your image URL
-            alt="Renaissance Library"
-            className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500 ease-in-out"
-          />
-        </motion.div>
-
-        {/* Right Side: About Content */}
-        <div className="flex flex-col justify-center text-center lg:text-left">
-          <motion.h2
-            className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-400 drop-shadow-lg"
-            variants={itemVariants}
-          >
-            About <span className="font-serif italic">Litlaya</span>
-          </motion.h2>
-
-          <motion.p
-            className="text-base sm:text-lg md:text-xl leading-relaxed mb-8 text-slate-300 font-serif"
-            variants={itemVariants}
-          >
-            Step into the grandeur of the Renaissance at{" "}
-            <span className="text-yellow-300 font-semibold">Litlaya</span>, a
-            prestigious literary symposium dedicated to celebrating the profound
-            beauty and enduring legacy of classical and contemporary literature.
-            This event is a beacon for young minds eager to explore the depths
-            of human expression through words.
-          </motion.p>
-
-          <motion.div className="space-y-4 mb-10" variants={containerVariants}>
-            <motion.div
-              className="flex items-center lg:justify-start justify-center space-x-4 text-lg sm:text-xl text-amber-200"
-              variants={itemVariants}
-            >
-              <GraduationCap className="w-6 h-6 sm:w-7 sm:h-7 text-amber-400" />
-              <span className="font-bold">Institution:</span>{" "}
-              <span className="text-slate-200 font-medium">
-                St. Joseph's College of Arts & Science
-              </span>
-            </motion.div>
-            <motion.div
-              className="flex items-center lg:justify-start justify-center space-x-4 text-lg sm:text-xl text-amber-200"
-              variants={itemVariants}
-            >
-              <BookText className="w-6 h-6 sm:w-7 sm:h-7 text-amber-400" />
-              <span className="font-bold">Department:</span>{" "}
-              <span className="text-slate-200 font-medium">
-                Department of English Language & Literature
-              </span>
-            </motion.div>
-            <motion.div
-              className="flex items-center lg:justify-start justify-center space-x-4 text-lg sm:text-xl text-amber-200"
-              variants={itemVariants}
-            >
-              <MapPin className="w-6 h-6 sm:w-7 sm:h-7 text-amber-400" />
-              <span className="font-bold">Location:</span>{" "}
-              <span className="text-slate-200 font-medium">
-                Chennai, Tamil Nadu, India
-              </span>
-            </motion.div>
-            <motion.div
-              className="flex items-center lg:justify-start justify-center space-x-4 text-lg sm:text-xl text-amber-200"
-              variants={itemVariants}
-            >
-              <Users className="w-6 h-6 sm:w-7 sm:h-7 text-amber-400" />
-              <span className="font-bold">Audience:</span>{" "}
-              <span className="text-slate-200 font-medium">
-                Undergraduate & Postgraduate Students
-              </span>
-            </motion.div>
+          {/* Left Column - Image */}
+          <motion.div className="order-2 lg:order-1" variants={fadeInUp}>
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 rounded-lg blur-xl opacity-50" />
+              <img
+                src="https://st3.depositphotos.com/16174436/18954/i/450/depositphotos_189547686-stock-photo-old-book-pen-inkwell-wooden.jpg"
+                alt="Classical Literature"
+                className="relative w-full h-96 lg:h-[500px] object-cover rounded-lg border border-amber-600/30"
+              />
+            </div>
           </motion.div>
 
-          <motion.p
-            className="text-sm sm:text-base leading-relaxed text-slate-400 italic font-serif"
-            variants={itemVariants}
+          {/* Right Column - Content */}
+          <motion.div
+            className="order-1 lg:order-2 space-y-8"
+            variants={fadeInUp}
           >
-            Prepare to engage in spirited debates, eloquent recitations, and
-            creative writing challenges that will test your intellectual prowess
-            and artistic flair. Litlaya is more than an event; it's a
-            celebration of words, ideas, and the timeless human spirit.
-          </motion.p>
-        </div>
-      </motion.div>
+            {/* Header */}
+            <div className="text-center lg:text-left">
+              <div className="flex items-center justify-center lg:justify-start mb-4">
+                <Library className="w-6 h-6 text-amber-400 mr-2" />
+                <span className="text-amber-300 font-medium tracking-wide">
+                  Literary Symposium
+                </span>
+              </div>
 
-      {/* Floating decorative elements (optional, similar to Hero) */}
-      <motion.div
-        className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-64 sm:h-64 bg-amber-400/10 rounded-full blur-3xl opacity-20"
-        animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.2, 0.1] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 right-1/4 w-40 h-40 sm:w-56 sm:h-56 bg-orange-500/10 rounded-full blur-3xl opacity-20"
-        animate={{ scale: [1.1, 1, 1.1], opacity: [0.2, 0.1, 0.2] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-      />
+              <h2 className="text-5xl lg:text-6xl font-bold mb-6">
+                <span className="text-white">About </span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-400 font-serif italic">
+                  Litlaya
+                </span>
+              </h2>
+            </div>
+
+            {/* Description */}
+            <div className="bg-slate-900/50 p-6 rounded-lg border border-amber-600/20">
+              <p className="text-lg leading-relaxed text-slate-300">
+                Step into the grandeur of the Renaissance at{" "}
+                <span className="text-amber-300 font-semibold">Litlaya</span>, a
+                prestigious literary symposium dedicated to celebrating the
+                profound beauty and enduring legacy of classical and
+                contemporary literature. This event is a beacon for young minds
+                eager to explore the depths of human expression through words.
+              </p>
+            </div>
+
+            {/* Information Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {infoItems.map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-slate-800/40 p-4 rounded-lg border border-slate-700/50 hover:border-amber-600/40 transition-colors duration-300"
+                >
+                  <div className="flex items-start space-x-3">
+                    <item.icon className="w-5 h-5 text-amber-400 mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold text-amber-200 text-sm mb-1">
+                        {item.label}
+                      </h3>
+                      <p className="text-slate-300 text-sm">{item.value}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Final Description */}
+            <div className="bg-slate-900/50 p-6 rounded-lg border border-amber-600/20">
+              <div className="flex items-start space-x-3">
+                <Feather className="w-5 h-5 text-amber-400 mt-1 flex-shrink-0" />
+                <p className="text-base leading-relaxed text-slate-300 italic">
+                  Prepare to engage in spirited debates, eloquent recitations,
+                  and creative writing challenges that will test your
+                  intellectual prowess and artistic flair. Litlaya is more than
+                  an event; it's a celebration of words, ideas, and the timeless
+                  human spirit.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 };
