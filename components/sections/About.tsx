@@ -71,7 +71,21 @@ const About = () => {
           animate="visible"
         >
           {/* Left Column - Image */}
-          <motion.div className="order-2 lg:order-1" variants={fadeInUp}>
+          <motion.div
+            className="order-2 lg:order-1"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                  type: "tween",
+                  duration: 0.6,
+                  ease: "easeOut",
+                },
+              },
+            }}
+          >
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 rounded-lg blur-xl opacity-50" />
               <img
@@ -85,7 +99,18 @@ const About = () => {
           {/* Right Column - Content */}
           <motion.div
             className="order-1 lg:order-2 space-y-8"
-            variants={fadeInUp}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                  type: "tween",
+                  duration: 0.6,
+                  ease: [0.43, 0.13, 0.23, 0.96],
+                },
+              },
+            }}
           >
             {/* Header */}
             <div className="text-center lg:text-left">
@@ -144,7 +169,7 @@ const About = () => {
                   Prepare to engage in spirited debates, eloquent recitations,
                   and creative writing challenges that will test your
                   intellectual prowess and artistic flair. Litlaya is more than
-                  an event; it's a celebration of words, ideas, and the timeless
+                  an event; its a celebration of words, ideas, and the timeless
                   human spirit.
                 </p>
               </div>

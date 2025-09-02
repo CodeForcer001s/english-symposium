@@ -204,8 +204,7 @@ const ContactPage = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
           >
-            "In every word lies a universe waiting to be discovered. Connect
-            with our guardians of literary wisdom."
+            &ldquo;In every word lies a universe waiting to be discovered. Connect with our guardians of literary wisdom.&rdquo;
           </motion.p>
         </motion.div>
 
@@ -216,7 +215,20 @@ const ContactPage = () => {
             {/* Overall Coordinators */}
             <motion.div
               custom={0.2}
-              variants={cardVariants}
+              variants={{
+                hidden: { opacity: 0, y: 50, scale: 0.9 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                  transition: {
+                    duration: 0.8,
+                    delay: 0,
+                    type: "spring",
+                    stiffness: 100
+                  }
+                }
+              }}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
@@ -290,7 +302,20 @@ const ContactPage = () => {
             {/* Staff Coordinators */}
             <motion.div
               custom={0.4}
-              variants={cardVariants}
+              variants={{
+                hidden: { opacity: 0, y: 50, scale: 0.9 },
+                visible: { 
+                  opacity: 1,
+                  y: 0, 
+                  scale: 1,
+                  transition: {
+                    duration: 0.8,
+                    delay: 0.4,
+                    type: "spring",
+                    stiffness: 100
+                  }
+                }
+              }}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
@@ -358,7 +383,20 @@ const ContactPage = () => {
             {/* Institution Details */}
             <motion.div
               custom={0.3}
-              variants={cardVariants}
+              variants={{
+                hidden: { opacity: 0, y: 50, scale: 0.9 },
+                visible: { 
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                  transition: {
+                    duration: 0.8,
+                    delay: 0.3,
+                    type: "spring" as const,
+                    stiffness: 100
+                  }
+                }
+              }}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
@@ -395,7 +433,7 @@ const ContactPage = () => {
                   >
                     <Crown className="w-6 h-6 mr-4 mt-1 text-amber-400 flex-shrink-0 group-hover/item:animate-bounce" />
                     <span className="font-semibold text-xl text-amber-100">
-                      St. Joseph's Institute of Technology
+                      St. Josephs Institute of Technology
                     </span>
                   </motion.p>
                   <motion.p
@@ -426,7 +464,20 @@ const ContactPage = () => {
             {/* Interactive Map */}
             <motion.div
               custom={0.5}
-              variants={cardVariants}
+              variants={{
+                hidden: { opacity: 0, y: 50, scale: 0.9 },
+                visible: { 
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                  transition: {
+                    duration: 0.8,
+                    delay: 0.5,
+                    type: "spring" as const,
+                    stiffness: 100
+                  }
+                }
+              }}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
@@ -453,6 +504,7 @@ const ContactPage = () => {
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
+                {/* @ts-expect-error Server Component */}
                 <LocationMap position={collegePosition} />
               </motion.div>
 
@@ -466,7 +518,7 @@ const ContactPage = () => {
                   className="text-amber-300 text-lg italic"
                   style={{ fontFamily: "Times New Roman, serif" }}
                 >
-                  "Navigate to where words weave their magic"
+                  &ldquo;Navigate to where words weave their magic&rdquo;
                 </p>
               </motion.div>
             </motion.div>
@@ -474,7 +526,20 @@ const ContactPage = () => {
             {/* Social Media & Transportation */}
             <motion.div
               custom={0.6}
-              variants={cardVariants}
+              variants={{
+                hidden: { opacity: 0, y: 50, scale: 0.9 },
+                visible: { 
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                  transition: {
+                    duration: 0.8,
+                    delay: 0.6,
+                    type: "spring" as const,
+                    stiffness: 100
+                  }
+                }
+              }}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
@@ -542,7 +607,20 @@ const ContactPage = () => {
         {/* Literary Quote Card - Full Width */}
         <motion.div
           custom={0.7}
-          variants={cardVariants}
+          variants={{
+            hidden: { opacity: 0, y: 50, scale: 0.9 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              transition: {
+                duration: 0.8,
+                delay: 0,
+                type: "spring",
+                stiffness: 100
+              }
+            }
+          }}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
@@ -564,7 +642,7 @@ const ContactPage = () => {
               className="text-2xl md:text-4xl italic text-amber-200 leading-relaxed mb-8 border-l-4 border-r-4 border-amber-500/50 px-8 py-6"
               style={{ fontFamily: "Times New Roman, serif" }}
             >
-              "Literature is the most agreeable way of ignoring life."
+              &ldquo;Literature is the most agreeable way of ignoring life.&rdquo;
             </blockquote>
             <p
               className="text-amber-300 text-xl border-t-2 border-amber-500/30 pt-6"
@@ -617,7 +695,7 @@ const ContactPage = () => {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 1 }}
         >
-          "Every great story begins with a single word..."
+          &ldquo;Every great story begins with a single word...&rdquo;
         </motion.p>
       </motion.div>
 

@@ -435,7 +435,14 @@ const EventTimeline: React.FC = () => {
         {/* Header */}
         <motion.div
           className="text-center mb-16"
-          variants={fadeInUp}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { 
+              opacity: 1, 
+              y: 0,
+              transition: { type: "tween", duration: 0.6, ease: "easeOut" }
+            }
+          }}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
@@ -465,7 +472,14 @@ const EventTimeline: React.FC = () => {
 
         <motion.div
           className="max-w-7xl mx-auto rounded-2xl border-2 border-amber-600/30 bg-slate-900/30 p-3 md:p-6 shadow-2xl backdrop-blur-sm"
-          variants={fadeInUp}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { 
+              opacity: 1, 
+              y: 0,
+              transition: { type: "tween", duration: 0.6, ease: "easeOut" }
+            }
+          }}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
@@ -492,7 +506,14 @@ const EventTimeline: React.FC = () => {
                     gridColumnStart: i + 1,
                     gridRowStart: 1,
                   }}
-                  variants={fadeInUp}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { 
+                      opacity: 1,
+                      y: 0,
+                      transition: { type: "tween", duration: 0.6, ease: "easeOut" }
+                    }
+                  }}
                 >
                   {time}
                 </motion.div>
@@ -516,7 +537,14 @@ const EventTimeline: React.FC = () => {
                   gridRowStart: 2,
                   gridRowEnd: 6,
                 }}
-                variants={fadeInUp}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { type: "tween", duration: 0.6, ease: "easeOut" }
+                  }
+                }}
                 whileHover={{ scale: 1.05 }}
               >
                 <Award className="w-10 h-10 mb-2 animate-pulse" />
@@ -557,7 +585,14 @@ const EventTimeline: React.FC = () => {
                       gridColumnStart: i + 1,
                       gridRowStart: 1,
                     }}
-                    variants={fadeInUp}
+                    variants={{
+                      hidden: { opacity: 0, y: 20 },
+                      visible: { 
+                        opacity: 1,
+                        y: 0,
+                        transition: { type: "tween", duration: 0.6, ease: "easeOut" }
+                      }
+                    }}
                   >
                     {time}
                   </motion.div>
@@ -581,7 +616,14 @@ const EventTimeline: React.FC = () => {
                     gridRowStart: 2,
                     gridRowEnd: 6,
                   }}
-                  variants={fadeInUp}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { 
+                      opacity: 1,
+                      y: 0,
+                      transition: { type: "tween", duration: 0.6, ease: "easeOut" }
+                    }
+                  }}
                 >
                   <Award className="w-6 h-6 mb-1 animate-pulse" />
                   <h3 className="text-sm font-serif font-bold">Results</h3>
@@ -594,7 +636,14 @@ const EventTimeline: React.FC = () => {
             {/* Mobile scroll indicator */}
             <motion.div
               className="flex justify-center mt-4"
-              variants={fadeInUp}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { 
+                  opacity: 1,
+                  y: 0,
+                  transition: { type: "tween", duration: 0.6, ease: "easeOut" }
+                }
+              }}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
@@ -611,7 +660,14 @@ const EventTimeline: React.FC = () => {
         {/* Legend */}
         <motion.div
           className="mt-8 max-w-5xl mx-auto"
-          variants={fadeInUp}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { 
+              opacity: 1,
+              y: 0,
+              transition: { type: "tween", duration: 0.6, ease: "easeOut" }
+            }
+          }}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
@@ -625,28 +681,56 @@ const EventTimeline: React.FC = () => {
           >
             <motion.div
               className="flex items-center space-x-2 bg-purple-900/50 p-3 rounded-lg border border-amber-600/20"
-              variants={fadeInUp}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { 
+                  opacity: 1,
+                  y: 0,
+                  transition: { type: "tween", duration: 0.6, ease: "easeOut" }
+                }
+              }}
             >
               <Feather className="w-4 h-4 text-amber-400" />
               <span className="text-white text-sm">Poetry Recitation</span>
             </motion.div>
             <motion.div
               className="flex items-center space-x-2 bg-rose-900/50 p-3 rounded-lg border border-amber-600/20"
-              variants={fadeInUp}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { 
+                  opacity: 1,
+                  y: 0,
+                  transition: { type: "tween", duration: 0.6, ease: "easeOut" }
+                }
+              }}
             >
               <Mic className="w-4 h-4 text-amber-400" />
               <span className="text-white text-sm">Literary Debate</span>
             </motion.div>
             <motion.div
               className="flex items-center space-x-2 bg-emerald-900/50 p-3 rounded-lg border border-amber-600/20"
-              variants={fadeInUp}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { 
+                  opacity: 1,
+                  y: 0,
+                  transition: { type: "tween", duration: 0.6, ease: "easeOut" }
+                }
+              }}
             >
               <BookOpen className="w-4 h-4 text-amber-400" />
               <span className="text-white text-sm">Creative Writing</span>
             </motion.div>
             <motion.div
               className="flex items-center space-x-2 bg-indigo-900/50 p-3 rounded-lg border border-amber-600/20"
-              variants={fadeInUp}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { 
+                  opacity: 1,
+                  y: 0,
+                  transition: { type: "tween", duration: 0.6, ease: "easeOut" }
+                }
+              }}
             >
               <Star className="w-4 h-4 text-amber-400" />
               <span className="text-white text-sm">Literary Quiz</span>
@@ -657,7 +741,14 @@ const EventTimeline: React.FC = () => {
         {/* Event Details Summary */}
         <motion.div
           className="mt-8 max-w-4xl mx-auto bg-slate-900/50 rounded-xl p-6 border border-amber-600/20"
-          variants={fadeInUp}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { 
+              opacity: 1,
+              y: 0,
+              transition: { type: "tween", duration: 0.6, ease: "easeOut" }
+            }
+          }}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
@@ -671,7 +762,14 @@ const EventTimeline: React.FC = () => {
           >
             <motion.div
               className="bg-slate-800/50 p-4 rounded-lg border border-amber-600/20"
-              variants={fadeInUp}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { 
+                  opacity: 1,
+                  y: 0,
+                  transition: { type: "tween", duration: 0.6, ease: "easeOut" }
+                }
+              }}
             >
               <h4 className="text-amber-400 font-bold mb-2">
                 Morning Events (9:00 AM - 1:00 PM)
@@ -685,7 +783,14 @@ const EventTimeline: React.FC = () => {
             </motion.div>
             <motion.div
               className="bg-slate-800/50 p-4 rounded-lg border border-amber-600/20"
-              variants={fadeInUp}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { 
+                  opacity: 1,
+                  y: 0,
+                  transition: { type: "tween", duration: 0.6, ease: "easeOut" }
+                }
+              }}
             >
               <h4 className="text-amber-400 font-bold mb-2">
                 Afternoon Program (1:00 PM - 3:00 PM)
@@ -698,11 +803,21 @@ const EventTimeline: React.FC = () => {
               </ul>
             </motion.div>
           </motion.div>
-          <motion.div className="mt-4 text-center" variants={fadeInUp}>
+          <motion.div 
+            className="mt-4 text-center" 
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { 
+                opacity: 1, 
+                y: 0,
+                transition: { type: "tween", duration: 0.6, ease: "easeOut" }
+              }
+            }}
+          >
             <div className="flex items-center justify-center text-amber-400">
               <Feather className="w-4 h-4 mr-2" />
               <span className="text-sm italic">
-                "A day where words become wings and ideas take flight"
+                &ldquo;A day where words become wings and ideas take flight&rdquo;
               </span>
             </div>
           </motion.div>
