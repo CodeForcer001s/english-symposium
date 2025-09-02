@@ -204,7 +204,8 @@ const ContactPage = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
           >
-            &ldquo;In every word lies a universe waiting to be discovered. Connect with our guardians of literary wisdom.&rdquo;
+            &ldquo;In every word lies a universe waiting to be discovered.
+            Connect with our guardians of literary wisdom.&rdquo;
           </motion.p>
         </motion.div>
 
@@ -225,9 +226,9 @@ const ContactPage = () => {
                     duration: 0.8,
                     delay: 0,
                     type: "spring",
-                    stiffness: 100
-                  }
-                }
+                    stiffness: 100,
+                  },
+                },
               }}
               initial="hidden"
               whileInView="visible"
@@ -304,17 +305,17 @@ const ContactPage = () => {
               custom={0.4}
               variants={{
                 hidden: { opacity: 0, y: 50, scale: 0.9 },
-                visible: { 
+                visible: {
                   opacity: 1,
-                  y: 0, 
+                  y: 0,
                   scale: 1,
                   transition: {
                     duration: 0.8,
                     delay: 0.4,
                     type: "spring",
-                    stiffness: 100
-                  }
-                }
+                    stiffness: 100,
+                  },
+                },
               }}
               initial="hidden"
               whileInView="visible"
@@ -385,7 +386,7 @@ const ContactPage = () => {
               custom={0.3}
               variants={{
                 hidden: { opacity: 0, y: 50, scale: 0.9 },
-                visible: { 
+                visible: {
                   opacity: 1,
                   y: 0,
                   scale: 1,
@@ -393,9 +394,9 @@ const ContactPage = () => {
                     duration: 0.8,
                     delay: 0.3,
                     type: "spring" as const,
-                    stiffness: 100
-                  }
-                }
+                    stiffness: 100,
+                  },
+                },
               }}
               initial="hidden"
               whileInView="visible"
@@ -466,7 +467,7 @@ const ContactPage = () => {
               custom={0.5}
               variants={{
                 hidden: { opacity: 0, y: 50, scale: 0.9 },
-                visible: { 
+                visible: {
                   opacity: 1,
                   y: 0,
                   scale: 1,
@@ -474,9 +475,9 @@ const ContactPage = () => {
                     duration: 0.8,
                     delay: 0.5,
                     type: "spring" as const,
-                    stiffness: 100
-                  }
-                }
+                    stiffness: 100,
+                  },
+                },
               }}
               initial="hidden"
               whileInView="visible"
@@ -504,7 +505,6 @@ const ContactPage = () => {
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                {/* @ts-expect-error Server Component */}
                 <LocationMap position={collegePosition} />
               </motion.div>
 
@@ -528,7 +528,7 @@ const ContactPage = () => {
               custom={0.6}
               variants={{
                 hidden: { opacity: 0, y: 50, scale: 0.9 },
-                visible: { 
+                visible: {
                   opacity: 1,
                   y: 0,
                   scale: 1,
@@ -536,9 +536,9 @@ const ContactPage = () => {
                     duration: 0.8,
                     delay: 0.6,
                     type: "spring" as const,
-                    stiffness: 100
-                  }
-                }
+                    stiffness: 100,
+                  },
+                },
               }}
               initial="hidden"
               whileInView="visible"
@@ -617,9 +617,9 @@ const ContactPage = () => {
                 duration: 0.8,
                 delay: 0,
                 type: "spring",
-                stiffness: 100
-              }
-            }
+                stiffness: 100,
+              },
+            },
           }}
           initial="hidden"
           whileInView="visible"
@@ -642,7 +642,8 @@ const ContactPage = () => {
               className="text-2xl md:text-4xl italic text-amber-200 leading-relaxed mb-8 border-l-4 border-r-4 border-amber-500/50 px-8 py-6"
               style={{ fontFamily: "Times New Roman, serif" }}
             >
-              &ldquo;Literature is the most agreeable way of ignoring life.&rdquo;
+              &ldquo;Literature is the most agreeable way of ignoring
+              life.&rdquo;
             </blockquote>
             <p
               className="text-amber-300 text-xl border-t-2 border-amber-500/30 pt-6"
