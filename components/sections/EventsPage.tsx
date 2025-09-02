@@ -578,13 +578,13 @@ const ContactPage = () => {
 
       {/* Enhanced Call-to-Action */}
       <motion.div
-        className="mt-20 md:mt-24 text-center border-t-4 border-amber-500/30 pt-16"
+        className="mt-16 md:mt-24 text-center border-t-4 border-amber-500/30 pt-12 md:pt-16 px-4"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 1 }}
       >
         <motion.div
-          className="inline-flex items-center space-x-6 bg-gradient-to-r from-amber-600 via-yellow-600 to-orange-600 text-black px-12 py-8 rounded-full shadow-2xl font-bold text-xl cursor-pointer border-4 border-amber-300/50"
+          className="inline-flex flex-wrap md:flex-nowrap items-center justify-center space-x-4 md:space-x-6 bg-gradient-to-r from-amber-600 via-yellow-600 to-orange-600 text-black px-6 md:px-12 py-4 md:py-8 rounded-full shadow-2xl font-bold text-lg md:text-xl cursor-pointer border-2 md:border-4 border-amber-300/50"
           style={{ fontFamily: "Times New Roman, serif" }}
           whileHover={{
             scale: 1.08,
@@ -603,12 +603,15 @@ const ContactPage = () => {
             boxShadow: { duration: 4, repeat: Infinity, ease: "easeInOut" },
           }}
         >
-          <Feather className="w-8 h-8" />
-          <span className="text-2xl">Embark on Your Literary Odyssey</span>
-          <BookOpen className="w-8 h-8" />
+          <Feather className="w-6 h-6 md:w-8 md:h-8" />
+          <span className="text-lg sm:text-xl md:text-2xl text-center">
+            Embark on Your Literary Odyssey
+          </span>
+          <BookOpen className="w-6 h-6 md:w-8 md:h-8" />
         </motion.div>
+
         <motion.p
-          className="mt-8 text-amber-400 text-xl italic border border-amber-500/30 rounded-2xl p-6 bg-amber-900/10"
+          className="mt-6 md:mt-8 text-amber-400 text-base sm:text-lg md:text-xl italic border border-amber-500/30 rounded-2xl p-4 md:p-6 bg-amber-900/10 max-w-lg mx-auto"
           style={{ fontFamily: "Times New Roman, serif" }}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
