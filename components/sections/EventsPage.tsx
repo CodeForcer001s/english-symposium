@@ -30,7 +30,7 @@ import {
 
 const ContactPage = () => {
   // St. Joseph's Institute coordinates
-  const collegePosition = [12.86933255684727, 80.21849633481266];
+  const collegePosition :[number, number]= [12.86933255684727, 80.21849633481266];
 
   const overallCoordinators = [
     {
@@ -505,7 +505,7 @@ const ContactPage = () => {
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <LocationMap position={collegePosition} />
+                <LocationMap position={collegePosition as [number, number]} />
               </motion.div>
 
               <motion.div
