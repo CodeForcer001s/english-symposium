@@ -48,7 +48,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <div className="min-h-screen flex flex-col">
-          <Header toggleTheme={toggleTheme} isDark={isDark} />
+          <Header />
           <main className="flex-1 pt-20">{children}</main>
           <Footer />
         </div>
