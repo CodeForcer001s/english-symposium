@@ -1,56 +1,61 @@
 "use client";
 
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import L from "leaflet";
+import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
+import { LatLngExpression } from "leaflet";
 
-interface LocationMapProps {
-  position: [number, number]; // ✅ strictly a tuple
-}
+const MapContainer = dynamic(
+  () => import("react-leaflet").then((mod) => mod.MapContainer),
+  { ssr: false }
+);
+const TileLayer = dynamic(
+  () => import("react-leaflet").then((mod) => mod.TileLayer),
+  { ssr: false }
+);
+const Marker = dynamic(
+  () => import("react-leaflet").then((mod) => mod.Marker),
+  { ssr: false }
+);
+const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
+  ssr: false,
+});
 
-const LocationMap: React.FC<LocationMapProps> = ({ position }) => {
-  const customIcon = L.icon({
-    iconUrl: "/marker-icon.png", // replace with your custom marker if needed
-    iconSize: [30, 40],
-    iconAnchor: [15, 40],
-    popupAnchor: [0, -40],
-  });
+export default function LocationMap() {
+  const [position] = useState<LatLngExpression>([12.892, 80.227]); // OMR, Chennai
+
+  // Ensure Leaflet CSS loads only on client
+  useEffect(() => {
+    import("leaflet/dist/leaflet.css");
+  }, []);
 
   return (
     <div style={{ height: "400px", width: "100%" }}>
       <MapContainer
         center={position}
         zoom={15}
-        style={{ height: "100%", width: "100%", borderRadius: "12px" }}
+        scrollWheelZoom={false}
+        style={{ height: "100%", width: "100%" }}
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+          attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-
-        <Marker position={position} icon={customIcon}>
+        <Marker position={position}>
           <Popup>
-            <div>
-              <h3>College Location</h3>
-              <p>OMR, Chennai, Tamil Nadu</p>
-              <a
-                href={`https://www.google.com/maps?q=${position[0]},${position[1]}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  color: "#1d4ed8",
-                  textDecoration: "underline",
-                  fontWeight: "500",
-                }}
-              >
-                Open in Google Maps
-              </a>
-            </div>
+            <strong>CharityConnect Office</strong>
+            <p>OMR, Chennai, Tamil Nadu</p>
+            <a
+              href={`https://www.google.com/maps?q=${
+                (position as [number, number])[0]
+              },${(position as [number, number])[1]}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open in Google Maps
+            </a>
           </Popup>
         </Marker>
       </MapContainer>
     </div>
   );
-};
-
-export default LocationMap;
+}
