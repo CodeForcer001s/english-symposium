@@ -257,7 +257,7 @@ const EventRounds: React.FC<EventRoundsProps> = ({ event }) => {
                     <AnimatePresence>
                       {isDrawing[index] && (
                         <motion.div
-                          variants={inkSpillVariants}
+                          variants={inkSpillVariantsAnimation}
                           initial="hidden"
                           animate="spill"
                           className="absolute inset-0 bg-gradient-to-br from-yellow-500/20 to-amber-600/20 rounded-3xl"
