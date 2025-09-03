@@ -1,60 +1,43 @@
-"use client";
+// Example path: /components/maps/LocationMap.tsx
 
-import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
-import { LatLngExpression } from "leaflet";
-
-const MapContainer = dynamic(
-  () => import("react-leaflet").then((mod) => mod.MapContainer),
-  { ssr: false }
-);
-const TileLayer = dynamic(
-  () => import("react-leaflet").then((mod) => mod.TileLayer),
-  { ssr: false }
-);
-const Marker = dynamic(
-  () => import("react-leaflet").then((mod) => mod.Marker),
-  { ssr: false }
-);
-const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
-  ssr: false,
+import React from "react";
+// Make sure you have your map library imports here
+// For example, if using react-leaflet:
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+// You might need to fix the default icon issue with Leaflet
+import L from "leaflet";
+delete (L.Icon.Default.prototype as any)._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
+  iconUrl: require("leaflet/dist/images/marker-icon.png"),
+  shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
 });
 
-export default function LocationMap() {
-  const [position] = useState<LatLngExpression>([12.892, 80.227]); // OMR, Chennai
-
-  useEffect(() => {
-    import("leaflet/dist/leaflet.css");
-  }, []);
-
-  return (
-    <div style={{ height: "400px", width: "100%" }}>
-      <MapContainer
-        center={position}
-        zoom={15}
-        scrollWheelZoom={false}
-        style={{ height: "100%", width: "100%" }}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Marker position={position}>
-          <Popup>
-            <strong>St Josephs Institute of Technology, Chennai.</strong>
-            <p>OMR, Chennai, Tamil Nadu</p>
-            <a
-              href={`https://www.google.com/maps?q=${
-                (position as [number, number])[0]
-              },${(position as [number, number])[1]}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Open in Google Maps
-            </a>
-          </Popup>
-        </Marker>
-      </MapContainer>
-    </div>
-  );
+// 1. Define an interface for your component's props
+interface LocationMapProps {
+  position: [number, number]; // This defines 'position' as an array of two numbers
 }
+
+// 2. Use the interface with React.FC to type your component
+//    and destructure 'position' from the props object
+const LocationMap: React.FC<LocationMapProps> = ({ position }) => {
+  return (
+    // This is an example using react-leaflet.
+    // Replace with your actual map implementation.
+    <MapContainer
+      center={position}
+      zoom={16}
+      scrollWheelZoom={false}
+      style={{ height: "100%", width: "100%" }}
+    >
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <Marker position={position}></Marker>
+    </MapContainer>
+  );
+};
+
+export default LocationMap;
