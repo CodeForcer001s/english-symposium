@@ -17,6 +17,7 @@ export type Event = {
   icon: LucideIcon;
   color: string;
   coverImage: string;
+  registerLink?: string;
   teamComposition: string;
   venue: string;
   date: string;
