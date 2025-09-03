@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
             <p className="text-parchment-200 leading-relaxed mb-4">
               <span className="illuminated-cap">A</span>
               celebration of literary excellence, where minds converge in the
-              spirit of Shakespeare's eternal wisdom. Join us in this grand
+              spirit of Shakespeare eternal wisdom. Join us in this grand
               symposium of words, wit, and wonder.
             </p>
             <div className="flex items-center space-x-2 text-renaissance-gold">
@@ -105,8 +105,7 @@ const Footer: React.FC = () => {
           <p className="text-sm">
             © 2024 Litlaya Symposium. All rights reserved. |
             <span className="italic ml-1">
-              "All the world's a stage, and all the men and women merely
-              players"
+              &quot;All the world s a stage, and all the men and women merely players &quot;
             </span>
           </p>
         </div>

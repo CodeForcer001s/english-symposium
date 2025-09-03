@@ -23,7 +23,6 @@ const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
 export default function LocationMap() {
   const [position] = useState<LatLngExpression>([12.892, 80.227]); // OMR, Chennai
 
-  // Ensure Leaflet CSS loads only on client
   useEffect(() => {
     import("leaflet/dist/leaflet.css");
   }, []);
@@ -42,7 +41,7 @@ export default function LocationMap() {
         />
         <Marker position={position}>
           <Popup>
-            <strong>CharityConnect Office</strong>
+            <strong>St Josephs Institute of Technology, Chennai.</strong>
             <p>OMR, Chennai, Tamil Nadu</p>
             <a
               href={`https://www.google.com/maps?q=${

@@ -67,7 +67,7 @@ const EventsOverview = () => {
         "Decode mysterious clues to identify famous authors and their masterworks through layered puzzles and plot deductions.",
       icon: Search,
       color: "from-emerald-600 to-teal-600",
-      coverImage: "https://i.imgur.com/s6d9g8L.jpeg",
+      coverImage: "/penman.jpg",
     },
     {
       id: "mindquote",
