@@ -42,7 +42,8 @@ const EventRounds: React.FC<EventRoundsProps> = ({ event }) => {
   };
 
   // Drawing path variants for quill
-  const quillPathVariants = {
+  const quillPathVariants: Variants = {
+    // ✅ FIX: Explicitly typed with Variants
     hidden: { pathLength: 0, opacity: 0 },
     drawing: {
       pathLength: 1,
@@ -61,12 +62,13 @@ const EventRounds: React.FC<EventRoundsProps> = ({ event }) => {
       transition: {
         duration: 1.2,
         times: [0, 0.5, 1],
-        ease: easeInOut, // ✅ use imported easing function
+        ease: easeInOut, // This was already correct, using the imported function
       },
     },
   };
   // Parchment reveal variants (retained for revealed content)
-  const parchmentVariants = {
+  const parchmentVariants: Variants = {
+    // ✅ FIX: Explicitly typed with Variants
     hidden: {
       clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)",
       opacity: 0,
@@ -81,7 +83,8 @@ const EventRounds: React.FC<EventRoundsProps> = ({ event }) => {
     },
   };
 
-  const inkSpillVariants = {
+  const inkSpillVariants: Variants = {
+    // ✅ FIX: Explicitly typed with Variants
     hidden: { scale: 0, opacity: 0 },
     spill: {
       scale: [0, 1.2, 1],
