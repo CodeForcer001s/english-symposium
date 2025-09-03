@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Variants, easeInOut } from "framer-motion";
 import { Event } from "@/app/data/events";
 import {
   Sparkles,
@@ -52,7 +53,18 @@ const EventRounds: React.FC<EventRoundsProps> = ({ event }) => {
       },
     },
   };
-
+  const inkSpillVariantsAnimation: Variants = {
+    hidden: { scale: 0, opacity: 0 },
+    spill: {
+      scale: [0.8, 1.1, 1],
+      opacity: [0, 0.7, 0],
+      transition: {
+        duration: 1.2,
+        times: [0, 0.5, 1],
+        ease: easeInOut, // ✅ use imported easing function
+      },
+    },
+  };
   // Parchment reveal variants (retained for revealed content)
   const parchmentVariants = {
     hidden: {
