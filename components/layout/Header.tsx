@@ -22,6 +22,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { eventsData } from "@/app/data/events";
 
 // Reusable component for dropdown list items
 const ListItem = React.forwardRef<
@@ -52,10 +53,10 @@ ListItem.displayName = "ListItem";
 const Header: React.FC = () => {
   const menuItems = [
     { title: "Home", href: "/" },
-    { title: "About", href: "/about" },
+    { title: "About", href: "/#about" },
     { title: "Events", href: "/events", hasDropdown: true },
-    { title: "Schedule", href: "/schedule" },
-    { title: "Contact", href: "/contact" },
+    { title: "Schedule", href: "/#schedule" },
+    { title: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -65,7 +66,7 @@ const Header: React.FC = () => {
       transition={{ duration: 0.6, ease: "easeInOut" }}
       className="fixed top-0 left-0 right-0 z-50 bg-black backdrop-blur-lg border-b border-amber-400/20 shadow-md"
     >
-      <div className="container mx-auto flex items-center justify-between px-6 py-4 lg:py-6">
+      <div className="container mx-auto flex items-center justify-between px-6 py-6">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2 lg:space-x-3">
           <motion.div
@@ -80,7 +81,7 @@ const Header: React.FC = () => {
               className="object-contain"
             />
           </motion.div>
-          <h1 className="text-2xl lg:text-3xl font-bold text-amber-200 font-manuscript hidden sm:block">
+          <h1 className="text-2xl lg:text-3xl font-bold text-amber-200 font-manuscript sm:block">
             Litlaya
           </h1>
         </Link>
@@ -102,7 +103,7 @@ const Header: React.FC = () => {
                           <NavigationMenuLink asChild>
                             <Link
                               className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-slate-800 to-slate-900 p-6 no-underline outline-none focus:shadow-md transition-transform hover:-translate-y-1"
-                              href="/events"
+                              href="/#events"
                             >
                               <Crown className="h-6 w-6 text-amber-400" />
                               <div className="mb-2 mt-4 text-lg font-medium text-amber-200">
@@ -114,20 +115,19 @@ const Header: React.FC = () => {
                             </Link>
                           </NavigationMenuLink>
                         </li>
-                        <ListItem href="/events/litwit" title="LITWIT">
-                          A stimulating literature quiz with a modern twist.
-                        </ListItem>
-                        <ListItem href="/events/penman" title="PENMAN'S CODE">
-                          Deduce authors and plots from cryptic clues.
-                        </ListItem>
-                        <ListItem href="/events/eloquentia" title="ELOQUENTIA">
-                          An oratory challenge for public speaking prowess.
-                        </ListItem>
+                        {eventsData.map((event) => (
+                          <ListItem 
+                            key={event.id}
+                            href={`/events/${event.id}`} 
+                            title={event.title}
+                          >
+                            {event.subtitle}
+                          </ListItem>
+                        ))}
                       </ul>
                     </NavigationMenuContent>
                   </>
                 ) : (
-                  // THIS IS THE CORRECTED PART
                   <NavigationMenuLink asChild>
                     <Link
                       href={item.href}
@@ -197,29 +197,20 @@ const Header: React.FC = () => {
                         </span>
                         <div className="ml-5 flex flex-col space-y-1 mt-1 border-l border-amber-400/20 pl-4">
                           <Link
-                            href="/events"
+                            href="/#events"
                             className="text-slate-400 hover:text-amber-200 transition-colors text-base py-2"
                           >
                             Overview
                           </Link>
-                          <Link
-                            href="/events/litwit"
-                            className="text-slate-400 hover:text-amber-200 transition-colors text-base py-2"
-                          >
-                            LITWIT
-                          </Link>
-                          <Link
-                            href="/events/penman"
-                            className="text-slate-400 hover:text-amber-200 transition-colors text-base py-2"
-                          >
-                            PENMAnS CODE
-                          </Link>
-                          <Link
-                            href="/events/eloquentia"
-                            className="text-slate-400 hover:text-amber-200 transition-colors text-base py-2"
-                          >
-                            ELOQUENTIA
-                          </Link>
+                          {eventsData.map((event) => (
+                            <Link
+                              key={event.id}
+                              href={`/events/${event.id}`}
+                              className="text-slate-400 hover:text-amber-200 transition-colors text-base py-2"
+                            >
+                              {event.title}
+                            </Link>
+                          ))}
                         </div>
                       </div>
                     ) : (
