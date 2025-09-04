@@ -1,43 +1,94 @@
+'use client';
 // Example path: /components/maps/LocationMap.tsx
 
-import React from "react";
-// Make sure you have your map library imports here
-// For example, if using react-leaflet:
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-// You might need to fix the default icon issue with Leaflet
-import L from "leaflet";
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
-  iconUrl: require("leaflet/dist/images/marker-icon.png"),
-  shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
-});
+import React, { useEffect, useState } from "react";
+// Import these only on the client side
+import dynamic from "next/dynamic";
 
-// 1. Define an interface for your component's props
+// Define the prop types
 interface LocationMapProps {
-  position: [number, number]; // This defines 'position' as an array of two numbers
+  position?: [number, number];
+  title?: string;
+  description?: string;
 }
 
-// 2. Use the interface with React.FC to type your component
-//    and destructure 'position' from the props object
-const LocationMap: React.FC<LocationMapProps> = ({ position }) => {
-  return (
-    // This is an example using react-leaflet.
-    // Replace with your actual map implementation.
-    <MapContainer
-      center={position}
-      zoom={16}
-      scrollWheelZoom={false}
-      style={{ height: "100%", width: "100%" }}
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Marker position={position}></Marker>
-    </MapContainer>
-  );
-};
+export default function LocationMap({ 
+  position = [12.892, 80.227], // Default to OMR, Chennai
+  title = "CharityConnect Office",
+  description = "OMR, Chennai, Tamil Nadu"
+}: LocationMapProps) {
+  const [isClient, setIsClient] = useState(false);
+  const [MapComponent, setMapComponent] = useState<React.ComponentType<any> | null>(null);
 
-export default LocationMap;
+  // Ensure everything loads only on client
+  useEffect(() => {
+    setIsClient(true);
+    
+    // Dynamically import the map components
+    const loadMap = async () => {
+      // Dynamically import Leaflet and React-Leaflet
+      const L = await import("leaflet");
+      const { MapContainer, TileLayer, Marker, Popup } = await import("react-leaflet");
+      
+      // Fix for default markers in Next.js
+      delete (L.Icon.Default.prototype as any)._getIconUrl;
+      L.Icon.Default.mergeOptions({
+        iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+        iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+      });
+      
+      // Load Leaflet CSS
+      
+      // Create a map component
+      const Map = () => (
+        <MapContainer
+          center={position}
+          zoom={15}
+          scrollWheelZoom={false}
+          style={{ height: "100%", width: "100%" }}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <Marker position={position}>
+            <Popup>
+              <strong>{title}</strong>
+              <p>{description}</p>
+              <a
+                href={`https://www.google.com/maps?q=${position[0]},${position[1]}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open in Google Maps
+              </a>
+            </Popup>
+          </Marker>
+        </MapContainer>
+      );
+      
+      setMapComponent(() => Map);
+    };
+    
+    loadMap();
+  }, [position, title, description]);
+
+  // Don't render until client-side
+  if (!isClient || !MapComponent) {
+    return (
+      <div 
+        style={{ height: "400px", width: "100%" }}
+        className="bg-gray-100 flex items-center justify-center"
+      >
+        <p>Loading map...</p>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ height: "400px", width: "100%" }}>
+      {MapComponent && <MapComponent />}
+    </div>
+  );
+}

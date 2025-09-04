@@ -43,6 +43,31 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, []);
 
+  type StarData = {
+  id: number;
+  top: number;
+  left: number;
+  duration: number;
+  delay: number;
+};
+
+const [stars, setStars] = useState<StarData[]>([]);
+
+useEffect(() => {
+  const starData = Array.from({ length: 8 }).map((_, i) => ({
+    id: i,
+    top: Math.random() * 60 + 20,
+    left: Math.random() * 60 + 20,
+    duration: 4 + Math.random() * 4,
+    delay: Math.random() * 2,
+  }));
+  setStars(starData);
+}, []);
+
+if (stars.length === 0) {
+  return null;
+}
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900">
       {/* Enhanced Background with Dark Renaissance imagery */}
@@ -152,28 +177,28 @@ const Hero = () => {
       </motion.div>
 
       {/* Floating stars */}
-      {Array.from({ length: 8 }).map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute opacity-10 sm:opacity-15 md:opacity-20"
-          style={{
-            top: `${Math.random() * 60 + 20}%`,
-            left: `${Math.random() * 60 + 20}%`,
-          }}
-          animate={{
-            scale: [0.5, 1, 0.5],
-            rotate: [0, 180, 360],
-            opacity: [0.05, 0.2, 0.05],
-          }}
-          transition={{
-            duration: 4 + Math.random() * 4,
-            repeat: Infinity,
-            delay: Math.random() * 2,
-          }}
-        >
-          <Star className="w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 text-yellow-400 fill-current" />
-        </motion.div>
-      ))}
+      {stars.map((star) => (
+  <motion.div
+    key={star.id}
+    className="absolute opacity-10 sm:opacity-15 md:opacity-20"
+    style={{
+      top: `${star.top}%`,
+      left: `${star.left}%`,
+    }}
+    animate={{
+      scale: [0.5, 1, 0.5],
+      rotate: [0, 180, 360],
+      opacity: [0.05, 0.2, 0.05],
+    }}
+    transition={{
+      duration: star.duration,
+      repeat: Infinity,
+      delay: star.delay,
+    }}
+  >
+    <Star className="w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 text-yellow-400 fill-current" />
+  </motion.div>
+))}
 
       {/* Main content */}
       <div className="relative z-10 text-center max-w-5xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16 py-8 sm:py-12 md:py-16 lg:py-20">
