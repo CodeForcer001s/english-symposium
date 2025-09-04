@@ -178,7 +178,7 @@ const ContactPage: React.FC = () => {
   ];
 
   return (
-    <section
+    <section id="contact"
       className="bg-black min-h-screen py-8 sm:py-12 md:py-16 lg:py-20 relative overflow-hidden border-2 sm:border-4 border-amber-500/30"
       style={{ fontFamily: "Times New Roman, serif" }}
     >
@@ -594,7 +594,7 @@ const ContactPage: React.FC = () => {
                   href="https://www.instagram.com/litlaya_2k25?igsh=MWExY2FoYnVhc2V2Ng=="
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/link flex items-center p-3 sm:p-5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-orange-800/30 to-red-800/30 border-2 border-orange-400/40 hover:border-orange-300/70 transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-700/40 hover:to-red-700/40"
+                  className="group/link flex items-center mb-8 p-3 sm:p-5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-orange-800/30 to-red-800/30 border-2 border-orange-400/40 hover:border-orange-300/70 transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-700/40 hover:to-red-700/40"
                   whileHover={{ scale: 1.05, y: -5 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -607,7 +607,7 @@ const ContactPage: React.FC = () => {
                       Instagram
                     </p>
                     <p className="text-orange-300 text-xs sm:text-sm truncate">
-                      @sjit_literary
+                      @litlaya_2k25
                     </p>
                   </div>
                 </motion.a>

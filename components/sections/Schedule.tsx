@@ -250,7 +250,7 @@ const EventBlock: React.FC<EventBlockProps> = ({ event, onClick }) => {
 
   return (
     <motion.div
-      className={`flex flex-col justify-center items-center text-center p-2 rounded-lg border-2 border-amber-600/30 text-white text-xs font-semibold cursor-pointer transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:border-amber-400 ${color} ${hoverColor}`}
+     id="schedule" className={`flex flex-col justify-center items-center text-center p-2 rounded-lg border-2 border-amber-600/30 text-white text-xs font-semibold cursor-pointer transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:border-amber-400 ${color} ${hoverColor}`}
       style={{
         gridColumnStart: timeSlot,
         gridColumnEnd: timeSlot + duration,
@@ -422,7 +422,7 @@ const EventTimeline: React.FC = () => {
   const maxRows = Math.max(...eventsData.map((event) => event.row)) + 1;
 
   return (
-    <section className="min-h-screen bg-black text-slate-200 py-20 px-4 sm:px-6 lg:px-8">
+    <section id="schedule" className="min-h-screen bg-black text-slate-200 py-20 px-4 sm:px-6 lg:px-8">
       {/* Subtle background pattern */}
       <div
         className="absolute inset-0 opacity-5"

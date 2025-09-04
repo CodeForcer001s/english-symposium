@@ -23,7 +23,23 @@ const EventDetails: React.FC<EventDetailsProps> = ({ event }) => {
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
-  const playbillText = `${event.title}`;
+  const playbillText = `EVENT DETAILS`;
+
+  // Literary quotes for floating pages
+  const literaryQuotes = [
+    "All the world's a stage...",
+    "To be or not to be...",
+    "What dreams may come...",
+    "Fair is foul, and foul is fair...",
+    "Romeo, Romeo, wherefore art thou...",
+    "Once upon a midnight dreary...",
+    "It was the best of times...",
+    "Call me Ishmael...",
+    "In the beginning was the Word...",
+    "Shall I compare thee to a summer's day...",
+    "Double, double toil and trouble...",
+    "Now is the winter of our discontent...",
+  ];
 
   // Observer to trigger animations when the component is scrolled into view
   useEffect(() => {
@@ -77,8 +93,129 @@ const EventDetails: React.FC<EventDetailsProps> = ({ event }) => {
     >
       {/* Import custom fonts */}
       <style jsx>{`
-        @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=Dancing+Script:wght@400;500;600;700&display=swap");
       `}</style>
+
+      {/* Floating Manuscript Pages */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(12)].map((_, i) => {
+          const size = 40 + Math.random() * 60; // 40-100px width
+          const height = size * (1.2 + Math.random() * 0.4); // Vary height ratio
+          const startX = Math.random() * 100;
+          const startY = 110 + Math.random() * 20; // Start below viewport
+          const endY = -20 - Math.random() * 20; // End above viewport
+          const duration = 15 + Math.random() * 10; // 15-25 seconds
+          const delay = Math.random() * 10; // Stagger appearance
+          const quote =
+            literaryQuotes[Math.floor(Math.random() * literaryQuotes.length)];
+
+          return (
+            <motion.div
+              key={i}
+              className="absolute group cursor-default"
+              style={{
+                width: `${size}px`,
+                height: `${height}px`,
+                left: `${startX}%`,
+              }}
+              initial={{
+                y: `${startY}vh`,
+                opacity: 0,
+                rotate: Math.random() * 20 - 10,
+                scale: 0.8,
+              }}
+              animate={{
+                y: `${endY}vh`,
+                opacity: [0, 0.3 + Math.random() * 0.2, 0],
+                rotate: [
+                  Math.random() * 20 - 10,
+                  Math.random() * 30 - 15,
+                  Math.random() * 20 - 10,
+                ],
+                x: [
+                  0,
+                  (Math.random() - 0.5) * 100,
+                  (Math.random() - 0.5) * 150,
+                ],
+                scale: [0.8, 1, 0.9],
+              }}
+              transition={{
+                duration: duration,
+                delay: delay,
+                repeat: Infinity,
+                ease: "linear",
+                opacity: { duration: duration * 0.8, ease: "easeInOut" },
+                rotate: { duration: duration * 0.6, ease: "easeInOut" },
+                x: { duration: duration * 0.7, ease: "easeInOut" },
+                scale: { duration: duration * 0.5, ease: "easeInOut" },
+              }}
+              whileHover={{
+                scale: 1.1,
+                rotate: 5,
+                transition: { duration: 0.3 },
+              }}
+            >
+              {/* Manuscript Page */}
+              <div
+                className="w-full h-full relative rounded-sm shadow-lg transition-all duration-300 group-hover:shadow-amber-500/30 group-hover:shadow-xl"
+                style={{
+                  background: `linear-gradient(135deg, 
+                    rgba(253, 246, 227, 0.85) 0%, 
+                    rgba(245, 222, 179, 0.9) 50%, 
+                    rgba(238, 203, 173, 0.85) 100%)`,
+                  backdropFilter: "blur(1px)",
+                  border: "1px solid rgba(218, 165, 32, 0.3)",
+                  boxShadow: `
+                    0 2px 8px rgba(0, 0, 0, 0.3),
+                    inset 0 1px 2px rgba(255, 255, 255, 0.2),
+                    0 0 0 1px rgba(218, 165, 32, 0.2)
+                  `,
+                }}
+              >
+                {/* Paper texture overlay */}
+                <div
+                  className="absolute inset-0 rounded-sm opacity-20"
+                  style={{
+                    backgroundImage: `
+                      radial-gradient(circle at 25% 25%, rgba(139, 69, 19, 0.1) 1px, transparent 1px),
+                      radial-gradient(circle at 75% 75%, rgba(160, 82, 45, 0.1) 1px, transparent 1px)
+                    `,
+                    backgroundSize: "8px 8px, 12px 12px",
+                  }}
+                />
+
+                {/* Literary quote */}
+                <div className="absolute inset-0 flex items-center justify-center p-2">
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: delay + 2, duration: 2 }}
+                    className="text-center leading-tight group-hover:opacity-80 transition-opacity duration-300"
+                    style={{
+                      fontSize: `${Math.max(6, size / 12)}px`,
+                      fontFamily: "Dancing Script, cursive",
+                      color: "rgba(101, 67, 33, 0.7)",
+                      textShadow: "0 1px 2px rgba(255, 255, 255, 0.8)",
+                      fontWeight: "500",
+                    }}
+                  >
+                    {quote}
+                  </motion.p>
+                </div>
+
+                {/* Decorative corner flourishes */}
+                <div className="absolute top-0 left-0 w-2 h-2 border-l-2 border-t-2 border-amber-600/40 rounded-tl-sm" />
+                <div className="absolute top-0 right-0 w-2 h-2 border-r-2 border-t-2 border-amber-600/40 rounded-tr-sm" />
+                <div className="absolute bottom-0 left-0 w-2 h-2 border-l-2 border-b-2 border-amber-600/40 rounded-bl-sm" />
+                <div className="absolute bottom-0 right-0 w-2 h-2 border-r-2 border-b-2 border-amber-600/40 rounded-br-sm" />
+
+                {/* Hover glow effect */}
+                <div className="absolute -inset-1 rounded-md bg-gradient-to-br from-amber-400/0 to-amber-600/0 group-hover:from-amber-400/20 group-hover:to-amber-600/10 transition-all duration-300 -z-10" />
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
 
       {/* Flickering embers effect */}
       <div className="absolute inset-0">

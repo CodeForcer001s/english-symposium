@@ -8,11 +8,12 @@ export type Coordinator = {
   image: string;
 };
 
-// Update the Event type to include an array of coordinators
+// Update the Event type to include an array of coordinators and a tagline
 export type Event = {
   id: string;
   title: string;
   subtitle: string;
+  tagline: string; // Added tagline property
   description: string;
   icon: LucideIcon;
   color: string;
@@ -30,7 +31,7 @@ export type Event = {
     arcana?: string;
   }[];
   generalRules: string[];
-  coordinators: Coordinator[]; // Added coordinators property
+  coordinators: Coordinator[];
   mysticalTheme?: {
     primaryColor: string;
     secondaryColor: string;
@@ -45,12 +46,13 @@ export const eventsData: Event[] = [
     id: "litwit",
     title: "LITWIT",
     subtitle: "Literature Quiz with a Twist",
+    tagline: "Think fast, talk faster.",
     description:
       "An unconventional quiz where participants build stories on the fly, deliver dramatic speeches, and report on chaotic news, testing creativity, adaptability, and wit.",
     icon: ScrollText,
-    color: "from-purple-600 to-indigo-600",
+    color: "from-yellow-600 via-amber-500 to-yellow-600",
     coverImage:
-      "https://files.brainfall.com/wp-content/uploads/2020/08/the_ultimate_english_literature_quiz_featured.jpg",
+      "/litwit.jpg",
     teamComposition: "Individual",
     venue: "The Globe Theatre Hall",
     date: "March 15th, 2025",
@@ -134,10 +136,11 @@ export const eventsData: Event[] = [
     id: "penman",
     title: "PENMAN'S CODE",
     subtitle: "Author and Plot Deduction",
+    tagline: "Unlock the secrets of literature.",
     description:
       "Decode mysterious clues to identify famous authors and their masterworks through layered puzzles and plot deductions.",
     icon: Search,
-    color: "from-emerald-600 to-teal-600",
+    color: "from-yellow-600 via-amber-500 to-yellow-600",
     coverImage: "/penman.jpg",
     teamComposition: "2 Members",
     venue: "The Manuscript Library",
@@ -211,10 +214,11 @@ export const eventsData: Event[] = [
     id: "mindquote",
     title: "MIND QUOTE",
     subtitle: "Match Quotes to Authors",
+    tagline: "Whose line is it anyway?",
     description:
       "Challenge your memory of literary quotations by matching famous lines to their authors and original works in themed rounds.",
     icon: Quote,
-    color: "from-rose-600 to-pink-600",
+    color: "from-yellow-600 via-amber-500 to-yellow-600",
     coverImage:
       "https://static.vecteezy.com/system/resources/previews/010/354/340/non_2x/poetry-day-background-template-free-vector.jpg",
     teamComposition: "2–3 Members",
@@ -272,21 +276,23 @@ export const eventsData: Event[] = [
   {
     id: "litcrypt",
     title: "LITCRYPT",
-    subtitle: "Guess the Word & Memory Challenge",
+    subtitle: "Decode the literary ciphers",
+    tagline: "Decode the word, master the memory.",
     description:
-      "A two-part challenge involving clever word-guessing in the prelims and a sharp image memory test in the finals.",
+      "The event features a two round format - anagrammed dialogues and mind palace. These rounds are intended to evaluate participants' ability to decipher the clues for information, observation skills and recollecting capacity.",
     icon: Key,
-    color: "from-violet-600 to-purple-600",
-    coverImage: "https://i.imgur.com/c4fJ2gH.jpeg",
-    teamComposition: "2–3 Members",
+    color: "from-yellow-600 via-amber-500 to-yellow-600",
+    coverImage:
+      "https://thumbs.dreamstime.com/b/mysterious-figure-green-lit-crypt-what-lone-figure-sits-dimly-lit-crypt-surrounded-candles-pool-water-who-335748357.jpg",
+    teamComposition: "3 Members",
     venue: "The Cipher Hall",
     date: "March 18th, 2025",
     time: "1:00 PM - 3:00 PM",
     eventStructure: [
       {
-        title: "Preliminary Round",
+        title: "Preliminary Round - Anagrammed dialogues",
         description:
-          "One player becomes the Word Master and thinks of a secret word, revealing only the first letter. Guessers suggest words and ask category-based questions. If two Guessers repeat a word, the next letter is revealed. The round continues until the word is guessed.",
+          "Participants will be presented with anagrammed dialogues from detective novels. With the help of provided clues, they must arrange the dialogues in the correct format within a 2-minute time limit. In the case of a tie, a 1-minute tie-breaker round will be conducted. The total number of rounds will be decided based on the number of participating teams.",
         cardImage:
           "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=600&fit=crop",
         mysticalSymbol: "🔮",
@@ -352,11 +358,13 @@ export const eventsData: Event[] = [
     id: "eloquentia",
     title: "ELOQUENTIA",
     subtitle: "Oratory Challenge",
+    tagline: "Command the stage.",
     description:
       "Demonstrate the art of public speaking through impromptu speeches, dramatic recitations, and persuasive presentations.",
     icon: Mic,
-    color: "from-amber-600 to-orange-600",
-    coverImage: "https://i.imgur.com/m3N0Z9X.jpeg",
+    color: "from-yellow-600 via-amber-500 to-yellow-600",
+    coverImage:
+      "https://upload.wikimedia.org/wikipedia/commons/4/4a/Eloquentia.jpg",
     teamComposition: "Individual",
     venue: "The Grand Auditorium",
     date: "March 19th, 2025",

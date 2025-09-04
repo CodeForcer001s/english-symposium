@@ -3,14 +3,10 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
-  ScrollText,
-  Search,
-  Quote,
-  Key,
-  Mic,
   Feather,
   BookOpen,
   Crown,
+  ScrollText,
   PenTool,
   Sparkles,
   Stars,
@@ -22,8 +18,12 @@ import {
   Heart,
   Diamond,
   Flame,
+  Quote,
+  Key,
+  Search,
 } from "lucide-react";
 import { Button } from "../ui/button";
+import { eventsData } from "@/app/data/events"; // Import the events data
 
 const backgroundIcons = [
   Feather,
@@ -47,7 +47,6 @@ const backgroundIcons = [
 ];
 
 const EventsOverview = () => {
-  // Solution 1: Using useEffect to generate client-side only random values
   const [backgroundElements, setBackgroundElements] = useState<any[]>([]);
   const [floatingElements, setFloatingElements] = useState<any[]>([]);
   const [isMounted, setIsMounted] = useState(false);
@@ -55,7 +54,6 @@ const EventsOverview = () => {
   useEffect(() => {
     setIsMounted(true);
 
-    // Generate background icons with consistent random values
     const bgElements = Array.from({ length: 35 }).map((_, index) => ({
       id: index,
       IconComponent: backgroundIcons[index % backgroundIcons.length],
@@ -73,7 +71,6 @@ const EventsOverview = () => {
     }));
     setBackgroundElements(bgElements);
 
-    // Generate floating elements with consistent random values
     const floatElements = Array.from({ length: 12 }).map((_, index) => ({
       id: index,
       top: Math.random() * 100,
@@ -84,63 +81,8 @@ const EventsOverview = () => {
     setFloatingElements(floatElements);
   }, []);
 
-  const events = [
-    {
-      id: "litwit",
-      title: "LITWIT",
-      subtitle: "Literature Quiz with a Twist",
-      description:
-        "Test your literary knowledge through multiple rounds including rapid fire questions, audio-visual challenges, and twisted tale reconstructions.",
-      icon: ScrollText,
-      color: "from-amber-600 via-yellow-500 to-amber-600",
-      coverImage:
-        "https://files.brainfall.com/wp-content/uploads/2020/08/the_ultimate_english_literature_quiz_featured.jpg",
-    },
-    {
-      id: "penman",
-      title: "PENMAN'S CODE",
-      subtitle: "Author and Plot Deduction",
-      description:
-        "Decode mysterious clues to identify famous authors and their masterworks through layered puzzles and plot deductions.",
-      icon: Search,
-      color: "from-yellow-600 via-amber-500 to-yellow-600",
-      coverImage: "/penman.jpg",
-    },
-    {
-      id: "mindquote",
-      title: "MIND QUOTE",
-      subtitle: "Match Quotes to Authors",
-      description:
-        "Challenge your memory of literary quotations by matching famous lines to their authors and original works.",
-      icon: Quote,
-      color: "from-amber-500 via-yellow-400 to-amber-500",
-      coverImage:
-        "https://static.vecteezy.com/system/resources/previews/010/354/340/non_2x/poetry-day-background-template-free-vector.jpg",
-    },
-    {
-      id: "litcrypt",
-      title: "LITCRYPT",
-      subtitle: "Decode Literary Ciphers",
-      description:
-        "Unravel complex literary ciphers, anagrams, and coded messages inspired by classical literature.",
-      icon: Key,
-      color: "from-yellow-500 via-amber-400 to-yellow-500",
-      coverImage: "https://i.imgur.com/c4fJ2gH.jpeg",
-    },
-    {
-      id: "eloquentia",
-      title: "ELOQUENTIA",
-      subtitle: "Oratory Challenge",
-      description:
-        "Demonstrate the art of public speaking through impromptu speeches, dramatic recitations, and persuasive presentations.",
-      icon: Mic,
-      color: "from-amber-400 via-yellow-300 to-amber-400",
-      coverImage: "https://i.imgur.com/m3N0Z9X.jpeg",
-    },
-  ];
-
   return (
-    <section className="relative bg-gradient-to-br from-stone-950 via-amber-950 to-stone-950 min-h-screen py-20 sm:py-24 overflow-hidden">
+    <section id="events" className="relative bg-black min-h-screen py-20 sm:py-24 overflow-hidden">
       <style jsx>{`
         @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
 
@@ -203,7 +145,7 @@ const EventsOverview = () => {
           })}
       </div>
 
-      {/* Subtle overlay instead of heavy curtain effect */}
+      {/* Subtle overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-stone-950/20 via-transparent to-amber-950/20 z-1"></div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -255,7 +197,7 @@ const EventsOverview = () => {
 
         {/* Enhanced Events Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-          {events.map((event, index) => (
+          {eventsData.map((event, index) => (
             <motion.div
               key={event.id}
               initial={{ opacity: 0, y: 60, scale: 0.9 }}
@@ -275,7 +217,7 @@ const EventsOverview = () => {
               className="group relative"
             >
               {/* Enhanced Card with Dark Brown Gradients */}
-              <div className="relative bg-gradient-to-br from-stone-900 via-amber-900/30 to-stone-900 backdrop-blur-sm border-2 border-amber-700/60 rounded-3xl shadow-2xl overflow-hidden transform transition-all duration-300 group-hover:border-amber-500/80">
+              <div className="relative bg-black backdrop-blur-sm border-2 border-amber-700/60 rounded-3xl shadow-2xl overflow-hidden transform transition-all duration-300 group-hover:border-amber-500/80">
                 {/* Enhanced Cover Image with Dark Overlay */}
                 <div className="relative h-56 w-full overflow-hidden">
                   <motion.img
@@ -285,7 +227,6 @@ const EventsOverview = () => {
                     whileHover={{ scale: 1.1, opacity: 0.8 }}
                     transition={{ duration: 0.5 }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900/95 via-amber-900/40 to-stone-900/60"></div>
 
                   {/* Enhanced Floating Icon with Golden Glow */}
                   <motion.div
@@ -305,10 +246,6 @@ const EventsOverview = () => {
                       <event.icon className="w-7 h-7 drop-shadow-sm" />
                     </div>
                   </motion.div>
-
-                  {/* Golden corner accents */}
-                  <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-amber-400/60 rounded-tl-3xl"></div>
-                  <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-amber-400/60 rounded-br-3xl"></div>
                 </div>
 
                 {/* Enhanced Card Content with Literary Typography */}

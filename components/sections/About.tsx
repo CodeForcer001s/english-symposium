@@ -1,182 +1,453 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
 import {
   BookOpen,
   GraduationCap,
-  MapPin,
   Users,
   Feather,
   Library,
+  Scroll,
+  Pen,
+  Crown,
+  Star,
+  Trophy,
+  Lightbulb,
+  Sparkles,
 } from "lucide-react";
-
+import { useEffect, useState } from "react";
 const About = () => {
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
-  };
+  const eventHighlights = [
+    { number: "5", label: "COMPETITIONS", color: "text-yellow-400" },
+    { number: "100+", label: "PARTICIPANTS", color: "text-amber-400" },
+    { number: "6-8", label: "HOURS", color: "text-yellow-300" },
+    { number: "10", label: "AWARDS", color: "text-yellow-500" },
+  ];
+  const [particles, setParticles] = useState<
+    { left: string; top: string; duration: string; delay: string }[]
+  >([]);
 
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const infoItems = [
-    {
-      icon: GraduationCap,
-      label: "Institution",
-      value: "St. Joseph's College of Arts & Science",
-    },
-    {
-      icon: BookOpen,
-      label: "Department",
-      value: "English Language & Literature",
-    },
-    {
-      icon: MapPin,
-      label: "Location",
-      value: "Chennai, Tamil Nadu, India",
-    },
-    {
-      icon: Users,
-      label: "Audience",
-      value: "Undergraduate & Postgraduate Students",
-    },
+  useEffect(() => {
+    const generated = Array.from({ length: 20 }).map(() => ({
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      duration: `${3 + Math.random() * 4}s`,
+      delay: `${Math.random() * 2}s`,
+    }));
+    setParticles(generated);
+  }, []);
+  const categories = [
+    "Poetry",
+    "Classical Literature",
+    "Creative Writing",
+    "Literary Analysis",
+    "Rhetoric",
   ];
 
   return (
-    <section className="min-h-screen bg-black text-slate-200 py-20 px-4 sm:px-6 lg:px-8">
-      {/* Subtle background pattern */}
-      <div
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23fbbf24' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }}
-      />
+    <section
+      className="min-h-screen bg-black text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+      id="about"
+    >
+      {/* Enhanced Animated Background Icons */}
+      <div className="absolute inset-0 opacity-15 pointer-events-none">
+        <div className="absolute top-20 left-10 animate-pulse">
+          <BookOpen className="w-12 h-12 text-yellow-400" />
+        </div>
+        <div
+          className="absolute top-40 right-20 animate-bounce"
+          style={{ animationDuration: "3s" }}
+        >
+          <Feather className="w-10 h-10 text-amber-300" />
+        </div>
+        <div
+          className="absolute bottom-32 left-32 animate-pulse"
+          style={{ animationDelay: "1s" }}
+        >
+          <Scroll className="w-14 h-14 text-yellow-500" />
+        </div>
+        <div
+          className="absolute top-60 left-1/2 animate-bounce"
+          style={{ animationDuration: "4s", animationDelay: "2s" }}
+        >
+          <Pen className="w-8 h-8 text-yellow-400" />
+        </div>
+        <div
+          className="absolute bottom-20 right-16 animate-pulse"
+          style={{ animationDelay: "3s" }}
+        >
+          <Crown className="w-16 h-16 text-amber-600" />
+        </div>
+        <div
+          className="absolute top-32 right-1/3 animate-bounce"
+          style={{ animationDuration: "5s" }}
+        >
+          <Library className="w-12 h-12 text-yellow-400" />
+        </div>
+        <div
+          className="absolute bottom-60 left-20 animate-pulse"
+          style={{ animationDelay: "2s" }}
+        >
+          <Trophy className="w-10 h-10 text-amber-300" />
+        </div>
+        <div
+          className="absolute top-80 right-40 animate-bounce"
+          style={{ animationDuration: "6s" }}
+        >
+          <Sparkles className="w-9 h-9 text-yellow-300" />
+        </div>
+      </div>
+
+      {/* Golden Particles Effect */}
+      <div className="absolute inset-0 pointer-events-none">
+        {particles.map((p, i) => (
+          <div
+            key={i}
+            className="absolute w-2 h-2 bg-yellow-400 rounded-full opacity-30"
+            style={{
+              left: p.left,
+              top: p.top,
+              animation: `float ${p.duration} ease-in-out infinite`,
+              animationDelay: p.delay,
+            }}
+          />
+        ))}
+      </div>
 
       <div className="relative max-w-7xl mx-auto">
-        <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
-        >
-          {/* Left Column - Image */}
-          <motion.div
-            className="order-2 lg:order-1"
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: {
-                  type: "tween",
-                  duration: 0.6,
-                  ease: "easeOut",
-                },
-              },
-            }}
+        {/* Enhanced Main Header with Golden Effects */}
+        <div className="text-center mb-16 animate-fade-in">
+          <div className="relative mb-8">
+            <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500 bg-clip-text text-transparent animate-shimmer relative font-manuscript">
+              The Event Has Arrived!
+              <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500 bg-clip-text text-transparent opacity-50 blur-sm"></div>
+            </h1>
+          </div>
+
+          <div className="relative inline-block">
+            <div className="bg-gradient-to-r from-yellow-900/80 via-amber-800/60 to-yellow-900/80 backdrop-blur-sm p-4 rounded-2xl border-2 border-yellow-400/50 shadow-2xl shadow-yellow-400/30 hover:shadow-yellow-400/50 transition-all duration-300">
+              <div className="absolute inset-1 border border-yellow-400/30 rounded-xl animate-pulse font-bold"></div>
+              <span className="text-yellow-100 text-xl tracking-wide">
+                REGISTER FOR{" "}
+              </span>
+              <span className="text-yellow-300 text-2xl font-bold font-manuscript tracking-wider animate-glow">
+                Litlaya '25
+              </span>
+            </div>
+            {/* Enhanced Decorative corners with golden glow */}
+            <div className="absolute -top-2 -left-2 w-4 h-4 border-l-2 border-t-2 border-yellow-400 animate-pulse"></div>
+            <div className="absolute -top-2 -right-2 w-4 h-4 border-r-2 border-t-2 border-yellow-400 animate-pulse"></div>
+            <div className="absolute -bottom-2 -left-2 w-4 h-4 border-l-2 border-b-2 border-yellow-400 animate-pulse"></div>
+            <div className="absolute -bottom-2 -right-2 w-4 h-4 border-r-2 border-b-2 border-yellow-400 animate-pulse"></div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+          {/* Enhanced Left Column - Main Event Card */}
+          <div className="lg:col-span-1 animate-slide-up">
+            <div className="bg-black backdrop-blur-sm border border-gray-700 rounded-xl p-6 h-full hover:border-yellow-600/50 hover:shadow-xl hover:shadow-yellow-400/10 transition-all duration-300 group">
+              <div className="flex items-center mb-4">
+                <div className="w-8 h-8 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
+                  <Library className="w-5 h-5 text-black" />
+                </div>
+                <h3 className="text-xl font-bold text-white group-hover:text-yellow-300 transition-colors duration-300 font-serif">
+                  LITERARY EXCELLENCE
+                </h3>
+              </div>
+
+              <p className="text-gray-300 mb-6 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
+                Our literary symposium will stand as a landmark event that
+                brings together some of the brightest minds to compete in five
+                distinct events spanning poetry, classical literature, and
+                creative writing. The participants will have demonstrated
+                exceptional literary prowess and innovation through a series of
+                rigorous challenges. This symposium is set to inspire future
+                collaborations, ignite a culture of creative problem-solving,
+                and push the boundaries of what students and literature
+                enthusiasts can achieve in competitive environments.
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-6">
+                {categories.map((category, index) => (
+                  <span
+                    key={index}
+                    className="bg-gradient-to-r from-yellow-600/20 to-amber-600/20 text-yellow-300 px-3 py-1 rounded-full text-sm border border-yellow-600/30 hover:border-yellow-400/60 hover:bg-gradient-to-r hover:from-yellow-600/30 hover:to-amber-600/30 transition-all duration-300 cursor-pointer"
+                  >
+                    {category}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column - Image and Event Highlights */}
+          <div
+            className="lg:col-span-2 flex flex-col gap-8 animate-slide-up"
+            style={{ animationDelay: "0.2s" }}
           >
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 rounded-lg blur-xl opacity-50" />
+            {/* Image occupying the top part of the right column */}
+            <div className="rounded-xl overflow-hidden border border-gray-700 hover:border-yellow-600/50 transition-all duration-300 shadow-lg shadow-yellow-400/10">
               <img
-                src="https://st3.depositphotos.com/16174436/18954/i/450/depositphotos_189547686-stock-photo-old-book-pen-inkwell-wooden.jpg"
-                alt="Classical Literature"
-                className="relative w-full h-96 lg:h-[500px] object-cover rounded-lg border border-amber-600/30"
+                src="https://thumbs.dreamstime.com/b/write-manuscript-writing-ink-antique-feather-dokument-ancient-355757280.jpg"
+                alt="Mysterious literary concept"
+                className="w-full h-auto object-cover" // w-full for full width, h-auto to maintain aspect ratio, max-h-96 to prevent it from being too tall
               />
             </div>
-          </motion.div>
+          </div>
+        </div>
+        {/* Event Highlights with Reduced Padding, directly below the image */}
+        <div className="bg-black mb-12 backdrop-blur-sm border border-gray-700 rounded-xl p-4 h-full hover:border-yellow-600/50 hover:shadow-xl hover:shadow-yellow-400/10 transition-all duration-300">
+          <h3 className="text-2xl font-bold text-yellow-400 mb-4 text-center animate-glow font-serif">
+            EVENT HIGHLIGHTS
+          </h3>
 
-          {/* Right Column - Content */}
-          <motion.div
-            className="order-1 lg:order-2 space-y-8"
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: {
-                  type: "tween",
-                  duration: 0.6,
-                  ease: [0.43, 0.13, 0.23, 0.96],
-                },
-              },
-            }}
-          >
-            {/* Header */}
-            <div className="text-center lg:text-left">
-              <div className="flex items-center justify-center lg:justify-start mb-4">
-                <Library className="w-6 h-6 text-amber-400 mr-2" />
-                <span className="text-amber-300 font-medium tracking-wide">
-                  Literary Symposium
-                </span>
-              </div>
-
-              <h2 className="text-5xl lg:text-6xl font-bold mb-6">
-                <span className="text-white">About </span>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-400 font-serif italic">
-                  Litlaya
-                </span>
-              </h2>
-            </div>
-
-            {/* Description */}
-            <div className="bg-slate-900/50 p-6 rounded-lg border border-amber-600/20">
-              <p className="text-lg leading-relaxed text-slate-300">
-                Step into the grandeur of the Renaissance at{" "}
-                <span className="text-amber-300 font-semibold">Litlaya</span>, a
-                prestigious literary symposium dedicated to celebrating the
-                profound beauty and enduring legacy of classical and
-                contemporary literature. This event is a beacon for young minds
-                eager to explore the depths of human expression through words.
-              </p>
-            </div>
-
-            {/* Information Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {infoItems.map((item, index) => (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {eventHighlights.map((highlight, index) => (
+              <div
+                key={index}
+                className="text-center animate-scale-in hover:transform hover:scale-110 transition-transform duration-300 bg-gradient-to-br from-yellow-900/20 to-amber-900/20 rounded-lg p-2 border border-yellow-700/30 hover:border-yellow-500/50"
+                style={{ animationDelay: `${0.4 + index * 0.1}s` }}
+              >
                 <div
-                  key={index}
-                  className="bg-slate-800/40 p-4 rounded-lg border border-slate-700/50 hover:border-amber-600/40 transition-colors duration-300"
+                  className={`text-3xl md:text-4xl font-bold mb-1 ${highlight.color} animate-pulse`}
                 >
-                  <div className="flex items-start space-x-3">
-                    <item.icon className="w-5 h-5 text-amber-400 mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-amber-200 text-sm mb-1">
-                        {item.label}
-                      </h3>
-                      <p className="text-slate-300 text-sm">{item.value}</p>
-                    </div>
-                  </div>
+                  {highlight.number}
                 </div>
-              ))}
-            </div>
+                <div className="text-gray-300 text-xs font-medium tracking-wide">
+                  {highlight.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* Institution Card */}
+        <div
+          className="bg-black backdrop-blur-sm border border-yellow-600/30 rounded-xl p-6 sm:p-8 mb-8 animate-slide-up hover:border-yellow-400/60 hover:shadow-xl hover:shadow-yellow-400/10 transition-all duration-300"
+          style={{ animationDelay: "0.4s" }}
+        >
+          <div className="text-center">
+            {/* DESKTOP header: Left Logo | Name | Right Logo */}
+            <div className="hidden md:flex items-center justify-center gap-6 mb-2">
+              {/* Left Logo */}
+              <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden shrink-0">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDFJahbEPx4fZYUIzN1lbjyJ-2_r7BonNw5g&s"
+                  alt="College Logo"
+                  className="w-full h-full"
+                />
+              </div>
 
-            {/* Final Description */}
-            <div className="bg-slate-900/50 p-6 rounded-lg border border-amber-600/20">
-              <div className="flex items-start space-x-3">
-                <Feather className="w-5 h-5 text-amber-400 mt-1 flex-shrink-0" />
-                <p className="text-base leading-relaxed text-slate-300 italic">
-                  Prepare to engage in spirited debates, eloquent recitations,
-                  and creative writing challenges that will test your
-                  intellectual prowess and artistic flair. Litlaya is more than
-                  an event; its a celebration of words, ideas, and the timeless
-                  human spirit.
-                </p>
+              {/* College Name (desktop) */}
+              <h2 className="text-4xl font-extrabold bg-gradient-to-r from-yellow-300 to-amber-400 bg-clip-text text-transparent animate-glow leading-tight">
+                ST. JOSEPH'S INSTITUTE OF TECHNOLOGY
+              </h2>
+
+              {/* Right Logo */}
+              <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden shrink-0">
+                <img
+                  src="/year-logo.png"
+                  alt="Department/Year Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
             </div>
-          </motion.div>
-        </motion.div>
+
+            {/* MOBILE header: [Left Logo] [Right Logo] */}
+            <div className="flex md:hidden items-center justify-center gap-3 mb-2">
+              <div className="w-12 h-12 rounded-full overflow-hidden shadow-lg shadow-yellow-400/30 shrink-0">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDFJahbEPx4fZYUIzN1lbjyJ-2_r7BonNw5g&s"
+                  alt="College Logo"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="w-12 h-12 rounded-full overflow-hidden shadow-lg shadow-yellow-400/30 shrink-0">
+                <img
+                  src="/year-logo.png"
+                  alt="Department/Year Logo"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            </div>
+
+            {/* College Name (mobile only) */}
+            <h2 className="md:hidden text-xl sm:text-2xl font-extrabold bg-gradient-to-r from-yellow-300 to-amber-400 bg-clip-text text-transparent animate-glow leading-snug px-4 font-sans">
+              ST. JOSEPH'S INSTITUTE OF TECHNOLOGY
+            </h2>
+
+            {/* Department (always below) */}
+            <p className="text-yellow-300 text-sm sm:text-base md:text-lg animate-glow font-semibold tracking-wide">
+              ENGLISH DEPARTMENT
+            </p>
+
+            {/* Values Section */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mt-6">
+              <div className="flex flex-col items-center group cursor-pointer">
+                <div className="w-16 h-16 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-yellow-400/30">
+                  <GraduationCap className="w-8 h-8 text-black" />
+                </div>
+                <span className="text-gray-300 text-sm group-hover:text-yellow-300 transition-colors duration-300 text-center">
+                  Excellence
+                </span>
+              </div>
+              <div className="flex flex-col items-center group cursor-pointer">
+                <div className="w-16 h-16 bg-gradient-to-r from-amber-500 to-yellow-600 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-amber-400/30">
+                  <Lightbulb className="w-8 h-8 text-black" />
+                </div>
+                <span className="text-gray-300 text-sm group-hover:text-yellow-300 transition-colors duration-300 text-center">
+                  Innovation
+                </span>
+              </div>
+              <div className="flex flex-col items-center group cursor-pointer">
+                <div className="w-16 h-16 bg-gradient-to-r from-yellow-600 to-amber-600 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-yellow-400/30">
+                  <Users className="w-8 h-8 text-black" />
+                </div>
+                <span className="text-gray-300 text-sm group-hover:text-yellow-300 transition-colors duration-300 text-center">
+                  Collaboration
+                </span>
+              </div>
+              <div className="flex flex-col items-center group cursor-pointer">
+                <div className="w-16 h-16 bg-gradient-to-r from-amber-600 to-yellow-500 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-amber-400/30">
+                  <Star className="w-8 h-8 text-black" />
+                </div>
+                <span className="text-gray-300 text-sm group-hover:text-yellow-300 transition-colors duration-300 text-center">
+                  Research
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Enhanced Vision Card */}
+        <div
+          className="bg-gradient-to-r from-yellow-900/20 to-amber-900/20 backdrop-blur-sm border border-yellow-600/30 rounded-xl p-8 animate-slide-up hover:border-yellow-400/60 hover:shadow-xl hover:shadow-yellow-400/10 transition-all duration-300"
+          style={{ animationDelay: "0.6s" }}
+        >
+          <div className="flex items-center mb-6">
+            <div className="w-10 h-10 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-lg flex items-center justify-center mr-4 shadow-lg shadow-yellow-400/30">
+              <Crown className="w-6 h-6 text-black" />
+            </div>
+            <h3 className="text-2xl font-bold text-yellow-400 animate-glow font-serif">
+              DRIVING LITERARY INNOVATION FORWARD
+            </h3>
+          </div>
+          <p className="text-gray-300 text-lg leading-relaxed hover:text-gray-200 transition-colors duration-300">
+            The English department is a hub for cutting-edge literary research
+            and education. Through hands-on competitions and scholarly
+            collaboration, our students and faculty drive impactful advancements
+            in literature and creative expression, preparing for careers at the
+            forefront of literary arts and addressing real-world challenges
+            through the power of words and ideas.
+          </p>
+        </div>
       </div>
+
+      <style jsx>{`
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes slide-up {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes scale-in {
+          from {
+            opacity: 0;
+            transform: scale(0.5);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        @keyframes shimmer {
+          0% {
+            background-position: -200% center;
+          }
+          100% {
+            background-position: 200% center;
+          }
+        }
+
+        @keyframes glow {
+          0%,
+          100% {
+            text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+          }
+          50% {
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.8),
+              0 0 30px rgba(251, 191, 36, 0.5);
+          }
+        }
+
+        @keyframes float {
+          0%,
+          100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          33% {
+            transform: translateY(-10px) rotate(120deg);
+          }
+          66% {
+            transform: translateY(10px) rotate(240deg);
+          }
+        }
+
+        .animate-fade-in {
+          animation: fade-in 0.8s ease-out forwards;
+        }
+
+        .animate-slide-up {
+          animation: slide-up 0.6s ease-out forwards;
+          opacity: 0;
+        }
+
+        .animate-scale-in {
+          animation: scale-in 0.5s ease-out forwards;
+          opacity: 0;
+        }
+
+        .animate-shimmer {
+          background-size: 200% auto;
+          animation: shimmer 3s linear infinite;
+        }
+
+        .animate-glow {
+          animation: glow 2s ease-in-out infinite;
+        }
+
+        @media (max-width: 768px) {
+          h1 {
+            font-size: 3rem !important;
+          }
+
+          .flex-between-mobile {
+            flex-direction: column;
+            gap: 1rem;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .grid-cols-4 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+        }
+      `}</style>
     </section>
   );
 };

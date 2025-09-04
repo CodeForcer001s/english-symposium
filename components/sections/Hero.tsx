@@ -178,27 +178,27 @@ if (stars.length === 0) {
 
       {/* Floating stars */}
       {stars.map((star) => (
-  <motion.div
-    key={star.id}
-    className="absolute opacity-10 sm:opacity-15 md:opacity-20"
-    style={{
-      top: `${star.top}%`,
-      left: `${star.left}%`,
-    }}
-    animate={{
-      scale: [0.5, 1, 0.5],
-      rotate: [0, 180, 360],
-      opacity: [0.05, 0.2, 0.05],
-    }}
-    transition={{
-      duration: star.duration,
-      repeat: Infinity,
-      delay: star.delay,
-    }}
-  >
-    <Star className="w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 text-yellow-400 fill-current" />
-  </motion.div>
-))}
+        <motion.div
+          key={star.id}
+          className="absolute opacity-10 sm:opacity-15 md:opacity-20"
+          style={{
+            top: `${star.top}%`,
+            left: `${star.left}%`,
+          }}
+          animate={{
+            scale: [0.5, 1, 0.5],
+            rotate: [0, 180, 360],
+            opacity: [0.05, 0.2, 0.05],
+          }}
+          transition={{
+            duration: star.duration,
+            repeat: Infinity,
+            delay: star.delay,
+          }}
+        >
+          <Star className="w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 text-yellow-400 fill-current" />
+        </motion.div>
+      ))}
 
       {/* Main content */}
       <div className="relative z-10 text-center max-w-5xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16 py-8 sm:py-12 md:py-16 lg:py-20">
@@ -353,8 +353,12 @@ if (stars.length === 0) {
           transition={{ duration: 1, delay: 1.8 }}
           className="space-y-3 sm:space-y-4 md:space-y-0 md:space-x-4 lg:space-x-6 xl:space-x-8 flex flex-col md:flex-row items-center justify-center max-w-2xl mx-auto"
         >
-          <motion.button
-            className="group relative overflow-hidden bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold py-2 sm:py-3 md:py-4 px-4 sm:px-6 md:px-8 lg:px-10 rounded-lg sm:rounded-xl md:rounded-2xl text-sm sm:text-base md:text-lg lg:text-xl shadow-2xl transition-all duration-300 transform hover:scale-105 border-2 border-amber-400 w-full sm:w-auto"
+          {/* Register Now Button */}
+          <motion.a
+            href="https://conoscenza2025.stjosephstechnology.ac.in/registration/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative overflow-hidden bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold py-2 sm:py-3 md:py-4 px-4 sm:px-6 md:px-8 lg:px-10 rounded-lg sm:rounded-xl md:rounded-2xl text-sm sm:text-base md:text-lg lg:text-xl shadow-2xl transition-all duration-300 transform hover:scale-105 border-2 border-amber-400 w-full sm:w-auto flex items-center justify-center"
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -368,10 +372,12 @@ if (stars.length === 0) {
               whileHover={{ x: "100%" }}
               transition={{ duration: 0.6 }}
             />
-          </motion.button>
+          </motion.a>
 
-          <motion.button
-            className="group relative overflow-hidden bg-transparent border-2 sm:border-3 border-amber-500 text-amber-300 hover:text-white font-bold py-2 sm:py-3 md:py-4 px-4 sm:px-6 md:px-8 lg:px-10 rounded-lg sm:rounded-xl md:rounded-2xl text-sm sm:text-base md:text-lg lg:text-xl shadow-xl transition-all duration-300 hover:shadow-2xl w-full sm:w-auto"
+          {/* View Events / Learn More Button */}
+          <motion.a
+            href="#about"
+            className="group relative overflow-hidden bg-transparent border-2 sm:border-3 border-amber-500 text-amber-300 hover:text-white font-bold py-2 sm:py-3 md:py-4 px-4 sm:px-6 md:px-8 lg:px-10 rounded-lg sm:rounded-xl md:rounded-2xl text-sm sm:text-base md:text-lg lg:text-xl shadow-xl transition-all duration-300 hover:shadow-2xl w-full sm:w-auto flex items-center justify-center"
             whileHover={{ y: -3, borderColor: "#f59e0b" }}
             whileTap={{ scale: 0.95 }}
           >
@@ -385,7 +391,7 @@ if (stars.length === 0) {
               whileHover={{ scale: 1 }}
               transition={{ duration: 0.3 }}
             />
-          </motion.button>
+          </motion.a>
         </motion.div>
       </div>
 
