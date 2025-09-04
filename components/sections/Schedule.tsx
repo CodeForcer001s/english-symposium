@@ -209,7 +209,7 @@ const eventsData: EventData[] = [
     time: "1:00 PM - 2:00 PM",
     color: "bg-amber-700",
     hoverColor: "hover:bg-amber-600",
-    row: 1,
+    row: 6,
   },
 ];
 
