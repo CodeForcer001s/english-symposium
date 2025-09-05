@@ -15,6 +15,8 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion"; // Added for enhanced animations
+
 const About = () => {
   const eventHighlights = [
     { number: "5", label: "COMPETITIONS", color: "text-yellow-400" },
@@ -219,63 +221,81 @@ const About = () => {
             ))}
           </div>
         </div>
-        {/* Institution Card */}
+
+        {/* ============================================================= */}
+        {/* START: Enhanced Institution Card (Replaced from previous code) */}
+        {/* ============================================================= */}
         <div
-          className="bg-black backdrop-blur-sm border border-yellow-600/30 rounded-xl p-6 sm:p-8 mb-8 animate-slide-up hover:border-yellow-400/60 hover:shadow-xl hover:shadow-yellow-400/10 transition-all duration-300"
+          className="relative overflow-hidden bg-black backdrop-blur-sm border border-yellow-600/30 rounded-2xl p-6 sm:p-8 mb-8 animate-slide-up group hover:border-yellow-500/60 hover:shadow-2xl hover:shadow-yellow-400/15 transition-all duration-500"
           style={{ animationDelay: "0.4s" }}
         >
-          <div className="text-center">
-            {/* DESKTOP header: Left Logo | Name | Right Logo */}
-            <div className="hidden md:flex items-center justify-center gap-7 mb-2">
-              {/* Left Logo */}
-              <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDFJahbEPx4fZYUIzN1lbjyJ-2_r7BonNw5g&s"
-                  alt="College Logo"
-                  className="w-full h-full"
-                />
-              </div>
+          {/* Subtle background glow effect */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-yellow-800/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-              {/* College Name (desktop) */}
-              <h2 className="text-4xl font-extrabold bg-gradient-to-r from-yellow-300 to-amber-400 bg-clip-text text-transparent animate-glow leading-tight">
+          <div className="relative z-10">
+            {/* DESKTOP & TABLET HEADER */}
+            <div className="hidden md:flex items-center justify-between gap-6">
+              <motion.div
+                whileHover={{ scale: 1.05, rotate: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="w-20 h-20 lg:w-24 lg:h-24 flex-shrink-0"
+              >
+                <div className="p-1 bg-black rounded-full transition-all duration-300 h-full w-full">
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDFJahbEPx4fZYUIzN1lbjyJ-2_r7BonNw5g&s"
+                    alt="College Logo"
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                </div>
+              </motion.div>
+
+              <h2
+                className="text-center text-3xl lg:text-4xl xl:text-5xl font-extrabold font-serif bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500 bg-clip-text text-transparent animate-glow"
+                style={{ textShadow: "0 2px 10px rgba(251, 191, 36, 0.2)" }}
+              >
                 ST. JOSEPH'S INSTITUTE OF TECHNOLOGY
               </h2>
 
-              {/* Right Logo */}
-              <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden">
-                <img
-                  src="/year-logo.png"
-                  alt="Department/Year Logo"
-                  className="w-full h-full"
-                />
-              </div>
+              <motion.div
+                whileHover={{ scale: 1.05, rotate: 5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="w-20 h-20 lg:w-24 lg:h-24 flex-shrink-0"
+              >
+                <div className="p-1 bg-black rounded-full group-hover:ring-yellow-500/70 transition-all duration-300 h-full w-full">
+                  <img
+                    src="/year-logo.png"
+                    alt="Department/Year Logo"
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                </div>
+              </motion.div>
             </div>
 
-            {/* MOBILE header: [Left Logo] [Right Logo] */}
-            <div className="flex md:hidden items-center justify-center gap-3 mb-2">
-              <div className="w-12 h-12 rounded-full overflow-hidden shadow-lg shadow-yellow-400/30 shrink-0">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDFJahbEPx4fZYUIzN1lbjyJ-2_r7BonNw5g&s"
-                  alt="College Logo"
-                  className="w-full h-full object-contain"
-                />
+            {/* MOBILE HEADER */}
+            <div className="md:hidden flex flex-col items-center text-center">
+              <div className="flex items-center justify-center gap-6 mb-4">
+                <div className="w-16 h-16 p-1 bg-black rounded-full ring-2 ring-yellow-600/40">
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDFJahbEPx4fZYUIzN1lbjyJ-2_r7BonNw5g&s"
+                    alt="College Logo"
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                </div>
+                <div className="w-16 h-16 p-1 bg-black rounded-full ring-2 ring-yellow-600/40">
+                  <img
+                    src="/year-logo.png"
+                    alt="Department/Year Logo"
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                </div>
               </div>
-              <div className="w-12 h-12 rounded-full overflow-hidden shadow-lg shadow-yellow-400/30 shrink-0">
-                <img
-                  src="/year-logo.png"
-                  alt="Department/Year Logo"
-                  className="w-full h-full object-contain"
-                />
-              </div>
+              <h2 className="text-3xl font-extrabold font-serif bg-gradient-to-r from-yellow-300 to-amber-400 bg-clip-text text-transparent animate-glow leading-tight">
+                ST. JOSEPH'S INSTITUTE OF TECHNOLOGY
+              </h2>
             </div>
-
-            {/* College Name (mobile only) */}
-            <h2 className="md:hidden text-xl sm:text-2xl font-extrabold bg-gradient-to-r from-yellow-300 to-amber-400 bg-clip-text text-transparent animate-glow leading-snug px-4 font-sans">
-              ST. JOSEPH'S INSTITUTE OF TECHNOLOGY
-            </h2>
 
             {/* Department (always below) */}
-            <p className="text-yellow-300 text-sm sm:text-base md:text-lg animate-glow font-semibold tracking-wide">
+            <p className="text-yellow-300 text-sm sm:text-base md:text-lg animate-glow font-semibold tracking-wide text-center mt-4">
               ENGLISH DEPARTMENT
             </p>
 
@@ -316,21 +336,31 @@ const About = () => {
             </div>
           </div>
         </div>
+        {/* =========================================================== */}
+        {/* END: Enhanced Institution Card */}
+        {/* =========================================================== */}
 
         {/* Enhanced Vision Card */}
+        {/* Enhanced & Responsive Vision Card */}
         <div
-          className="bg-gradient-to-r from-yellow-900/20 to-amber-900/20 backdrop-blur-sm border border-yellow-600/30 rounded-xl p-8 animate-slide-up hover:border-yellow-400/60 hover:shadow-xl hover:shadow-yellow-400/10 transition-all duration-300"
+          className="bg-gradient-to-r from-yellow-900/20 to-amber-900/20 backdrop-blur-sm border border-yellow-600/30 rounded-xl p-6 sm:p-8 animate-slide-up hover:border-yellow-400/60 hover:shadow-xl hover:shadow-yellow-400/10 transition-all duration-300"
           style={{ animationDelay: "0.6s" }}
         >
-          <div className="flex items-center mb-6">
-            <div className="w-10 h-10 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-lg flex items-center justify-center mr-4 shadow-lg shadow-yellow-400/30">
-              <Crown className="w-6 h-6 text-black" />
+          {/* Responsive container for icon and title */}
+          <div className="flex flex-col items-center text-center sm:flex-row sm:items-center sm:text-left mb-6">
+            {/* Icon container */}
+            <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-lg flex items-center justify-center sm:mr-4 shadow-lg shadow-yellow-400/30 mb-4 sm:mb-0">
+              <Crown className="w-7 h-7 text-black" />
             </div>
-            <h3 className="text-2xl font-bold text-yellow-400 animate-glow font-serif">
+
+            {/* Responsive Title */}
+            <h3 className="text-xl sm:text-2xl font-bold text-yellow-400 animate-glow font-serif">
               DRIVING LITERARY INNOVATION FORWARD
             </h3>
           </div>
-          <p className="text-gray-300 text-lg leading-relaxed hover:text-gray-200 transition-colors duration-300">
+
+          {/* Responsive Paragraph Text */}
+          <p className="text-gray-300 text-base sm:text-lg leading-relaxed hover:text-gray-200 transition-colors duration-300">
             The English department is a hub for cutting-edge literary research
             and education. Through hands-on competitions and scholarly
             collaboration, our students and faculty drive impactful advancements
