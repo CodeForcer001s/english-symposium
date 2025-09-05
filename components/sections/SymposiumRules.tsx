@@ -328,7 +328,7 @@ const EventRules: React.FC = () => {
           transition={{ delay: 0.6, duration: 0.8 }}
           className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-16"
         >
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {filteredCategories.map((category) =>
               category.rules.map((rule, index) => {
                 const ruleId = `${category.id}-${index}`;

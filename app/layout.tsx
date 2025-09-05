@@ -16,7 +16,6 @@ export default function RootLayout({
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    // Check for saved theme preference or default to light mode
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
       setIsDark(savedTheme === "dark");
@@ -45,6 +44,8 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        {/* ✅ Add your favicon/logo here */}
+        <link rel="icon" href="/logo.jpg" type="image/jpeg" />
       </head>
       <body className={inter.className}>
         <div className="min-h-screen flex flex-col">
