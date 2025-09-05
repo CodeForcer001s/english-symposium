@@ -254,18 +254,37 @@ export const eventsData: Event[] = [
     ],
     coordinators: [
       {
-        name: "Vikram Reddy",
-        role: "Event Head",
-        phone: "+91 87654 32109",
-        image: "https://randomuser.me/api/portraits/men/7.jpg",
+        name: "Suji S",
+        role: "Coordinator",
+        phone: "+91 9092631365",
+        image: "https://randomuser.me/api/portraits/women/9.jpg",
       },
       {
-        name: "Saanvi Joshi",
-        role: "Co-coordinator",
-        phone: "+91 87654 32108",
-        image: "https://randomuser.me/api/portraits/women/8.jpg",
+        name: "Sam Judson J",
+        role: "Coordinator",
+        phone: "+91 9444829037",
+        image: "https://randomuser.me/api/portraits/men/10.jpg",
+      },
+      {
+        name: "Samuel Sangeeth Ponraj",
+        role: "Coordinator",
+        phone: "+91 7358056766",
+        image: "https://randomuser.me/api/portraits/men/11.jpg",
+      },
+      {
+        name: "Tharaneeshwaran M M",
+        role: "Coordinator",
+        phone: "+91 9600045434",
+        image: "https://randomuser.me/api/portraits/men/12.jpg",
+      },
+      {
+        name: "Ridsiyanimi",
+        role: "Coordinator",
+        phone: "+91 8807124257",
+        image: "https://randomuser.me/api/portraits/women/13.jpg",
       },
     ],
+
     mysticalTheme: {
       primaryColor: "rose",
       secondaryColor: "pink",
@@ -295,7 +314,7 @@ export const eventsData: Event[] = [
         description:
           "Participants will be presented with anagrammed dialogues from detective novels. With the help of provided clues, they must arrange the dialogues in the correct format within a 2-minute time limit. In the case of a tie, a 1-minute tie-breaker round will be conducted. The total number of rounds will be decided based on the number of participating teams.",
         cardImage:
-          "https://t4.ftcdn.net/jpg/04/72/55/21/360_F_472552101_F5jfrd6Mg2UNsb640dHH1bNJ9DDW7vC1.jpgp",
+          "https://t4.ftcdn.net/jpg/04/72/55/21/360_F_472552101_F5jfrd6Mg2UNsb640dHH1bNJ9DDW7vC1.jpg",
         mysticalSymbol: "🔮",
         arcana: "The Moon",
       },
