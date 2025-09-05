@@ -160,6 +160,16 @@ const ContactPage: React.FC = () => {
       department: "Department of English",
       phone: "+919578978609",
     },
+    {
+      name: "Dr. Monika K",
+      department: "Department of English",
+      phone: "+917401252663",
+    },
+    {
+      name: "Dr. Maria Baptist S",
+      department: "Department of English",
+      phone: "+919578978609",
+    },
   ];
 
   const literaryIcons: LiteraryIcon[] = [

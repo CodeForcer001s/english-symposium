@@ -168,10 +168,13 @@ const Footer: React.FC = () => {
               href="https://github.com/johnwesley755"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-amber-300 font-bold hover:text-amber-200 transition-colors duration-300 text-sm"
+              className="relative text-amber-300 font-bold text-sm transition-colors duration-300 group"
               whileHover={{ scale: 1.05 }}
             >
-              John Wesley
+              <span className="relative z-10 underline decoration-amber-400 underline-offset-4 group-hover:text-amber-200">
+                John Wesley
+              </span>
+              <span className="absolute inset-x-0 bottom-0 h-[2px] bg-amber-400/70 group-hover:h-[4px] transition-all duration-300 rounded-full"></span>
             </motion.a>
           </div>
         </motion.div>
