@@ -307,7 +307,7 @@ const Modal: React.FC<ModalProps> = ({ event, onClose }) => {
       exit={{ opacity: 0 }}
     >
       <motion.div
-        className="bg-slate-900 rounded-2xl border-2 border-amber-600/30 max-w-md w-full mx-4 shadow-2xl"
+        className="bg-black rounded-2xl border-2 border-amber-600/30 max-w-md w-full mx-4 shadow-2xl"
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.8, opacity: 0 }}
@@ -466,7 +466,7 @@ const EventTimeline: React.FC = () => {
         </motion.div>
 
         <motion.div
-          className="max-w-7xl mx-auto rounded-2xl border-2 border-amber-600/30 bg-slate-900/30 p-3 md:p-6 shadow-2xl backdrop-blur-sm"
+          className="max-w-7xl mx-auto rounded-2xl border-2 border-amber-600/30 bg-black/30 p-3 md:p-6 shadow-2xl backdrop-blur-sm"
           variants={{
             hidden: { opacity: 0, y: 20 },
             visible: {
@@ -482,7 +482,7 @@ const EventTimeline: React.FC = () => {
           {/* Desktop and Tablet View */}
           <div className="hidden md:block">
             <motion.div
-              className="grid gap-2 p-8 bg-slate-900/50 rounded-xl border border-amber-600/20 shadow-inner relative"
+              className="grid gap-2 p-8 bg-black/50 rounded-xl border border-amber-600/20 shadow-inner relative"
               style={{
                 gridTemplateColumns: `repeat(${timeSlots.length}, minmax(0, 1fr))`,
                 gridTemplateRows: `repeat(${maxRows}, minmax(60px, 1fr))`,
@@ -569,7 +569,7 @@ const EventTimeline: React.FC = () => {
               }}
             >
               <motion.div
-                className="grid gap-2 p-4 bg-slate-900/50 rounded-xl border border-amber-600/20 min-w-max shadow-inner"
+                className="grid gap-2 p-4 bg-black/50 rounded-xl border border-amber-600/20 min-w-max shadow-inner"
                 style={{
                   gridTemplateColumns: `repeat(${timeSlots.length}, minmax(100px, 1fr))`,
                   gridTemplateRows: `repeat(${maxRows}, minmax(80px, 1fr))`,
@@ -659,7 +659,7 @@ const EventTimeline: React.FC = () => {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
             >
-              <div className="flex items-center space-x-3 text-amber-400 text-sm bg-slate-800/50 rounded-full px-4 py-2 border border-amber-600/30">
+              <div className="flex items-center space-x-3 text-amber-400 text-sm bg-black/50 rounded-full px-4 py-2 border border-amber-600/30">
                 <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></div>
                 <span>Swipe to explore timeline</span>
                 <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
@@ -767,7 +767,7 @@ const EventTimeline: React.FC = () => {
 
         {/* Event Details Summary */}
         <motion.div
-          className="mt-8 max-w-4xl mx-auto bg-slate-900/50 rounded-xl p-6 border border-amber-600/20"
+          className="mt-8 max-w-4xl mx-auto bg-black/50 rounded-xl p-6 border border-amber-600/20"
           variants={{
             hidden: { opacity: 0, y: 20 },
             visible: {
@@ -788,7 +788,7 @@ const EventTimeline: React.FC = () => {
             variants={staggerContainer}
           >
             <motion.div
-              className="bg-slate-800/50 p-4 rounded-lg border border-amber-600/20"
+              className="bg-black/50 p-4 rounded-lg border border-amber-600/20"
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: {
@@ -813,7 +813,7 @@ const EventTimeline: React.FC = () => {
               </ul>
             </motion.div>
             <motion.div
-              className="bg-slate-800/50 p-4 rounded-lg border border-amber-600/20"
+              className="bg-black/50 p-4 rounded-lg border border-amber-600/20"
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: {

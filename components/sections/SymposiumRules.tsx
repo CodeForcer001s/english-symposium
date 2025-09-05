@@ -51,14 +51,14 @@ const EventRules: React.FC = () => {
   const ruleCategories: RuleCategory[] = [
     {
       id: "registration",
-      name: "Sacred Registration",
+      name: "Registration",
       icon: User,
       color: "text-red-400",
       bgColor: "from-red-900/20 to-red-800/20",
       borderColor: "border-red-600/40",
       rules: [
         {
-          title: "Mystical Identity",
+          title: "Identification",
           description:
             "All participants should bring their registration slip along with their college ID card.",
           importance: "critical",
@@ -67,14 +67,14 @@ const EventRules: React.FC = () => {
     },
     {
       id: "dress",
-      name: "Ceremonial Attire",
+      name: "Dress Code",
       icon: Shirt,
       color: "text-orange-400",
       bgColor: "from-orange-900/20 to-amber-800/20",
       borderColor: "border-orange-600/40",
       rules: [
         {
-          title: "Formal Robes",
+          title: "Formal Attire",
           description:
             "Participants will be permitted to enter the campus only in formal dress code.",
           importance: "critical",
@@ -83,20 +83,20 @@ const EventRules: React.FC = () => {
     },
     {
       id: "timing",
-      name: "Sacred Hours",
+      name: "Timings",
       icon: Clock,
       color: "text-red-400",
       bgColor: "from-red-900/20 to-red-800/20",
       borderColor: "border-red-600/40",
       rules: [
         {
-          title: "Portal Closing",
+          title: "Registration Deadline",
           description:
             "The offline registration process will end by 9:30 AM on the day of the event.",
           importance: "critical",
         },
         {
-          title: "Punctual Arrival",
+          title: "Punctuality",
           description:
             "All events will commence at the scheduled time. Participants are requested to be punctual.",
           importance: "critical",
@@ -105,14 +105,14 @@ const EventRules: React.FC = () => {
     },
     {
       id: "transport",
-      name: "Mystical Transport",
+      name: "Transportation",
       icon: Bus,
       color: "text-amber-400",
       bgColor: "from-amber-900/20 to-yellow-800/20",
       borderColor: "border-amber-600/40",
       rules: [
         {
-          title: "Enchanted Carriages",
+          title: "College Buses",
           description:
             "College buses will be available from all parts of the city.",
           importance: "important",
@@ -121,14 +121,14 @@ const EventRules: React.FC = () => {
     },
     {
       id: "facilities",
-      name: "Sacred Provisions",
+      name: "Food & Facilities",
       icon: Utensils,
       color: "text-emerald-400",
       bgColor: "from-emerald-900/20 to-green-800/20",
       borderColor: "border-emerald-600/40",
       rules: [
         {
-          title: "Feast Arrangements",
+          title: "Meals Provided",
           description: "Breakfast and lunch will be provided by our college.",
           importance: "standard",
         },
@@ -136,14 +136,14 @@ const EventRules: React.FC = () => {
     },
     {
       id: "conduct",
-      name: "Sacred Conduct",
+      name: "Conduct",
       icon: Shield,
       color: "text-yellow-400",
       bgColor: "from-yellow-900/20 to-amber-800/20",
       borderColor: "border-yellow-600/40",
       rules: [
         {
-          title: "Honor Code",
+          title: "Campus Decorum",
           description:
             "Proper decorum must be maintained in accordance with the college rules while inside the college campus.",
           importance: "important",
