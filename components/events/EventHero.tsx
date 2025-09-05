@@ -154,7 +154,7 @@ const EventHero: React.FC<EventHeroProps> = ({ event }) => {
               size="lg"
               className="bg-amber-400 text-slate-900 hover:bg-amber-300 transition-all duration-300 font-bold text-lg px-8 py-6 rounded-md shadow-lg shadow-amber-500/20 transform hover:scale-105"
             >
-              <Link href={event.registerLink || "/register"}>Register Now</Link>
+              <Link href={event.registerLink || "/register"} target="_blank">Register Now</Link>
             </Button>
             <Button
               asChild
@@ -162,7 +162,7 @@ const EventHero: React.FC<EventHeroProps> = ({ event }) => {
               variant="outline"
               className="border-2 border-amber-400 text-amber-300 bg-amber-400/10 transition-all duration-300 font-bold text-lg px-8 py-6 rounded-md transform hover:scale-105"
             >
-              <Link href="#details">Learn More</Link>
+              <a href="#rules">Learn More</a>
             </Button>
           </motion.div>
         </motion.div>

@@ -195,7 +195,19 @@ const EventRules: React.FC = () => {
         return "bg-emerald-600 text-white";
     }
   };
+  const [positions, setPositions] = useState<
+    { left: string; top: string; delay: number; duration: number }[]
+  >([]);
 
+  useEffect(() => {
+    const newPositions = Array.from({ length: 8 }).map(() => ({
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      delay: Math.random() * 4,
+      duration: 8 + Math.random() * 4,
+    }));
+    setPositions(newPositions);
+  }, []);
   const filteredCategories =
     selectedCategory === "all"
       ? ruleCategories
@@ -220,14 +232,11 @@ const EventRules: React.FC = () => {
 
       {/* Floating Elements */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(8)].map((_, i) => (
+        {positions.map((pos, i) => (
           <motion.div
             key={i}
             className="absolute"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
+            style={{ left: pos.left, top: pos.top }}
             animate={{
               y: [-20, -50, -20],
               x: [0, 10, 0],
@@ -235,9 +244,9 @@ const EventRules: React.FC = () => {
               rotate: [0, 180, 360],
             }}
             transition={{
-              duration: 8 + Math.random() * 4,
+              duration: pos.duration,
               repeat: Infinity,
-              delay: Math.random() * 4,
+              delay: pos.delay,
             }}
           >
             <Scroll className="w-4 h-4 text-yellow-500/50" />

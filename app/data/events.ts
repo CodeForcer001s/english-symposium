@@ -51,19 +51,19 @@ export const eventsData: Event[] = [
       "An unconventional quiz where participants build stories on the fly, deliver dramatic speeches, and report on chaotic news, testing creativity, adaptability, and wit.",
     icon: ScrollText,
     color: "from-yellow-600 via-amber-500 to-yellow-600",
-    coverImage:
-      "/litwit.jpg",
+    coverImage: "/litwit.jpg",
+    registerLink:
+      "https://conoscenza2025.stjosephstechnology.ac.in/registration/",
     teamComposition: "Individual",
-    venue: "The Globe Theatre Hall",
-    date: "March 15th, 2025",
-    time: "2:00 PM - 4:00 PM",
+    venue: "AV Hall II",
+    date: "September 13th, 2025",
+    time: "8:00 PM - 3:00 PM",
     eventStructure: [
       {
         title: "Preliminary Round – Twist-a-Tale",
         description:
           "Participants are given a sentence prompt and must build a short story within the given time. The host may interrupt and alter the story direction, and participants must adapt instantly. Creativity, adaptability, and fluency will determine who qualifies for the next round.",
-        cardImage:
-          "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=600&fit=crop",
+        cardImage: "/litwit-round-1.jpg",
         mysticalSymbol: "🌟",
         arcana: "The Fool's Journey",
       },
@@ -71,8 +71,7 @@ export const eventsData: Event[] = [
         title: "Semi-Final Round – Oscar Speech",
         description:
           "Participants pick a random award category and deliver a one-minute humorous and engaging thank you speech. Judging is based on creativity, humor, and delivery.",
-        cardImage:
-          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
+        cardImage: "/litwit-round-2.jpg",
         mysticalSymbol: "🎭",
         arcana: "The Magician",
       },
@@ -80,8 +79,7 @@ export const eventsData: Event[] = [
         title: "Final Round – Newsroom Chaos",
         description:
           "Participants act as news anchors and must deliver a serious one-minute news report using three random, unrelated words. Creativity, humor, adaptability, and fluency will decide the winner.",
-        cardImage:
-          "https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?w=400&h=600&fit=crop",
+        cardImage: "/litwit-round-3.jpg",
         mysticalSymbol: "⚡",
         arcana: "The Tower",
       },
@@ -142,17 +140,18 @@ export const eventsData: Event[] = [
     icon: Search,
     color: "from-yellow-600 via-amber-500 to-yellow-600",
     coverImage: "/penman.jpg",
+    registerLink:
+      "https://conoscenza2025.stjosephstechnology.ac.in/registration/",
     teamComposition: "2 Members",
-    venue: "The Manuscript Library",
-    date: "March 16th, 2025",
-    time: "10:00 AM - 12:00 PM",
+    venue: "AV Hall III",
+    date: "September 13th, 2025",
+    time: "8:00 PM - 3:00 PM",
     eventStructure: [
       {
         title: "Prelims",
         description:
           "Participants are given short plot synopses, disguised character arcs, or shuffled storylines. They must deduce the correct author or title. This round tests deep reading and critical analysis. Top scorers proceed to the finals.",
-        cardImage:
-          "/penman-round-1.jpg",
+        cardImage: "/penman-round-1.jpg",
         mysticalSymbol: "🔍",
         arcana: "The Hermit",
       },
@@ -160,8 +159,7 @@ export const eventsData: Event[] = [
         title: "Finals",
         description:
           "Finalists will be presented with layered clues—quotes, paraphrased plotlines, or obscured character identifiers—and must match them to authors, genres, or periods. Bonus rounds may include buzzer questions and red herrings to elevate difficulty.",
-        cardImage:
-          "/penman-round-2.jpg",
+        cardImage: "/penman-round-2.jpg",
         mysticalSymbol: "🗝️",
         arcana: "The High Priestess",
       },
@@ -222,16 +220,18 @@ export const eventsData: Event[] = [
     coverImage:
       "https://static.vecteezy.com/system/resources/previews/010/354/340/non_2x/poetry-day-background-template-free-vector.jpg",
     teamComposition: "2–3 Members",
-    venue: "The Bard's Chamber",
-    date: "March 17th, 2025",
-    time: "3:00 PM - 5:00 PM",
+    venue: "AV Hall I",
+    registerLink:
+      "https://conoscenza2025.stjosephstechnology.ac.in/registration/",
+    date: "September 13th, 2025",
+    time: "8:00 PM - 3:00 PM",
     eventStructure: [
       {
         title: "Preliminary Round",
         description:
           "A written round where teams are shown a set of famous quotes from literature and must identify either the author or the book. Speed and accuracy are key for evaluation.",
         cardImage:
-          "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=600&fit=crop",
+          "https://i.ytimg.com/vi/601IkI1HEmI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB0Pl4VfnUzd66uKp4NJCL3Usfazg",
         mysticalSymbol: "📜",
         arcana: "The World",
       },
@@ -240,7 +240,7 @@ export const eventsData: Event[] = [
         description:
           "The final will consist of themed rounds such as Romantic Quotes, War Speeches, Opening Lines, etc. Participants may be required to identify the speaker, state the context, or provide the book title. Bonus points will be awarded for explaining the context or literary significance.",
         cardImage:
-          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
+          "https://www.alphr.com/wp-content/uploads/2022/03/Find-a-Book-Title-When-You-Dont-Know-the-Name.jpeg",
         mysticalSymbol: "💫",
         arcana: "The Star",
       },
@@ -282,19 +282,20 @@ export const eventsData: Event[] = [
       "The event features a two round format - anagrammed dialogues and mind palace. These rounds are intended to evaluate participants' ability to decipher the clues for information, observation skills and recollecting capacity.",
     icon: Key,
     color: "from-yellow-600 via-amber-500 to-yellow-600",
-    coverImage:
-      "/litcrypt.jpg",
+    registerLink:
+      "https://conoscenza2025.stjosephstechnology.ac.in/registration/",
+    coverImage: "/litcrypt.jpg",
     teamComposition: "3 Members",
-    venue: "The Cipher Hall",
-    date: "March 18th, 2025",
-    time: "1:00 PM - 3:00 PM",
+    venue: "Library Conference Hall",
+    date: "September 13th, 2025",
+    time: "8:00 PM - 3:00 PM",
     eventStructure: [
       {
         title: "Preliminary Round - Anagrammed dialogues",
         description:
           "Participants will be presented with anagrammed dialogues from detective novels. With the help of provided clues, they must arrange the dialogues in the correct format within a 2-minute time limit. In the case of a tie, a 1-minute tie-breaker round will be conducted. The total number of rounds will be decided based on the number of participating teams.",
         cardImage:
-          "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=600&fit=crop",
+          "https://t4.ftcdn.net/jpg/04/72/55/21/360_F_472552101_F5jfrd6Mg2UNsb640dHH1bNJ9DDW7vC1.jpgp",
         mysticalSymbol: "🔮",
         arcana: "The Moon",
       },
@@ -303,7 +304,7 @@ export const eventsData: Event[] = [
         description:
           "A detailed picture with multiple objects is shown for 30 seconds. After it's removed, participants must answer questions about the image (e.g., objects, colors, positions). Each correct answer earns points.",
         cardImage:
-          "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&h=600&fit=crop",
+          "https://img.freepik.com/free-photo/top-view-memory-concept-with-post-its-magnifying-glass_23-2149320984.jpg",
         mysticalSymbol: "👁️",
         arcana: "The Sun",
       },
@@ -366,16 +367,18 @@ export const eventsData: Event[] = [
     coverImage:
       "https://upload.wikimedia.org/wikipedia/commons/4/4a/Eloquentia.jpg",
     teamComposition: "Individual",
-    venue: "The Grand Auditorium",
-    date: "March 19th, 2025",
-    time: "4:00 PM - 6:00 PM",
+    venue: "AV Hall I",
+    registerLink:
+      "https://conoscenza2025.stjosephstechnology.ac.in/registration/",
+    date: "September 13th, 2025",
+    time: "8:00 PM - 3:00 PM",
     eventStructure: [
       {
         title: "Preliminary Round",
         description:
           "Participants select from a set of literary and social themes and must speak for 2 minutes on the chosen topic. Judging will be based on content, clarity, and confidence.",
         cardImage:
-          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
+          "https://www.brainwonders.in/blog_feature_images/2021/11/2021-11-13-10-47-57Public_speaking_Banner_Image.webp",
         mysticalSymbol: "🎤",
         arcana: "Strength",
       },
@@ -384,7 +387,7 @@ export const eventsData: Event[] = [
         description:
           "Participants are given on-the-spot topics with limited preparation time. They must deliver a structured and impactful speech. Surprise formats such as debate or rebuttal may be included.",
         cardImage:
-          "https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?w=400&h=600&fit=crop",
+          "https://i.ytimg.com/vi/ZV9sUy0XM00/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBzh2hdZnGun_Ufums6j1ixHsdSZg",
         mysticalSymbol: "👑",
         arcana: "The Emperor",
       },

@@ -354,7 +354,7 @@ const EventDetails: React.FC<EventDetailsProps> = ({ event }) => {
                         className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 sm:mb-4 pb-1 sm:pb-2 text-amber-500 border-b border-amber-800/60"
                         style={{ fontFamily: "Cinzel Decorative, serif" }}
                       >
-                        The Performance
+                        Event Description
                       </h2>
                       <p className="leading-relaxed text-sm sm:text-base md:text-lg font-medium italic text-amber-200">
                         "{event.description}"
@@ -368,7 +368,7 @@ const EventDetails: React.FC<EventDetailsProps> = ({ event }) => {
                         </div>
                         <div className="flex-1 min-w-0">
                           <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2 text-amber-400">
-                            Company Size
+                            Team Size
                           </h3>
                           <p className="font-medium text-sm sm:text-base md:text-lg text-amber-200">
                             {event.teamComposition}
@@ -384,26 +384,26 @@ const EventDetails: React.FC<EventDetailsProps> = ({ event }) => {
                       className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold pb-1 sm:pb-2 text-amber-500 border-b border-amber-800/60"
                       style={{ fontFamily: "Cinzel Decorative, serif" }}
                     >
-                      Performance Details
+                      Event Details
                     </h2>
 
                     <div className="space-y-3 sm:space-y-4">
                       {[
                         {
                           icon: MapPin,
-                          label: "Theatre",
+                          label: "Location",
                           value: event.venue,
                           delay: 2.8,
                         },
                         {
                           icon: Calendar,
-                          label: "Performance Date",
+                          label: "Event Date",
                           value: event.date,
                           delay: 3.0,
                         },
                         {
                           icon: Clock,
-                          label: "Curtain Time",
+                          label: "Timing",
                           value: event.time,
                           delay: 3.2,
                         },
@@ -445,7 +445,7 @@ const EventDetails: React.FC<EventDetailsProps> = ({ event }) => {
                     className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-4 sm:mb-6 md:mb-8 text-center pb-2 sm:pb-4 text-amber-500 border-b-2 border-amber-800/60"
                     style={{ fontFamily: "Cinzel Decorative, serif" }}
                   >
-                    Acts & Scenes
+                    Rounds
                   </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
                     {event.eventStructure.map((structure, index) => (
@@ -483,7 +483,7 @@ const EventDetails: React.FC<EventDetailsProps> = ({ event }) => {
                     className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-4 sm:mb-6 md:mb-8 text-center pb-2 sm:pb-4 text-amber-500 border-b-2 border-amber-700/80"
                     style={{ fontFamily: "Cinzel Decorative, serif" }}
                   >
-                    Theatre Rules & Regulations
+                    Rules & Regulations
                   </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
                     {event.generalRules.map((rule, index) => (

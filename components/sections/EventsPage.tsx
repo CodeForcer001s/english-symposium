@@ -146,19 +146,19 @@ const ContactPage: React.FC = () => {
 
   const staffCoordinators: StaffCoordinator[] = [
     {
-      name: "Dr. Narendiran",
-      department: "Department of English Literature",
-      phone: "+919876543210",
+      name: "Dr. Narendiran S",
+      department: "Department of English",
+      phone: "+919597772416",
     },
     {
-      name: "Prof. Ramesh Kumar",
-      department: "Department of Creative Writing",
-      phone: "+919876543211",
+      name: "Dr. Srivarshini M",
+      department: "Department of English",
+      phone: "+919080202680",
     },
     {
-      name: "Dr. Lakshmi Narayan",
-      department: "Department of Comparative Literature",
-      phone: "+919876543212",
+      name: "Dr. Kiruthiga E",
+      department: "Department of English",
+      phone: "+919578978609",
     },
   ];
 

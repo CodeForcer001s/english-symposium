@@ -69,7 +69,7 @@ const EventCoordinators: React.FC<EventCoordinatorsProps> = ({ event }) => {
           className="text-center mb-20"
         >
           <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-yellow-500 via-amber-300 to-yellow-600 bg-clip-text text-transparent tracking-wider">
-            Our Esteemed Curators
+            Event Coordinators
           </h2>
           <div className="h-0.5 bg-gradient-to-r from-transparent via-amber-400/70 to-transparent mx-auto mb-6 max-w-md"></div>
           <p className="text-xl text-amber-100/70 max-w-3xl mx-auto italic">
@@ -106,15 +106,7 @@ const EventCoordinators: React.FC<EventCoordinatorsProps> = ({ event }) => {
                   <div className="absolute bottom-3 right-3 w-6 h-6 border-r-2 border-b-2 border-amber-700/50 group-hover:border-amber-600 transition-colors"></div>
 
                   <div className="flex flex-col sm:flex-row items-center text-center sm:text-left">
-                    <div className="mb-6 sm:mb-0 sm:mr-6 flex-shrink-0">
-                      <div className="w-28 h-28 rounded-full overflow-hidden border-2 border-amber-500/70 p-1 group-hover:scale-105 group-hover:border-amber-400 transition-all duration-400">
-                        <img
-                          src={coordinator.image}
-                          alt={coordinator.name}
-                          className="w-full h-full object-cover rounded-full"
-                        />
-                      </div>
-                    </div>
+                    
                     <div className="flex-grow">
                       <h3 className="text-2xl font-bold bg-gradient-to-r from-yellow-300 to-amber-400 bg-clip-text text-transparent mb-1">
                         {coordinator.name}

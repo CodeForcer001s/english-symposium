@@ -132,7 +132,7 @@ const About = () => {
                 REGISTER FOR{" "}
               </span>
               <span className="text-yellow-300 text-2xl font-bold font-manuscript tracking-wider animate-glow">
-                Litlaya '25
+                Litlaya
               </span>
             </div>
             {/* Enhanced Decorative corners with golden glow */}
@@ -189,9 +189,9 @@ const About = () => {
             {/* Image occupying the top part of the right column */}
             <div className="rounded-xl overflow-hidden border border-gray-700 hover:border-yellow-600/50 transition-all duration-300 shadow-lg shadow-yellow-400/10">
               <img
-                src="https://thumbs.dreamstime.com/b/write-manuscript-writing-ink-antique-feather-dokument-ancient-355757280.jpg"
+                src="/manuscript-image.jpg"
                 alt="Mysterious literary concept"
-                className="w-full h-auto object-cover" // w-full for full width, h-auto to maintain aspect ratio, max-h-96 to prevent it from being too tall
+                className="w-full h-full object-cover" // w-full for full width, h-auto to maintain aspect ratio, max-h-96 to prevent it from being too tall
               />
             </div>
           </div>
