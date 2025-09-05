@@ -4,7 +4,6 @@
 
 ![Litlaya Banner](https://img.shields.io/badge/Litlaya-2025-brightgreen?style=for-the-badge&logo=book&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Live-success?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
 ### 🎭 *Where Literature Comes Alive* 🎭
 
@@ -229,7 +228,7 @@ npm run type-check   # Run TypeScript checks
 
 ### ⭐ **Star this repository if you found it helpful!** ⭐
 
-![Footer](https://img.shields.io/badge/Made_with-❤️_and_☕-red?style=for-the-badge)
+![Footer](https://img.shields.io/badge/Made_with-❤️_and_☕-yellow?style=for-the-badge)
 
 **🎭 Join us at Litlaya '25 — Where Literature Comes Alive! 🎭**
 
