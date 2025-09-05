@@ -226,9 +226,9 @@ const About = () => {
         >
           <div className="text-center">
             {/* DESKTOP header: Left Logo | Name | Right Logo */}
-            <div className="hidden md:flex items-center justify-center gap-6 mb-2">
+            <div className="hidden md:flex items-center justify-center gap-7 mb-2">
               {/* Left Logo */}
-              <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden shrink-0">
+              <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden">
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDFJahbEPx4fZYUIzN1lbjyJ-2_r7BonNw5g&s"
                   alt="College Logo"
@@ -242,11 +242,11 @@ const About = () => {
               </h2>
 
               {/* Right Logo */}
-              <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden shrink-0">
+              <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden">
                 <img
                   src="/year-logo.png"
                   alt="Department/Year Logo"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full"
                 />
               </div>
             </div>

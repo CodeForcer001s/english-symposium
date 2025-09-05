@@ -13,6 +13,7 @@ import {
   BookMarked,
   Library,
   PenTool,
+  QrCode,
   FileText,
   Sparkles,
   Star,
@@ -23,7 +24,7 @@ import {
   BookOpenCheck,
   Palette,
 } from "lucide-react";
-
+import { useQRCode } from "next-qrcode";
 // Define types for better type safety
 interface Coordinator {
   name: string;
@@ -100,7 +101,7 @@ const ContactPage: React.FC = () => {
   const [isClient, setIsClient] = useState<boolean>(false);
   const [randomPositions, setRandomPositions] = useState<RandomPosition[]>([]);
   const [emojiPositions, setEmojiPositions] = useState<EmojiPosition[]>([]);
-
+  const { Canvas } = useQRCode();
   useEffect(() => {
     setIsClient(true);
     // Generate random positions once on client
@@ -178,7 +179,8 @@ const ContactPage: React.FC = () => {
   ];
 
   return (
-    <section id="contact"
+    <section
+      id="contact"
       className="bg-black min-h-screen py-8 sm:py-12 md:py-16 lg:py-20 relative overflow-hidden border-2 sm:border-4 border-amber-500/30"
       style={{ fontFamily: "Times New Roman, serif" }}
     >
@@ -278,7 +280,7 @@ const ContactPage: React.FC = () => {
               ease: "linear",
             }}
           >
-            Literary Sanctum
+            Contact Details
           </motion.h1>
 
           <motion.p
@@ -317,7 +319,7 @@ const ContactPage: React.FC = () => {
                   className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-yellow-400"
                   style={{ fontFamily: "Brush Script MT, cursive" }}
                 >
-                  Literary Guardians
+                  Overall Co-ordinators
                 </h2>
               </motion.div>
 
@@ -438,6 +440,60 @@ const ContactPage: React.FC = () => {
                 ))}
               </div>
             </motion.div>
+
+            <motion.div
+              className="mt-10 group shadow-2xl flex flex-col items-center justify-center gap-6 bg-black/90 backdrop-blur-md border-2 sm:border-4 border-orange-500/60 rounded-2xl sm:rounded-3xl p-8 hover:shadow-orange-400/60 hover:border-orange-400/80 transition-all duration-500 hover:scale-[1.02]"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              {/* Heading & Paragraph */}
+              <div className="text-center max-w-2xl">
+                <h2
+                  className="text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-3"
+                  style={{ fontFamily: "Brush Script MT, cursive" }}
+                >
+                  Event Registration 🎟️
+                </h2>
+                <p className="text-orange-200/80 text-sm sm:text-base md:text-lg leading-relaxed">
+                  Scan the QR code below or click the button to register for the
+                  event. Secure your spot and be part of the amazing symposium
+                  experience!
+                </p>
+              </div>
+
+              {/* QR Code */}
+              <div className="p-4 bg-white rounded-xl shadow-xl">
+                <Canvas
+                  text="https://conoscenza2025.stjosephstechnology.ac.in/registration/"
+                  options={{
+                    type: "image/png",
+                    quality: 0.9,
+                    margin: 2,
+                    scale: 6,
+                    width: 180,
+                    color: {
+                      dark: "#d69e2e", // yellow-400
+                      light: "#ffffff",
+                    },
+                  }}
+                />
+              </div>
+
+              {/* Register Button */}
+              <motion.a
+                href="https://conoscenza2025.stjosephstechnology.ac.in/registration/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 rounded-xl text-lg font-semibold bg-gradient-to-r from-yellow-400 to-orange-500 text-white shadow-lg hover:from-yellow-500 hover:to-orange-500 transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <QrCode className="w-5 h-5" />
+                Register Here
+              </motion.a>
+            </motion.div>
           </div>
 
           {/* Right Column */}
@@ -462,7 +518,7 @@ const ContactPage: React.FC = () => {
                   className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-400"
                   style={{ fontFamily: "Brush Script MT, cursive" }}
                 >
-                  Literary Sanctuary
+                  Contact Details
                 </h2>
               </motion.div>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -35,14 +35,14 @@ const ListItem = React.forwardRef<
       <NavigationMenuLink asChild>
         <Link
           ref={ref}
-          className={`group block select-none space-y-1 rounded-lg p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-amber-400/10 hover:to-amber-500/5 hover:shadow-lg hover:shadow-amber-400/10 focus:bg-gradient-to-r focus:from-amber-400/10 focus:to-amber-500/5 border border-transparent hover:border-amber-400/20 ${className}`}
+          className={`group block select-none space-y-1 rounded-lg p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-[#3d2b1f] hover:shadow-lg hover:shadow-amber-400/10 focus:bg-[#3d2b1f] border border-transparent hover:border-amber-400 ${className}`}
           {...props}
         >
-          <div className="text-sm font-semibold leading-none text-amber-200 group-hover:text-amber-100 transition-colors duration-300 flex items-center">
+          <div className="text-sm font-semibold leading-none text-amber-200 group-hover:text-amber-300 transition-colors duration-300 flex items-center">
             <Sparkles className="w-3 h-3 mr-2 text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             {title}
           </div>
-          <p className="line-clamp-2 text-sm leading-snug text-slate-400 group-hover:text-slate-300 transition-colors duration-300">
+          <p className="line-clamp-2 text-sm leading-snug text-slate-400 group-hover:text-slate-200 transition-colors duration-300">
             {children}
           </p>
         </Link>
@@ -54,6 +54,7 @@ ListItem.displayName = "ListItem";
 
 const Header: React.FC = () => {
   const router = useRouter();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // State to control mobile menu
 
   // Function to handle section navigation
   const scrollToSection = (sectionId: string) => {
@@ -134,7 +135,7 @@ const Header: React.FC = () => {
                 {item.hasDropdown ? (
                   <>
                     <NavigationMenuTrigger
-                      className="bg-transparent text-amber-200 hover:bg-gradient-to-r hover:from-amber-400/10 hover:to-amber-500/5 focus:bg-gradient-to-r focus:from-amber-400/10 focus:to-amber-500/5 hover:text-amber-100 focus:text-amber-100 text-base font-semibold transition-all duration-300 border border-transparent hover:border-amber-400/20 rounded-lg px-4 py-2"
+                      className="bg-transparent text-amber-200 hover:bg-[#3d2b1f] focus:bg-[#3d2b1f] hover:text-amber-300 focus:text-amber-300 text-base font-semibold transition-all duration-300 border border-transparent hover:border-amber-400 rounded-lg px-4 py-2"
                       onClick={() => item.action && item.action()}
                     >
                       <Scroll className="w-4 h-4 mr-2 text-amber-400" />
@@ -193,7 +194,7 @@ const Header: React.FC = () => {
                         e.preventDefault();
                         item.action && item.action();
                       }}
-                      className={`${navigationMenuTriggerStyle()} bg-transparent text-amber-200 hover:bg-gradient-to-r hover:from-amber-400/10 hover:to-amber-500/5 focus:bg-gradient-to-r focus:from-amber-400/10 focus:to-amber-500/5 hover:text-amber-100 focus:text-amber-100 text-base font-semibold transition-all duration-300 border border-transparent hover:border-amber-400/20 rounded-lg px-4 py-2`}
+                      className={`${navigationMenuTriggerStyle()} bg-transparent text-amber-200 hover:bg-[#3d2b1f] focus:bg-[#3d2b1f] hover:text-amber-300 focus:text-amber-300 text-base font-semibold transition-all duration-300 border border-transparent hover:border-amber-400 rounded-lg px-4 py-2`}
                     >
                       {item.title}
                     </a>
@@ -224,12 +225,12 @@ const Header: React.FC = () => {
 
           {/* Mobile Navigation */}
           <div className="lg:hidden">
-            <Sheet>
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="text-amber-400 hover:bg-gradient-to-r hover:from-amber-400/10 hover:to-amber-500/5 hover:text-amber-300 transition-all duration-300 rounded-lg border border-transparent hover:border-amber-400/20"
+                  className="text-amber-400 hover:bg-[#3d2b1f] hover:text-amber-300 transition-all duration-300 rounded-lg border border-transparent hover:border-amber-400"
                 >
                   <MenuIcon className="h-6 w-6" />
                   <span className="sr-only">Toggle navigation menu</span>
@@ -237,7 +238,7 @@ const Header: React.FC = () => {
               </SheetTrigger>
               <SheetContent
                 side="right"
-                className="bg-black/95 backdrop-blur-xl text-slate-50 border-l-2 border-amber-400/30 w-[250px] sm:w-[300px] shadow-2xl shadow-amber-400/10"
+                className="bg-black/95 backdrop-blur-xl text-slate-50 border-l-2 border-amber-400/30 w-[250px] sm:w-[300px] shadow-2xl shadow-amber-400/10 [&>button]:hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-amber-400/5 to-transparent"></div>
                 <SheetHeader className="border-b border-amber-400/20 pb-4 mb-6 relative">
@@ -266,8 +267,11 @@ const Header: React.FC = () => {
                         transition={{ delay: index * 0.1 }}
                       >
                         <span
-                          className="flex items-center px-4 py-3 text-lg font-semibold text-amber-200 cursor-pointer hover:bg-gradient-to-r hover:from-amber-400/10 hover:to-amber-500/5 transition-all duration-300 rounded-lg border border-transparent hover:border-amber-400/20"
-                          onClick={() => item.action && item.action()}
+                          className="flex items-center px-4 py-3 text-lg font-semibold text-amber-200 cursor-pointer hover:bg-[#3d2b1f] hover:text-amber-300 transition-all duration-300 rounded-lg border border-transparent hover:border-amber-400"
+                          onClick={() => {
+                            if (item.action) item.action();
+                            setIsMobileMenuOpen(false); // Close menu on click
+                          }}
                         >
                           <Scroll className="w-5 h-5 mr-3 text-amber-400" />
                           {item.title}
@@ -278,8 +282,9 @@ const Header: React.FC = () => {
                             onClick={(e) => {
                               e.preventDefault();
                               scrollToSection("events");
+                              setIsMobileMenuOpen(false); // Close menu on click
                             }}
-                            className="text-slate-300 hover:text-amber-200 transition-colors duration-300 text-base py-2 hover:bg-gradient-to-r hover:from-amber-400/5 hover:to-transparent rounded-md px-2"
+                            className="text-slate-300 hover:text-amber-300 transition-colors duration-300 text-base py-2 hover:bg-[#3d2b1f]/60 rounded-md px-2"
                           >
                             <Crown className="w-4 h-4 mr-2 inline text-amber-400" />
                             Overview
@@ -288,7 +293,8 @@ const Header: React.FC = () => {
                             <Link
                               key={event.id}
                               href={`/events/${event.id}`}
-                              className="text-slate-300 hover:text-amber-200 transition-colors duration-300 text-base py-2 hover:bg-gradient-to-r hover:from-amber-400/5 hover:to-transparent rounded-md px-2"
+                              onClick={() => setIsMobileMenuOpen(false)} // Close menu on click
+                              className="text-slate-300 hover:text-amber-300 transition-colors duration-300 text-base py-2 hover:bg-[#3d2b1f]/60 rounded-md px-2"
                             >
                               <Sparkles className="w-3 h-3 mr-2 inline text-amber-400/70" />
                               {event.title}
@@ -305,8 +311,11 @@ const Header: React.FC = () => {
                       >
                         <Button
                           variant="ghost"
-                          className="justify-start text-amber-200 hover:bg-gradient-to-r hover:from-amber-400/10 hover:to-amber-500/5 focus:bg-gradient-to-r focus:from-amber-400/10 focus:to-amber-500/5 hover:text-amber-100 focus:text-amber-100 text-lg font-semibold transition-all duration-300 rounded-lg border border-transparent hover:border-amber-400/20 w-full"
-                          onClick={() => item.action && item.action()}
+                          className="justify-start text-amber-200 hover:bg-[#3d2b1f] focus:bg-[#3d2b1f] hover:text-amber-300 focus:text-amber-300 text-lg font-semibold transition-all duration-300 rounded-lg border border-transparent hover:border-amber-400 w-full"
+                          onClick={() => {
+                            if (item.action) item.action();
+                            setIsMobileMenuOpen(false); // Close menu on click
+                          }}
                         >
                           {item.title}
                         </Button>

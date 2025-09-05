@@ -152,7 +152,7 @@ export const eventsData: Event[] = [
         description:
           "Participants are given short plot synopses, disguised character arcs, or shuffled storylines. They must deduce the correct author or title. This round tests deep reading and critical analysis. Top scorers proceed to the finals.",
         cardImage:
-          "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=600&fit=crop",
+          "/penman-round-1.jpg",
         mysticalSymbol: "🔍",
         arcana: "The Hermit",
       },
@@ -161,7 +161,7 @@ export const eventsData: Event[] = [
         description:
           "Finalists will be presented with layered clues—quotes, paraphrased plotlines, or obscured character identifiers—and must match them to authors, genres, or periods. Bonus rounds may include buzzer questions and red herrings to elevate difficulty.",
         cardImage:
-          "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&h=600&fit=crop",
+          "/penman-round-2.jpg",
         mysticalSymbol: "🗝️",
         arcana: "The High Priestess",
       },
@@ -283,7 +283,7 @@ export const eventsData: Event[] = [
     icon: Key,
     color: "from-yellow-600 via-amber-500 to-yellow-600",
     coverImage:
-      "https://thumbs.dreamstime.com/b/mysterious-figure-green-lit-crypt-what-lone-figure-sits-dimly-lit-crypt-surrounded-candles-pool-water-who-335748357.jpg",
+      "/litcrypt.jpg",
     teamComposition: "3 Members",
     venue: "The Cipher Hall",
     date: "March 18th, 2025",

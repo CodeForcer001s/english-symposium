@@ -250,7 +250,8 @@ const EventBlock: React.FC<EventBlockProps> = ({ event, onClick }) => {
 
   return (
     <motion.div
-     id="schedule" className={`flex flex-col justify-center items-center text-center p-2 rounded-lg border-2 border-amber-600/30 text-white text-xs font-semibold cursor-pointer transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:border-amber-400 ${color} ${hoverColor}`}
+      id="schedule"
+      className={`flex flex-col justify-center items-center text-center p-2 rounded-lg border-2 border-amber-600/30 text-white text-xs font-semibold cursor-pointer transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:border-amber-400 ${color} ${hoverColor}`}
       style={{
         gridColumnStart: timeSlot,
         gridColumnEnd: timeSlot + duration,
@@ -264,7 +265,7 @@ const EventBlock: React.FC<EventBlockProps> = ({ event, onClick }) => {
         visible: {
           opacity: 1,
           y: 0,
-          transition: { duration: 0.6, ease: "easeOut" },
+          transition: { duration: 0.3, ease: "easeOut" },
         },
       }}
     >
@@ -377,21 +378,12 @@ const Modal: React.FC<ModalProps> = ({ event, onClose }) => {
 const EventTimeline: React.FC = () => {
   const [selectedEvent, setSelectedEvent] = useState<EventData | null>(null);
 
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
-  };
-
   const staggerContainer = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.05, // Faster stagger
       },
     },
   };
@@ -422,7 +414,10 @@ const EventTimeline: React.FC = () => {
   const maxRows = Math.max(...eventsData.map((event) => event.row)) + 1;
 
   return (
-    <section id="schedule" className="min-h-screen bg-black text-slate-200 py-20 px-4 sm:px-6 lg:px-8">
+    <section
+      id="schedule"
+      className="min-h-screen bg-black text-slate-200 py-20 px-4 sm:px-6 lg:px-8"
+    >
       {/* Subtle background pattern */}
       <div
         className="absolute inset-0 opacity-5"
@@ -437,11 +432,11 @@ const EventTimeline: React.FC = () => {
           className="text-center mb-16"
           variants={{
             hidden: { opacity: 0, y: 20 },
-            visible: { 
-              opacity: 1, 
+            visible: {
+              opacity: 1,
               y: 0,
-              transition: { type: "tween", duration: 0.6, ease: "easeOut" }
-            }
+              transition: { type: "tween", duration: 0.3, ease: "easeOut" },
+            },
           }}
           initial="hidden"
           whileInView="visible"
@@ -474,11 +469,11 @@ const EventTimeline: React.FC = () => {
           className="max-w-7xl mx-auto rounded-2xl border-2 border-amber-600/30 bg-slate-900/30 p-3 md:p-6 shadow-2xl backdrop-blur-sm"
           variants={{
             hidden: { opacity: 0, y: 20 },
-            visible: { 
-              opacity: 1, 
+            visible: {
+              opacity: 1,
               y: 0,
-              transition: { type: "tween", duration: 0.6, ease: "easeOut" }
-            }
+              transition: { type: "tween", duration: 0.3, ease: "easeOut" },
+            },
           }}
           initial="hidden"
           whileInView="visible"
@@ -508,11 +503,15 @@ const EventTimeline: React.FC = () => {
                   }}
                   variants={{
                     hidden: { opacity: 0, y: 20 },
-                    visible: { 
+                    visible: {
                       opacity: 1,
                       y: 0,
-                      transition: { type: "tween", duration: 0.6, ease: "easeOut" }
-                    }
+                      transition: {
+                        type: "tween",
+                        duration: 0.3,
+                        ease: "easeOut",
+                      },
+                    },
                   }}
                 >
                   {time}
@@ -542,8 +541,12 @@ const EventTimeline: React.FC = () => {
                   visible: {
                     opacity: 1,
                     y: 0,
-                    transition: { type: "tween", duration: 0.6, ease: "easeOut" }
-                  }
+                    transition: {
+                      type: "tween",
+                      duration: 0.3,
+                      ease: "easeOut",
+                    },
+                  },
                 }}
                 whileHover={{ scale: 1.05 }}
               >
@@ -587,11 +590,15 @@ const EventTimeline: React.FC = () => {
                     }}
                     variants={{
                       hidden: { opacity: 0, y: 20 },
-                      visible: { 
+                      visible: {
                         opacity: 1,
                         y: 0,
-                        transition: { type: "tween", duration: 0.6, ease: "easeOut" }
-                      }
+                        transition: {
+                          type: "tween",
+                          duration: 0.3,
+                          ease: "easeOut",
+                        },
+                      },
                     }}
                   >
                     {time}
@@ -618,11 +625,15 @@ const EventTimeline: React.FC = () => {
                   }}
                   variants={{
                     hidden: { opacity: 0, y: 20 },
-                    visible: { 
+                    visible: {
                       opacity: 1,
                       y: 0,
-                      transition: { type: "tween", duration: 0.6, ease: "easeOut" }
-                    }
+                      transition: {
+                        type: "tween",
+                        duration: 0.3,
+                        ease: "easeOut",
+                      },
+                    },
                   }}
                 >
                   <Award className="w-6 h-6 mb-1 animate-pulse" />
@@ -638,11 +649,11 @@ const EventTimeline: React.FC = () => {
               className="flex justify-center mt-4"
               variants={{
                 hidden: { opacity: 0, y: 20 },
-                visible: { 
+                visible: {
                   opacity: 1,
                   y: 0,
-                  transition: { type: "tween", duration: 0.6, ease: "easeOut" }
-                }
+                  transition: { type: "tween", duration: 0.3, ease: "easeOut" },
+                },
               }}
               initial="hidden"
               whileInView="visible"
@@ -662,11 +673,11 @@ const EventTimeline: React.FC = () => {
           className="mt-8 max-w-5xl mx-auto"
           variants={{
             hidden: { opacity: 0, y: 20 },
-            visible: { 
+            visible: {
               opacity: 1,
               y: 0,
-              transition: { type: "tween", duration: 0.6, ease: "easeOut" }
-            }
+              transition: { type: "tween", duration: 0.3, ease: "easeOut" },
+            },
           }}
           initial="hidden"
           whileInView="visible"
@@ -683,11 +694,15 @@ const EventTimeline: React.FC = () => {
               className="flex items-center space-x-2 bg-purple-900/50 p-3 rounded-lg border border-amber-600/20"
               variants={{
                 hidden: { opacity: 0, y: 20 },
-                visible: { 
+                visible: {
                   opacity: 1,
                   y: 0,
-                  transition: { type: "tween", duration: 0.6, ease: "easeOut" }
-                }
+                  transition: {
+                    type: "tween",
+                    duration: 0.3,
+                    ease: "easeOut",
+                  },
+                },
               }}
             >
               <Feather className="w-4 h-4 text-amber-400" />
@@ -697,11 +712,15 @@ const EventTimeline: React.FC = () => {
               className="flex items-center space-x-2 bg-rose-900/50 p-3 rounded-lg border border-amber-600/20"
               variants={{
                 hidden: { opacity: 0, y: 20 },
-                visible: { 
+                visible: {
                   opacity: 1,
                   y: 0,
-                  transition: { type: "tween", duration: 0.6, ease: "easeOut" }
-                }
+                  transition: {
+                    type: "tween",
+                    duration: 0.3,
+                    ease: "easeOut",
+                  },
+                },
               }}
             >
               <Mic className="w-4 h-4 text-amber-400" />
@@ -711,11 +730,15 @@ const EventTimeline: React.FC = () => {
               className="flex items-center space-x-2 bg-emerald-900/50 p-3 rounded-lg border border-amber-600/20"
               variants={{
                 hidden: { opacity: 0, y: 20 },
-                visible: { 
+                visible: {
                   opacity: 1,
                   y: 0,
-                  transition: { type: "tween", duration: 0.6, ease: "easeOut" }
-                }
+                  transition: {
+                    type: "tween",
+                    duration: 0.3,
+                    ease: "easeOut",
+                  },
+                },
               }}
             >
               <BookOpen className="w-4 h-4 text-amber-400" />
@@ -725,11 +748,15 @@ const EventTimeline: React.FC = () => {
               className="flex items-center space-x-2 bg-indigo-900/50 p-3 rounded-lg border border-amber-600/20"
               variants={{
                 hidden: { opacity: 0, y: 20 },
-                visible: { 
+                visible: {
                   opacity: 1,
                   y: 0,
-                  transition: { type: "tween", duration: 0.6, ease: "easeOut" }
-                }
+                  transition: {
+                    type: "tween",
+                    duration: 0.3,
+                    ease: "easeOut",
+                  },
+                },
               }}
             >
               <Star className="w-4 h-4 text-amber-400" />
@@ -743,11 +770,11 @@ const EventTimeline: React.FC = () => {
           className="mt-8 max-w-4xl mx-auto bg-slate-900/50 rounded-xl p-6 border border-amber-600/20"
           variants={{
             hidden: { opacity: 0, y: 20 },
-            visible: { 
+            visible: {
               opacity: 1,
               y: 0,
-              transition: { type: "tween", duration: 0.6, ease: "easeOut" }
-            }
+              transition: { type: "tween", duration: 0.3, ease: "easeOut" },
+            },
           }}
           initial="hidden"
           whileInView="visible"
@@ -764,11 +791,15 @@ const EventTimeline: React.FC = () => {
               className="bg-slate-800/50 p-4 rounded-lg border border-amber-600/20"
               variants={{
                 hidden: { opacity: 0, y: 20 },
-                visible: { 
+                visible: {
                   opacity: 1,
                   y: 0,
-                  transition: { type: "tween", duration: 0.6, ease: "easeOut" }
-                }
+                  transition: {
+                    type: "tween",
+                    duration: 0.3,
+                    ease: "easeOut",
+                  },
+                },
               }}
             >
               <h4 className="text-amber-400 font-bold mb-2">
@@ -785,11 +816,15 @@ const EventTimeline: React.FC = () => {
               className="bg-slate-800/50 p-4 rounded-lg border border-amber-600/20"
               variants={{
                 hidden: { opacity: 0, y: 20 },
-                visible: { 
+                visible: {
                   opacity: 1,
                   y: 0,
-                  transition: { type: "tween", duration: 0.6, ease: "easeOut" }
-                }
+                  transition: {
+                    type: "tween",
+                    duration: 0.3,
+                    ease: "easeOut",
+                  },
+                },
               }}
             >
               <h4 className="text-amber-400 font-bold mb-2">
@@ -803,21 +838,22 @@ const EventTimeline: React.FC = () => {
               </ul>
             </motion.div>
           </motion.div>
-          <motion.div 
-            className="mt-4 text-center" 
+          <motion.div
+            className="mt-4 text-center"
             variants={{
               hidden: { opacity: 0, y: 20 },
-              visible: { 
-                opacity: 1, 
+              visible: {
+                opacity: 1,
                 y: 0,
-                transition: { type: "tween", duration: 0.6, ease: "easeOut" }
-              }
+                transition: { type: "tween", duration: 0.3, ease: "easeOut" },
+              },
             }}
           >
             <div className="flex items-center justify-center text-amber-400">
               <Feather className="w-4 h-4 mr-2" />
               <span className="text-sm italic">
-                &ldquo;A day where words become wings and ideas take flight&rdquo;
+                &ldquo;A day where words become wings and ideas take
+                flight&rdquo;
               </span>
             </div>
           </motion.div>
