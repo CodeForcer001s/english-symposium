@@ -85,7 +85,7 @@ export const eventsData: Event[] = [
       },
     ],
     generalRules: [
-      "This is an individual event.",
+      "Each team must consist of 1-2 members.",
       "Time limits must be strictly followed.",
       "Use of offensive or inappropriate content is prohibited.",
       "No external aids (notes, phones, props, etc.) are allowed.",
@@ -254,7 +254,7 @@ export const eventsData: Event[] = [
     coordinators: [
       {
         name: "Suji S",
-        role: "Coordinator",
+        role: "Event Head",
         phone: "+91 9092631365",
         image: "https://randomuser.me/api/portraits/women/9.jpg",
       },
@@ -336,8 +336,14 @@ export const eventsData: Event[] = [
     ],
     coordinators: [
       {
-        name: "Abishek",
+        name: "Gunapriya R",
         role: "Event Head",
+        phone: "8148894259",
+        image: "https://randomuser.me/api/portraits/women/15.jpg",
+      },
+      {
+        name: "Abishek",
+        role: "Co-ordinator",
         phone: "7200471396",
         image: "https://randomuser.me/api/portraits/men/11.jpg",
       },
@@ -359,12 +365,6 @@ export const eventsData: Event[] = [
         phone: "7200460864",
         image: "https://randomuser.me/api/portraits/women/14.jpg",
       },
-      {
-        name: "Gunapriya R",
-        role: "Co-ordinator",
-        phone: "8148894259",
-        image: "https://randomuser.me/api/portraits/women/15.jpg",
-      },
     ],
     mysticalTheme: {
       primaryColor: "violet",
@@ -376,13 +376,13 @@ export const eventsData: Event[] = [
   {
     id: "eloquentia",
     title: "ELOQUENTIA",
-    subtitle: "Oratory Challenge",
+    subtitle: "The Art of Expression",
     tagline: "Command the stage.",
     description:
-      "Demonstrate the art of public speaking through impromptu speeches, dramatic recitations, and persuasive presentations.",
+      "Demonstrate your oratory prowess in a three-round challenge assessing fluency, articulation, and persuasive communication. Face an impromptu Extempore, conquer the fast-paced Just-A-Minute (JAM), and command the stage in a final Debate or Persuasive Speech.",
     icon: Mic,
     color: "from-yellow-600 via-amber-500 to-yellow-600",
-    coverImage: "/eloquentia-image.jpg",
+    coverImage: "/eloquentia.jpg",
     teamComposition: "Individual",
     venue: "AV Hall I",
     registerLink:
@@ -391,18 +391,27 @@ export const eventsData: Event[] = [
     time: "8:00 PM - 3:00 PM",
     eventStructure: [
       {
-        title: "Preliminary Round",
+        title: "Round 1: Extempore (Speak Your Mind)",
         description:
-          "Participants select from a set of literary and social themes and must speak for 2 minutes on the chosen topic. Judging will be based on content, clarity, and confidence.",
+          "Participants pick a topic randomly and must speak for 2 minutes with only 30 seconds of preparation. Judging is based on confidence, clarity, vocabulary, relevance, and time management.",
         cardImage:
-          "https://www.brainwonders.in/blog_feature_images/2021/11/2021-11-13-10-47-57Public_speaking_Banner_Image.webp",
+          "/eloquentia-round-1.jpg",
         mysticalSymbol: "🎤",
         arcana: "Strength",
       },
       {
-        title: "Final Round",
+        title: "Round 2: Just A Minute (JAM)",
         description:
-          "Participants are given on-the-spot topics with limited preparation time. They must deliver a structured and impactful speech. Surprise formats such as debate or rebuttal may be included.",
+          "Speak for one minute on a given word/phrase without hesitation, deviation, or repetition. This round tests your flow of speech, originality, and creativity under pressure.",
+        cardImage:
+          "https://www.debatingsa.org.au/wp-content/uploads/2021/08/just-a-minute-logo-1024x576-1.png",
+        mysticalSymbol: "⏱️",
+        arcana: "The Chariot",
+      },
+      {
+        title: "Round 3: Debate / Persuasive Speech (Final Round)",
+        description:
+          "Finalists will be divided into teams for a debate on a given motion OR will deliver a 3-minute persuasive speech. This round evaluates logic, persuasiveness, rebuttal strength, and delivery.",
         cardImage:
           "https://i.ytimg.com/vi/ZV9sUy0XM00/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBzh2hdZnGun_Ufums6j1ixHsdSZg",
         mysticalSymbol: "👑",
