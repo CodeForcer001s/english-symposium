@@ -21,7 +21,13 @@ const Hero = () => {
     seconds: 0,
   });
 
+  // FIX #1: Add a state to track if the component has mounted
+  const [isMounted, setIsMounted] = useState(false);
+
   useEffect(() => {
+    // This now runs only on the client
+    setIsMounted(true);
+
     const targetDate = new Date("2025-09-13T09:00:00").getTime();
 
     const timer = setInterval(() => {
@@ -38,7 +44,6 @@ const Hero = () => {
           seconds: Math.floor((difference % (1000 * 60)) / 1000),
         });
       } else {
-        // Stop the timer if the date is reached
         clearInterval(timer);
       }
     }, 1000);
@@ -54,16 +59,20 @@ const Hero = () => {
     delay: number;
   };
 
-  // Optimized state initialization to run only once on mount
-  const [stars] = useState<StarData[]>(() =>
-    Array.from({ length: 8 }).map((_, i) => ({
+  // FIX #2: Initialize stars state as empty, then populate in useEffect
+  const [stars, setStars] = useState<StarData[]>([]);
+
+  useEffect(() => {
+    // Generate stars only on the client-side to avoid hydration mismatch
+    const generatedStars = Array.from({ length: 8 }).map((_, i) => ({
       id: i,
       top: Math.random() * 60 + 20,
       left: Math.random() * 60 + 20,
       duration: 4 + Math.random() * 4,
       delay: Math.random() * 2,
-    }))
-  );
+    }));
+    setStars(generatedStars);
+  }, []); // Empty dependency array ensures this runs once on mount
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900">
@@ -393,39 +402,38 @@ const Hero = () => {
       </div>
 
       {/* Enhanced floating particles - colors are fine for dark theme */}
-      <div className="absolute inset-0 pointer-events-none">
-        {Array.from({ length: 20 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className={`absolute rounded-full ${
-              i % 3 === 0
-                ? "w-1 h-1 sm:w-2 sm:h-2 md:w-3 md:h-3 bg-amber-400/40"
-                : i % 3 === 1
-                ? "w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-yellow-500/30"
-                : "w-0.5 h-0.5 sm:w-1 sm:h-1 bg-orange-400/50"
-            }`}
-            initial={{
-              x:
-                Math.random() *
-                (typeof window !== "undefined" ? window.innerWidth : 1200),
-              y: typeof window !== "undefined" ? window.innerHeight + 10 : 800,
-            }}
-            animate={{
-              y: -50,
-              x:
-                Math.random() *
-                (typeof window !== "undefined" ? window.innerWidth : 1200),
-              rotate: [0, 360],
-            }}
-            transition={{
-              duration: Math.random() * 15 + 15,
-              repeat: Infinity,
-              ease: "linear",
-              delay: Math.random() * 10,
-            }}
-          />
-        ))}
-      </div>
+      {/* FIX #3: Conditionally render this entire block only on the client */}
+      {isMounted && (
+        <div className="absolute inset-0 pointer-events-none">
+          {Array.from({ length: 20 }).map((_, i) => (
+            <motion.div
+              key={i}
+              className={`absolute rounded-full ${
+                i % 3 === 0
+                  ? "w-1 h-1 sm:w-2 sm:h-2 md:w-3 md:h-3 bg-amber-400/40"
+                  : i % 3 === 1
+                  ? "w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-yellow-500/30"
+                  : "w-0.5 h-0.5 sm:w-1 sm:h-1 bg-orange-400/50"
+              }`}
+              initial={{
+                x: Math.random() * window.innerWidth,
+                y: window.innerHeight + 10,
+              }}
+              animate={{
+                y: -50,
+                x: Math.random() * window.innerWidth,
+                rotate: [0, 360],
+              }}
+              transition={{
+                duration: Math.random() * 15 + 15,
+                repeat: Infinity,
+                ease: "linear",
+                delay: Math.random() * 10,
+              }}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Ambient light effect - will pop nicely on dark theme */}
       <div className="absolute inset-0 pointer-events-none">

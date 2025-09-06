@@ -382,7 +382,7 @@ export const eventsData: Event[] = [
       "Demonstrate the art of public speaking through impromptu speeches, dramatic recitations, and persuasive presentations.",
     icon: Mic,
     color: "from-yellow-600 via-amber-500 to-yellow-600",
-    coverImage: "/eloquentia.jpg",
+    coverImage: "/eloquentia-image.jpg",
     teamComposition: "Individual",
     venue: "AV Hall I",
     registerLink:
