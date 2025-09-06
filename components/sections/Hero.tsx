@@ -289,7 +289,7 @@ const Hero = () => {
           >
             <MapPin className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-amber-400" />
             <span className="font-semibold text-slate-100 text-xs sm:text-sm md:text-base lg:text-lg">
-              College Auditorium
+              St. Joseph's Institute of Technology, Chennai.
             </span>
           </motion.div>
         </motion.div>
