@@ -45,7 +45,7 @@ export const eventsData: Event[] = [
   {
     id: "litwit",
     title: "LITWIT",
-    subtitle: "Literature Quiz with a Twist",
+    subtitle: "The Art of Spontaneity",
     tagline: "Think fast, talk faster.",
     description:
       "An unconventional quiz where participants build stories on the fly, deliver dramatic speeches, and report on chaotic news, testing creativity, adaptability, and wit.",
@@ -60,25 +60,25 @@ export const eventsData: Event[] = [
     time: "8:00 PM - 3:00 PM",
     eventStructure: [
       {
-        title: "Preliminary Round – Twist-a-Tale",
+        title: "Preliminary Round – Similar Sense",
         description:
-          "Participants are given a sentence prompt and must build a short story within the given time. The host may interrupt and alter the story direction, and participants must adapt instantly. Creativity, adaptability, and fluency will determine who qualifies for the next round.",
+          "This round is a quick-fire quiz where participants must identify the correct synonyms for the given words. The challenge tests their speed, vocabulary knowledge, and accuracy, with only the sharpest participants qualifying for the next round.",
         cardImage: "/litwit-round-1.jpg",
         mysticalSymbol: "🌟",
         arcana: "The Fool's Journey",
       },
       {
-        title: "Semi-Final Round – Oscar Speech",
+        title: "Semi-Final Round – Flash Fiction",
         description:
-          "Participants pick a random award category and deliver a one-minute humorous and engaging thank you speech. Judging is based on creativity, humor, and delivery.",
+          "In this round, participants will be given three unrelated words and must creatively weave them into a short story. They will have 2 minutes of brainstorming time before presenting their story, which will be judged based on creativity, coherence, and fluency, highlighting both imagination and storytelling skills.",
         cardImage: "/litwit-round-2.jpg",
         mysticalSymbol: "🎭",
         arcana: "The Magician",
       },
       {
-        title: "Final Round – Newsroom Chaos",
+        title: "Final Round – Reverse Talk",
         description:
-          "Participants act as news anchors and must deliver a serious one-minute news report using three random, unrelated words. Creativity, humor, adaptability, and fluency will decide the winner.",
+          "In this round, participants will be given a topic to speak on, but with a twist — if the host says “Pros”, they must instantly respond with a Con, and if the host says “Cons”, they must quickly counter with a Pro. The challenge tests their quick thinking, adaptability, and ability to present relevant points, with the most spontaneous and logical speaker emerging as the winner.",
         cardImage: "/litwit-round-3.jpg",
         mysticalSymbol: "⚡",
         arcana: "The Tower",
@@ -100,25 +100,25 @@ export const eventsData: Event[] = [
       },
       {
         name: "Jostina Rachel",
-        role: "Co-coordinator",
+        role: "Co-ordinator",
         phone: "9094057388",
         image: "https://randomuser.me/api/portraits/women/2.jpg",
       },
       {
         name: "Manashaa U",
-        role: "Co-coordinator",
+        role: "Co-ordinator",
         phone: "7200048392",
         image: "https://randomuser.me/api/portraits/women/3.jpg",
       },
       {
         name: "Jayamkuru Karthik N",
-        role: "Co-coordinator",
+        role: "Co-ordinator",
         phone: "9363392004",
         image: "https://randomuser.me/api/portraits/men/4.jpg",
       },
       {
         name: "Kishore Kumar S",
-        role: "Co-coordinator",
+        role: "Co-ordinator",
         phone: "9345575478",
         image: "https://randomuser.me/api/portraits/men/5.jpg",
       },
@@ -133,39 +133,39 @@ export const eventsData: Event[] = [
   {
     id: "penman",
     title: "PENMAN'S CODE",
-    subtitle: "Author and Plot Deduction",
+    subtitle: "Words bleed fear",
     tagline: "Unlock the secrets of literature.",
     description:
-      "Decode mysterious clues to identify famous authors and their masterworks through layered puzzles and plot deductions.",
+      "Step into a world of mystery, thrill, and chills with our ultimate quiz challenge, where quotes and image clues from books, movies, and TV series test your wits — only the fastest and sharpest minds will make it through!",
     icon: Search,
     color: "from-yellow-600 via-amber-500 to-yellow-600",
     coverImage: "/penman.jpg",
     registerLink:
       "https://conoscenza2025.stjosephstechnology.ac.in/registration/",
-    teamComposition: "2 Members",
+    teamComposition: "2 - 3 Members",
     venue: "AV Hall III",
     date: "September 13th, 2025",
     time: "8:00 PM - 3:00 PM",
     eventStructure: [
       {
-        title: "Prelims",
+        title: "Prelims - Connect and conquer",
         description:
-          "Participants are given short plot synopses, disguised character arcs, or shuffled storylines. They must deduce the correct author or title. This round tests deep reading and critical analysis. Top scorers proceed to the finals.",
+          "This round is based on the Horror, Thriller, and Fantasy Mystery genres, drawing inspiration from literature, TV series, and movies. Each question will present participants with 2 to 4 images that serve as visual clues, collectively hinting at a character, title, or genre-related word. Participants must carefully analyze the clues and identify the correct answer within 30 seconds. The shortlisting of teams will be done based on their scores, rewarding both accuracy and quick thinking.",
         cardImage: "/penman-round-1.jpg",
         mysticalSymbol: "🔍",
         arcana: "The Hermit",
       },
       {
-        title: "Finals",
+        title: "Finals - Thrill to chill",
         description:
-          "Finalists will be presented with layered clues—quotes, paraphrased plotlines, or obscured character identifiers—and must match them to authors, genres, or periods. Bonus rounds may include buzzer questions and red herrings to elevate difficulty.",
+          "In this round, each team will be given a scene from a well-known book, movie, or series belonging to the Horror, Thriller, or Fantasy Mystery genres. The challenge is to recreate the scene in a comic way, transforming fear into laughter through humor, exaggeration, and unexpected twists. Teams will be given 3 minutes to prepare and a maximum of 5 minutes to perform their act. Performances will be evaluated based on acting and expression, comedic recreation of the scene, team coordination, creativity, execution, and overall humor, ensuring a fun-filled and entertaining experience for both participants and the audience.",
         cardImage: "/penman-round-2.jpg",
         mysticalSymbol: "🗝️",
         arcana: "The High Priestess",
       },
     ],
     generalRules: [
-      "Each team must consist of 2 members.",
+      "Each team must consist of 2 - 3 members.",
       "Use of mobile phones or reference material is strictly prohibited.",
       "The decision of the judges/organizers will be final and binding.",
     ],
@@ -178,25 +178,25 @@ export const eventsData: Event[] = [
       },
       {
         name: "JASLINE G",
-        role: "Co-coordinator",
+        role: "Co-ordinator",
         phone: "7904955221",
         image: "https://randomuser.me/api/portraits/women/7.jpg",
       },
       {
         name: "M.SASIDHARAN",
-        role: "Co-coordinator",
+        role: "Co-ordinator",
         phone: "9500009481",
         image: "https://randomuser.me/api/portraits/men/8.jpg",
       },
       {
         name: "V.C.SRIRAAM",
-        role: "Co-coordinator",
+        role: "Co-ordinator",
         phone: "7305896363",
         image: "https://randomuser.me/api/portraits/men/9.jpg",
       },
       {
         name: "HEMANTH R",
-        role: "Co-coordinator",
+        role: "Co-ordinator",
         phone: "8754406927",
         image: "https://randomuser.me/api/portraits/men/10.jpg",
       },
@@ -217,8 +217,7 @@ export const eventsData: Event[] = [
       "Challenge your memory of literary quotations by matching famous lines to their authors and original works in themed rounds.",
     icon: Quote,
     color: "from-yellow-600 via-amber-500 to-yellow-600",
-    coverImage:
-      "https://static.vecteezy.com/system/resources/previews/010/354/340/non_2x/poetry-day-background-template-free-vector.jpg",
+    coverImage: "/mindquote.jpg",
     teamComposition: "2–3 Members",
     venue: "AV Hall I",
     registerLink:
@@ -344,25 +343,25 @@ export const eventsData: Event[] = [
       },
       {
         name: "Abhinaya",
-        role: "Co-coordinator",
+        role: "Co-ordinator",
         phone: "6379068324",
         image: "https://randomuser.me/api/portraits/women/12.jpg",
       },
       {
         name: "Harikrishnan",
-        role: "Co-coordinator",
+        role: "Co-ordinator",
         phone: "7010438341",
         image: "https://randomuser.me/api/portraits/men/13.jpg",
       },
       {
         name: "Abinaya M",
-        role: "Co-coordinator",
+        role: "Co-ordinator",
         phone: "7200460864",
         image: "https://randomuser.me/api/portraits/women/14.jpg",
       },
       {
         name: "Gunapriya R",
-        role: "Co-coordinator",
+        role: "Co-ordinator",
         phone: "8148894259",
         image: "https://randomuser.me/api/portraits/women/15.jpg",
       },
@@ -383,8 +382,7 @@ export const eventsData: Event[] = [
       "Demonstrate the art of public speaking through impromptu speeches, dramatic recitations, and persuasive presentations.",
     icon: Mic,
     color: "from-yellow-600 via-amber-500 to-yellow-600",
-    coverImage:
-      "https://upload.wikimedia.org/wikipedia/commons/4/4a/Eloquentia.jpg",
+    coverImage: "/eloquentia.jpg",
     teamComposition: "Individual",
     venue: "AV Hall I",
     registerLink:
@@ -420,32 +418,33 @@ export const eventsData: Event[] = [
     ],
     coordinators: [
       {
-        name: "Varshini R",
-        role: "Event Head",
-        phone: "9176985071",
-        image: "https://randomuser.me/api/portraits/women/16.jpg",
-      },
-      {
         name: "Sharmila O",
-        role: "Co-coordinator",
+        role: "Event Head",
         phone: "9566876742",
         image: "https://randomuser.me/api/portraits/women/17.jpg",
       },
       {
+        name: "Varshini R",
+        role: "Co-ordinator",
+        phone: "9176985071",
+        image: "https://randomuser.me/api/portraits/women/16.jpg",
+      },
+
+      {
         name: "Harini T",
-        role: "Co-coordinator",
+        role: "Co-ordinator",
         phone: "8667455451",
         image: "https://randomuser.me/api/portraits/women/18.jpg",
       },
       {
         name: "Joshva D",
-        role: "Co-coordinator",
+        role: "Co-ordinator",
         phone: "9677370450",
         image: "https://randomuser.me/api/portraits/men/19.jpg",
       },
       {
         name: "Taasha V",
-        role: "Co-coordinator",
+        role: "Co-ordinator",
         phone: "9080344640",
         image: "https://randomuser.me/api/portraits/women/20.jpg",
       },

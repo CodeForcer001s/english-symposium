@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import {
   Feather,
@@ -47,42 +47,57 @@ const backgroundIcons = [
 ];
 
 const EventsOverview = () => {
-  const [backgroundElements, setBackgroundElements] = useState<any[]>([]);
-  const [floatingElements, setFloatingElements] = useState<any[]>([]);
   const [isMounted, setIsMounted] = useState(false);
 
-  useEffect(() => {
-    setIsMounted(true);
-
-    const bgElements = Array.from({ length: 35 }).map((_, index) => ({
+  // Memoize background elements to prevent recreation on every render
+  const backgroundElements = useMemo(() => {
+    return Array.from({ length: 20 }).map((_, index) => ({
       id: index,
       IconComponent: backgroundIcons[index % backgroundIcons.length],
-      size: Math.random() * 100 + 50,
-      duration: Math.random() * 40 + 25,
+      size: Math.random() * 80 + 40,
+      duration: Math.random() * 30 + 20,
       initialTop: Math.random() * 100,
       initialLeft: Math.random() * 100,
       initialRotate: Math.random() * 360,
-      animateRotate1: Math.random() * 360,
-      animateRotate2: Math.random() * 360 + 180,
-      animateRotate3: Math.random() * 360 + 360,
-      animateX: Math.random() * 120 - 60,
-      animateY: Math.random() * 120 - 60,
-      delay: Math.random() * 15,
+      animateRotate1: Math.random() * 180,
+      animateRotate2: Math.random() * 180 + 180,
+      animateX: Math.random() * 60 - 30,
+      animateY: Math.random() * 60 - 30,
+      delay: Math.random() * 10,
     }));
-    setBackgroundElements(bgElements);
+  }, []);
 
-    const floatElements = Array.from({ length: 12 }).map((_, index) => ({
+  // Memoize floating elements
+  const floatingElements = useMemo(() => {
+    return Array.from({ length: 8 }).map((_, index) => ({
       id: index,
       top: Math.random() * 100,
       left: Math.random() * 100,
-      duration: Math.random() * 20 + 15,
-      delay: Math.random() * 8,
+      duration: Math.random() * 15 + 10,
+      delay: Math.random() * 5,
     }));
-    setFloatingElements(floatElements);
+  }, []);
+
+  // Memoize dust particles
+  const dustParticles = useMemo(() => {
+    return Array.from({ length: 12 }).map((_, index) => ({
+      id: index,
+      top: Math.random() * 100,
+      left: Math.random() * 100,
+      duration: Math.random() * 6 + 4,
+      delay: Math.random() * 3,
+    }));
+  }, []);
+
+  useEffect(() => {
+    setIsMounted(true);
   }, []);
 
   return (
-    <section id="events" className="relative bg-black min-h-screen py-20 sm:py-24 overflow-hidden">
+    <section
+      id="events"
+      className="relative bg-black min-h-screen py-20 sm:py-24 overflow-hidden"
+    >
       <style jsx>{`
         @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
 
@@ -97,31 +112,27 @@ const EventsOverview = () => {
         }
       `}</style>
 
-      {/* Enhanced Animated Background Icons */}
-      <div className="absolute inset-0 z-0" suppressHydrationWarning>
-        {isMounted &&
-          backgroundElements.map((element) => {
+      {/* Optimized Animated Background Icons */}
+      {isMounted && (
+        <div className="absolute inset-0 z-0">
+          {backgroundElements.map((element) => {
             const IconComponent = element.IconComponent;
 
             return (
               <motion.div
                 key={element.id}
-                className="absolute text-amber-900/15"
+                className="absolute text-amber-900/15 will-change-transform"
                 initial={{
                   top: `${element.initialTop}%`,
                   left: `${element.initialLeft}%`,
                   rotate: element.initialRotate,
                   opacity: 0,
-                  scale: 0.3,
+                  scale: 0.5,
                 }}
                 animate={{
-                  opacity: [0, 0.15, 0.25, 0.15, 0],
-                  rotate: [
-                    element.animateRotate1,
-                    element.animateRotate2,
-                    element.animateRotate3,
-                  ],
-                  scale: [0.3, 1.2, 0.8, 1.2, 0.3],
+                  opacity: [0, 0.2, 0],
+                  rotate: [element.animateRotate1, element.animateRotate2],
+                  scale: [0.5, 1, 0.5],
                   x: [0, element.animateX, 0],
                   y: [0, element.animateY, 0],
                 }}
@@ -143,25 +154,24 @@ const EventsOverview = () => {
               </motion.div>
             );
           })}
-      </div>
+        </div>
+      )}
 
       {/* Subtle overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-stone-950/20 via-transparent to-amber-950/20 z-1"></div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Enhanced Section Header */}
+        {/* Optimized Section Header - Shows immediately */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16 md:mb-20"
         >
           <motion.div
-            initial={{ scale: 0.9 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ scale: 0.95 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
             <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-amber-200 via-yellow-300 to-amber-200 bg-clip-text text-transparent leading-tight drop-shadow-2xl font-cinzel tracking-wide">
               Literary Events
@@ -169,17 +179,15 @@ const EventsOverview = () => {
 
             <motion.div
               initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.8 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
               className="h-0.5 bg-gradient-to-r from-transparent via-yellow-300 to-transparent mx-auto mb-8 max-w-xs rounded-full"
             ></motion.div>
           </motion.div>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg sm:text-xl md:text-2xl text-amber-200 max-w-4xl mx-auto leading-relaxed font-cormorant italic"
           >
             Five extraordinary challenges designed to test every facet of
@@ -195,26 +203,24 @@ const EventsOverview = () => {
           </motion.p>
         </motion.div>
 
-        {/* Enhanced Events Grid */}
+        {/* Optimized Events Grid - Cards appear immediately on scroll */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {eventsData.map((event, index) => (
             <motion.div
               key={event.id}
-              initial={{ opacity: 0, y: 60, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
               transition={{
-                duration: 0.6,
-                delay: index * 0.15,
-                type: "spring",
-                stiffness: 100,
+                duration: 0.4,
+                delay: index * 0.05,
               }}
               whileHover={{
-                y: -12,
-                scale: 1.03,
-                transition: { duration: 0.3 },
+                y: -8,
+                scale: 1.02,
+                transition: { duration: 0.2 },
               }}
-              className="group relative"
+              className="group relative will-change-transform"
             >
               {/* Enhanced Card with Dark Brown Gradients */}
               <div className="relative bg-black backdrop-blur-sm border-2 border-amber-700/60 rounded-3xl shadow-2xl overflow-hidden transform transition-all duration-300 group-hover:border-amber-500/80">
@@ -223,17 +229,17 @@ const EventsOverview = () => {
                   <motion.img
                     src={event.coverImage}
                     alt={`${event.title} Cover`}
-                    className="absolute inset-0 w-full h-full object-cover opacity-70"
-                    whileHover={{ scale: 1.1, opacity: 0.8 }}
-                    transition={{ duration: 0.5 }}
+                    className="absolute inset-0 w-full h-full object-cover opacity-70 will-change-transform"
+                    whileHover={{ scale: 1.05, opacity: 0.8 }}
+                    transition={{ duration: 0.3 }}
                   />
 
                   {/* Enhanced Floating Icon with Golden Glow */}
                   <motion.div
-                    initial={{ scale: 0, rotate: -180 }}
-                    whileInView={{ scale: 1, rotate: 0 }}
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 + 0.1 }}
                     className="absolute top-4 right-4"
                   >
                     <div
@@ -255,10 +261,10 @@ const EventsOverview = () => {
 
                   {/* Title Section */}
                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 + 0.15 }}
                     className="mb-6"
                   >
                     <h3 className="text-3xl font-bold text-amber-200 mb-3 tracking-wide drop-shadow-lg font-cinzel">
@@ -277,7 +283,7 @@ const EventsOverview = () => {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 + 0.6 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 + 0.2 }}
                     className="text-amber-100 leading-relaxed mb-8 text-base font-cormorant"
                   >
                     {event.description}
@@ -285,10 +291,10 @@ const EventsOverview = () => {
 
                   {/* Enhanced Action Button */}
                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 + 0.8 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 + 0.25 }}
                   >
                     <Button
                       asChild
@@ -329,18 +335,18 @@ const EventsOverview = () => {
           ))}
         </div>
 
-        {/* Enhanced Decorative Elements */}
+        {/* Optimized Decorative Elements */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8 }}
           className="text-center mt-20"
         >
           <div className="flex items-center justify-center gap-6 text-amber-400 mb-8">
             <motion.div
               animate={{ rotate: 360 }}
-              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             >
               <Crown className="w-8 h-8" />
             </motion.div>
@@ -353,7 +359,7 @@ const EventsOverview = () => {
             </motion.p>
             <motion.div
               animate={{ rotate: -360 }}
-              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             >
               <Crown className="w-8 h-8" />
             </motion.div>
@@ -364,28 +370,28 @@ const EventsOverview = () => {
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.2, delay: 1.2 }}
+            transition={{ duration: 1, delay: 0.3 }}
             className="h-0.5 bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto max-w-lg rounded-full"
           ></motion.div>
         </motion.div>
       </div>
 
-      {/* Enhanced Floating Elements with Golden Particles */}
-      <div className="absolute inset-0 z-5" suppressHydrationWarning>
-        {isMounted &&
-          floatingElements.map((element) => (
+      {/* Optimized Floating Elements - Minimal on mobile */}
+      {isMounted && window.innerWidth >= 768 && (
+        <div className="absolute inset-0 z-5">
+          {floatingElements.map((element) => (
             <motion.div
               key={`floating-${element.id}`}
-              className="absolute"
+              className="absolute will-change-transform"
               initial={{
                 top: `${element.top}%`,
                 left: `${element.left}%`,
                 scale: 0,
               }}
               animate={{
-                scale: [0, 1.5, 0],
+                scale: [0, 0.8, 0],
                 rotate: [0, 180, 360],
-                opacity: [0, 0.6, 0],
+                opacity: [0, 0.3, 0],
               }}
               transition={{
                 duration: element.duration,
@@ -397,33 +403,90 @@ const EventsOverview = () => {
               <div className="w-3 h-3 bg-gradient-to-r from-amber-400 to-yellow-300 rounded-full blur-sm shadow-lg shadow-amber-400/50"></div>
             </motion.div>
           ))}
-      </div>
+        </div>
+      )}
 
-      {/* Additional golden dust particles */}
-      <div className="absolute inset-0 z-3" suppressHydrationWarning>
-        {isMounted &&
-          Array.from({ length: 20 }).map((_, index) => (
+      {/* Minimal floating for mobile */}
+      {isMounted && window.innerWidth < 768 && (
+        <div className="absolute inset-0 z-5">
+          {floatingElements.slice(0, 2).map((element) => (
             <motion.div
-              key={`dust-${index}`}
-              className="absolute w-1 h-1 bg-amber-300/40 rounded-full"
+              key={`floating-${element.id}`}
+              className="absolute will-change-transform"
               initial={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
+                top: `${element.top}%`,
+                left: `${element.left}%`,
+                scale: 0,
               }}
               animate={{
-                y: [-20, -100, -20],
-                opacity: [0, 0.8, 0],
-                scale: [0, 1, 0],
+                scale: [0, 0.5, 0],
+                opacity: [0, 0.2, 0],
               }}
               transition={{
-                duration: Math.random() * 8 + 6,
+                duration: element.duration * 0.8,
                 repeat: Infinity,
-                delay: Math.random() * 5,
+                delay: element.delay,
+                ease: "easeInOut",
+              }}
+            >
+              <div className="w-2 h-2 bg-gradient-to-r from-amber-400 to-yellow-300 rounded-full"></div>
+            </motion.div>
+          ))}
+        </div>
+      )}
+
+      {/* Optimized golden dust particles - Minimal on mobile */}
+      {isMounted && window.innerWidth >= 768 && (
+        <div className="absolute inset-0 z-3">
+          {dustParticles.map((_, index) => (
+            <motion.div
+              key={`dust-${index}`}
+              className="absolute w-1 h-1 bg-amber-300/40 rounded-full will-change-transform"
+              initial={{
+                top: `${dustParticles[index].top}%`,
+                left: `${dustParticles[index].left}%`,
+              }}
+              animate={{
+                y: [-10, -40, -10],
+                opacity: [0, 0.4, 0],
+                scale: [0, 0.8, 0],
+              }}
+              transition={{
+                duration: dustParticles[index].duration,
+                repeat: Infinity,
+                delay: dustParticles[index].delay,
                 ease: "easeInOut",
               }}
             />
           ))}
-      </div>
+        </div>
+      )}
+
+      {/* Ultra minimal dust for mobile */}
+      {isMounted && window.innerWidth < 768 && (
+        <div className="absolute inset-0 z-3">
+          {dustParticles.slice(0, 2).map((_, index) => (
+            <motion.div
+              key={`dust-${index}`}
+              className="absolute w-1 h-1 bg-amber-300/20 rounded-full will-change-transform"
+              initial={{
+                top: `${dustParticles[index].top}%`,
+                left: `${dustParticles[index].left}%`,
+              }}
+              animate={{
+                y: [-5, -20, -5],
+                opacity: [0, 0.2, 0],
+              }}
+              transition={{
+                duration: dustParticles[index].duration * 0.6,
+                repeat: Infinity,
+                delay: dustParticles[index].delay,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
+        </div>
+      )}
     </section>
   );
 };

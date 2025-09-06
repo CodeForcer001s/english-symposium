@@ -37,6 +37,9 @@ const Hero = () => {
           minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
           seconds: Math.floor((difference % (1000 * 60)) / 1000),
         });
+      } else {
+        // Stop the timer if the date is reached
+        clearInterval(timer);
       }
     }, 1000);
 
@@ -44,29 +47,23 @@ const Hero = () => {
   }, []);
 
   type StarData = {
-  id: number;
-  top: number;
-  left: number;
-  duration: number;
-  delay: number;
-};
+    id: number;
+    top: number;
+    left: number;
+    duration: number;
+    delay: number;
+  };
 
-const [stars, setStars] = useState<StarData[]>([]);
-
-useEffect(() => {
-  const starData = Array.from({ length: 8 }).map((_, i) => ({
-    id: i,
-    top: Math.random() * 60 + 20,
-    left: Math.random() * 60 + 20,
-    duration: 4 + Math.random() * 4,
-    delay: Math.random() * 2,
-  }));
-  setStars(starData);
-}, []);
-
-if (stars.length === 0) {
-  return null;
-}
+  // Optimized state initialization to run only once on mount
+  const [stars] = useState<StarData[]>(() =>
+    Array.from({ length: 8 }).map((_, i) => ({
+      id: i,
+      top: Math.random() * 60 + 20,
+      left: Math.random() * 60 + 20,
+      duration: 4 + Math.random() * 4,
+      delay: Math.random() * 2,
+    }))
+  );
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900">

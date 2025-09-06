@@ -123,7 +123,7 @@ const EventRounds: React.FC<EventRoundsProps> = ({ event }) => {
             />
           </div>
 
-          <h1 className="text-7xl md:text-9xl font-bold bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500 bg-clip-text text-transparent mb-6 font-serif">
+          <h1 className="max-md:text-6xl text-8xl font-bold bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500 bg-clip-text text-transparent mb-6 font-manuscript">
             {event.title}
           </h1>
 

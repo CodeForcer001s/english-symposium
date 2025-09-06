@@ -142,6 +142,12 @@ const ContactPage: React.FC = () => {
       phone: "+919047937507",
       image: "/malar.jpg",
     },
+    {
+      name: "Deva Narayanan",
+      year: "IV Year ECE",
+      phone: "+916382501422",
+      image: "/deva.jpg",
+    },
   ];
 
   const staffCoordinators: StaffCoordinator[] = [
@@ -315,8 +321,7 @@ const ContactPage: React.FC = () => {
               custom={0.1}
               variants={cardVariants}
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
+              animate="visible"
               className="group bg-black/90 backdrop-blur-md border-2 sm:border-4 border-amber-500/60 rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 md:p-8 lg:p-10 hover:shadow-amber-400/60 hover:border-amber-400/80 transition-all duration-500 hover:scale-[1.02]"
             >
               <motion.div
@@ -341,8 +346,7 @@ const ContactPage: React.FC = () => {
                     custom={idx}
                     variants={coordinatorVariants}
                     initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
+                    animate="visible"
                     className="group/card flex flex-col sm:flex-row items-center sm:space-x-4 md:space-x-6 space-y-4 sm:space-y-0 p-3 sm:p-5 rounded-xl sm:rounded-2xl transition-all duration-300 hover:bg-amber-900/20 cursor-pointer border-2 border-transparent hover:border-amber-400/40"
                     whileHover={{ x: 15 }}
                   >
@@ -389,8 +393,7 @@ const ContactPage: React.FC = () => {
               custom={0.2}
               variants={cardVariants}
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
+              animate="visible"
               className="group bg-black/90 backdrop-blur-md border-2 sm:border-4 border-orange-500/60 rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 md:p-8 lg:p-10 hover:shadow-orange-400/60 hover:border-orange-400/80 transition-all duration-500 hover:scale-[1.02]"
             >
               <motion.div
@@ -415,8 +418,7 @@ const ContactPage: React.FC = () => {
                     custom={idx}
                     variants={coordinatorVariants}
                     initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
+                    animate="visible"
                     className="group/card flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 sm:p-5 rounded-xl sm:rounded-2xl transition-all duration-300 hover:bg-orange-900/20 cursor-pointer border-2 border-transparent hover:border-orange-400/40 space-y-3 sm:space-y-0"
                     whileHover={{ x: 10 }}
                   >
@@ -455,9 +457,8 @@ const ContactPage: React.FC = () => {
             <motion.div
               className="mt-10 group shadow-2xl flex flex-col items-center justify-center gap-6 bg-black/90 backdrop-blur-md border-2 sm:border-4 border-orange-500/60 rounded-2xl sm:rounded-3xl p-8 hover:shadow-orange-400/60 hover:border-orange-400/80 transition-all duration-500 hover:scale-[1.02]"
               initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
             >
               <div className="text-center max-w-2xl">
                 <h2
@@ -509,8 +510,7 @@ const ContactPage: React.FC = () => {
               custom={0.15}
               variants={cardVariants}
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
+              animate="visible"
               className="group bg-black/90 backdrop-blur-md border-2 sm:border-4 border-yellow-500/60 rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 md:p-8 lg:p-10 hover:shadow-yellow-400/60 hover:border-yellow-400/80 transition-all duration-500 hover:scale-[1.01]"
             >
               <motion.div
@@ -534,7 +534,7 @@ const ContactPage: React.FC = () => {
                 <motion.div
                   className="space-y-3 sm:space-y-5"
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
                 >
                   <motion.p
@@ -576,8 +576,7 @@ const ContactPage: React.FC = () => {
               custom={0.25}
               variants={cardVariants}
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
+              animate="visible"
               className="group bg-black/90 backdrop-blur-md border-2 sm:border-4 border-amber-600/60 rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 md:p-8 lg:p-10 hover:shadow-amber-400/60 hover:border-amber-400/80 transition-all duration-500 hover:scale-[1.01]"
             >
               <motion.div
@@ -610,7 +609,7 @@ const ContactPage: React.FC = () => {
               <motion.div
                 className="mt-6 sm:mt-8 text-center border-t-2 border-amber-500/30 pt-4 sm:pt-6"
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
               >
                 <p
@@ -627,8 +626,7 @@ const ContactPage: React.FC = () => {
               custom={0.3}
               variants={cardVariants}
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
+              animate="visible"
               className="group bg-black/90 backdrop-blur-md border-2 sm:border-4 border-orange-500/60 rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 md:p-8 lg:p-10 hover:shadow-orange-400/60 hover:border-orange-400/80 transition-all duration-500 hover:scale-[1.01]"
             >
               <motion.div
@@ -697,8 +695,7 @@ const ContactPage: React.FC = () => {
           custom={0.4}
           variants={cardVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          animate="visible"
           className="col-span-1 lg:col-span-2 group bg-black/95 backdrop-blur-md border-2 sm:border-4 border-amber-500/60 rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 md:p-12 hover:shadow-amber-400/60 hover:border-amber-400/80 transition-all duration-500 mt-8 sm:mt-12"
         >
           <motion.div className="text-center" whileHover={{ scale: 1.02 }}>
@@ -733,7 +730,7 @@ const ContactPage: React.FC = () => {
       <motion.div
         className="mt-12 sm:mt-16 md:mt-24 text-center border-t-2 sm:border-t-4 border-amber-500/30 pt-8 sm:pt-12 md:pt-16 px-4"
         initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.6 }}
       >
         <motion.div
@@ -771,7 +768,7 @@ const ContactPage: React.FC = () => {
           className="mt-4 sm:mt-6 md:mt-8 text-amber-400 text-sm sm:text-base md:text-lg lg:text-xl italic border border-amber-500/30 rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 bg-amber-900/10 max-w-lg mx-auto"
           style={{ fontFamily: "Times New Roman, serif" }}
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
           “Every great story begins with a single word...”

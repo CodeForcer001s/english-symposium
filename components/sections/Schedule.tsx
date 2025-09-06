@@ -439,8 +439,7 @@ const EventTimeline: React.FC = () => {
             },
           }}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          animate="visible"
         >
           <div className="flex items-center justify-center mb-4">
             <Calendar className="w-6 h-6 text-amber-400 mr-2" />
@@ -476,8 +475,7 @@ const EventTimeline: React.FC = () => {
             },
           }}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          animate="visible"
         >
           {/* Desktop and Tablet View */}
           <div className="hidden md:block">
@@ -489,8 +487,7 @@ const EventTimeline: React.FC = () => {
               }}
               variants={staggerContainer}
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
+              animate="visible"
             >
               {/* Time Headers */}
               {timeSlots.map((time, i) => (
@@ -576,8 +573,7 @@ const EventTimeline: React.FC = () => {
                 }}
                 variants={staggerContainer}
                 initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
+                animate="visible"
               >
                 {/* Time Headers */}
                 {timeSlots.map((time, i) => (
@@ -656,8 +652,7 @@ const EventTimeline: React.FC = () => {
                 },
               }}
               initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
+              animate="visible"
             >
               <div className="flex items-center space-x-3 text-amber-400 text-sm bg-black/50 rounded-full px-4 py-2 border border-amber-600/30">
                 <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></div>
@@ -680,8 +675,7 @@ const EventTimeline: React.FC = () => {
             },
           }}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          animate="visible"
         >
           <h3 className="text-xl font-bold text-white mb-4 text-center">
             Event Categories
@@ -777,8 +771,7 @@ const EventTimeline: React.FC = () => {
             },
           }}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          animate="visible"
         >
           <h3 className="text-2xl font-bold text-white mb-4 text-center">
             Event Summary

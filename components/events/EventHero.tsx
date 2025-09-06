@@ -156,14 +156,7 @@ const EventHero: React.FC<EventHeroProps> = ({ event }) => {
             >
               <Link href={event.registerLink || "/register"} target="_blank">Register Now</Link>
             </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-2 border-amber-400 text-amber-300 bg-amber-400/10 transition-all duration-300 font-bold text-lg px-8 py-6 rounded-md transform hover:scale-105"
-            >
-              <a href="#rules">Learn More</a>
-            </Button>
+       
           </motion.div>
         </motion.div>
       </div>
