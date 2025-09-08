@@ -448,9 +448,9 @@ const EventTimeline: React.FC = () => {
             </span>
           </div>
 
-          <h2 className="text-5xl lg:text-6xl font-bold mb-6">
+          <h2 className="text-6xl font-extrabold mb-6">
             <span className="text-white">Timeline of </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-400 font-serif italic">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-400 font-manuscripts italic">
               Litlaya
             </span>
           </h2>

@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
               >
                 <Crown className="w-8 h-8 text-amber-400" />
               </motion.div>
-              <h3 className="font-manuscript text-4xl font-bold bg-gradient-to-r from-amber-200 via-amber-300 to-amber-200 bg-clip-text text-transparent">
+              <h3 className="font-manuscripts text-4xl font-bold bg-gradient-to-r from-amber-200 via-amber-300 to-amber-200 bg-clip-text text-transparent">
                 Litlaya
               </h3>
             </div>

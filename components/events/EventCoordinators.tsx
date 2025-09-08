@@ -68,7 +68,7 @@ const EventCoordinators: React.FC<EventCoordinatorsProps> = ({ event }) => {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-yellow-500 via-amber-300 to-yellow-600 bg-clip-text text-transparent tracking-wider">
+          <h2 className="text-6xl font-bold mb-4 bg-gradient-to-r from-yellow-500 via-amber-300 to-yellow-600 bg-clip-text text-transparent tracking-wider">
             Event Coordinators
           </h2>
           <div className="h-0.5 bg-gradient-to-r from-transparent via-amber-400/70 to-transparent mx-auto mb-6 max-w-md"></div>

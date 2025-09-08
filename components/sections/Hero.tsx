@@ -216,7 +216,7 @@ const Hero = () => {
           className="mb-6 sm:mb-8 md:mb-12"
         >
           <div className="relative">
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-amber-100 mb-4 sm:mb-6 drop-shadow-2xl relative z-10 leading-tight font-manuscript">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-amber-100 mb-4 sm:mb-6 drop-shadow-2xl relative z-10 leading-tight font-manuscripts">
               <span className="bg-gradient-to-b from-amber-200 via-yellow-300 to-amber-300 bg-clip-text text-transparent">
                 Litlaya
               </span>

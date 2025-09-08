@@ -122,7 +122,7 @@ const About = () => {
               <span className="text-yellow-100 text-xl tracking-wide">
                 REGISTER FOR{" "}
               </span>
-              <span className="text-yellow-300 text-2xl font-bold font-manuscript tracking-wider animate-glow">
+              <span className="text-yellow-300 text-2xl font-bold font-manuscripts tracking-wider animate-glow">
                 Litlaya
               </span>
             </div>

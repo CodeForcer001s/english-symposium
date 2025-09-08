@@ -6,6 +6,9 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import "./globals.css";
 
+// 1. Import your new Lodeh font from fonts.ts
+import { lodeh } from "./fonts/fonts";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
@@ -31,7 +34,8 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={isDark ? "dark" : ""}>
+    // 2. Add the Lodeh font variable to the <html> tag
+    <html lang="en" className={`${lodeh.variable} ${isDark ? "dark" : ""}`}>
       <head>
         <title>Litlaya - A Literary Symposium of Renaissance Grandeur</title>
         <meta
@@ -44,7 +48,6 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        {/* ✅ Add your favicon/logo here */}
         <link rel="icon" href="/logo.jpg" type="image/jpeg" />
       </head>
       <body className={inter.className}>

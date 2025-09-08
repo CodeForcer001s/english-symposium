@@ -121,7 +121,7 @@ const Header: React.FC = () => {
           </motion.div>
           <motion.h1
             whileHover={{ scale: 1.05 }}
-            className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-amber-200 via-amber-300 to-amber-200 bg-clip-text text-transparent font-manuscript sm:block drop-shadow-sm"
+            className="text-2xl lg:text-3xl font-extrabold bg-gradient-to-r from-amber-200 via-amber-300 to-amber-200 bg-clip-text text-transparent font-manuscripts sm:block drop-shadow-sm"
           >
             Litlaya
           </motion.h1>
