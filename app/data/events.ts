@@ -54,7 +54,7 @@ export const eventsData: Event[] = [
     coverImage: "/litwit.jpg",
     registerLink:
       "https://conoscenza2025.stjosephstechnology.ac.in/registration/",
-    teamComposition: "Individual",
+    teamComposition: "2-3 members",
     venue: "AV Hall II",
     date: "September 13th, 2025",
     time: "8:00 PM - 3:00 PM",
