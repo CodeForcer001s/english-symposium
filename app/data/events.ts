@@ -313,7 +313,7 @@ export const eventsData: Event[] = [
         description:
           "Participants will be presented with anagrammed dialogues from detective novels. With the help of provided clues, they must arrange the dialogues in the correct format within a 2-minute time limit. In the case of a tie, a 1-minute tie-breaker round will be conducted. The total number of rounds will be decided based on the number of participating teams.",
         cardImage:
-          "https://t4.ftcdn.net/jpg/04/72/55/21/360_F_472552101_F5jfrd6Mg2UNsb640dHH1bNJ9DDW7vC1.jpg",
+          "/litcrypt-round-1.png",
         mysticalSymbol: "🔮",
         arcana: "The Moon",
       },
@@ -322,7 +322,7 @@ export const eventsData: Event[] = [
         description:
           "A detailed picture with multiple objects is shown for 30 seconds. After it's removed, participants must answer questions about the image (e.g., objects, colors, positions). Each correct answer earns points.",
         cardImage:
-          "https://img.freepik.com/free-photo/top-view-memory-concept-with-post-its-magnifying-glass_23-2149320984.jpg",
+          "/litcrypt-round-2.png",
         mysticalSymbol: "👁️",
         arcana: "The Sun",
       },
