@@ -54,7 +54,7 @@ export const eventsData: Event[] = [
     coverImage: "/litwit.jpg",
     registerLink:
       "https://conoscenza2025.stjosephstechnology.ac.in/registration/",
-    teamComposition: "2-3 members",
+    teamComposition: "2 members",
     venue: "AV Hall II",
     date: "September 13th, 2025",
     time: "8:00 PM - 3:00 PM",
@@ -85,7 +85,7 @@ export const eventsData: Event[] = [
       },
     ],
     generalRules: [
-      "Each team must consist of 1-2 members.",
+      "Each team must consist of 2 members.",
       "Time limits must be strictly followed.",
       "Use of offensive or inappropriate content is prohibited.",
       "No external aids (notes, phones, props, etc.) are allowed.",
