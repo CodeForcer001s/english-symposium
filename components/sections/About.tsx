@@ -4,20 +4,19 @@ import {
   BookOpen,
   GraduationCap,
   Users,
-  Feather,
   Library,
   Scroll,
-  Pen,
   Crown,
   Star,
-  Trophy,
   Lightbulb,
-  Sparkles,
+  Volume2,
+  VolumeX, // MODIFIED: Imported mute/unmute icons
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react"; // MODIFIED: Imported useRef
 import { motion } from "framer-motion";
 
 const About = () => {
+  // ... (no changes in this part of the code)
   const eventHighlights = [
     { number: "5", label: "COMPETITIONS", color: "text-yellow-400" },
     { number: "100+", label: "PARTICIPANTS", color: "text-amber-400" },
@@ -29,7 +28,6 @@ const About = () => {
   >([]);
 
   useEffect(() => {
-    // OPTIMIZED: Reduced particle count from 20 to 10
     const generated = Array.from({ length: 10 }).map(() => ({
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
@@ -47,7 +45,6 @@ const About = () => {
     "Rhetoric",
   ];
 
-  // Animation variants for Framer Motion
   const cardVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: (delay: number = 0) => ({
@@ -57,12 +54,25 @@ const About = () => {
     }),
   };
 
+  // NEW: State and Ref for custom video controls
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
+
+  // NEW: Function to toggle mute state
+  const toggleMute = () => {
+    if (videoRef.current) {
+      const newMutedState = !videoRef.current.muted;
+      videoRef.current.muted = newMutedState;
+      setIsMuted(newMutedState);
+    }
+  };
+
   return (
     <section
       className="min-h-screen bg-black text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
       id="about"
     >
-      {/* OPTIMIZED: Reduced number of animated icons */}
+      {/* ... (no changes to background elements) ... */}
       <div className="absolute inset-0 opacity-15 pointer-events-none">
         <div className="absolute top-20 left-10 animate-pulse">
           <BookOpen className="w-12 h-12 text-yellow-400" />
@@ -86,7 +96,6 @@ const About = () => {
           <Library className="w-12 h-12 text-yellow-400" />
         </div>
       </div>
-
       <div className="absolute inset-0 pointer-events-none">
         {particles.map((p, i) => (
           <div
@@ -103,11 +112,13 @@ const About = () => {
       </div>
 
       <div className="relative max-w-7xl mx-auto">
+        {/* ... (no changes to header/title section) ... */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          variants={{cardVariants}}
+          variants={{ cardVariants }}
+          custom={0.2}
           className="text-center mb-16"
         >
           <div className="relative mb-8">
@@ -134,11 +145,13 @@ const About = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+          {/* ... (no changes to the text content card) ... */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
-            variants={{cardVariants}}
+            variants={{ cardVariants }}
+            custom={0.2}
             className="lg:col-span-1"
           >
             <div className="bg-black backdrop-blur-sm border border-gray-700 rounded-xl p-6 h-full hover:border-yellow-600/50 hover:shadow-xl hover:shadow-yellow-400/10 transition-all duration-300 group">
@@ -174,24 +187,51 @@ const About = () => {
             </div>
           </motion.div>
 
+          {/* === VIDEO SECTION: MODIFIED === */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
-            variants={{cardVariants}}
+            variants={{ cardVariants }}   
             custom={0.2}
             className="lg:col-span-2 flex flex-col gap-8"
           >
-            <div className="rounded-xl overflow-hidden border border-gray-700 hover:border-yellow-600/50 transition-all duration-300 shadow-lg shadow-yellow-400/10">
-              <img
-                src="/manuscript-image.jpg"
-                alt="Mysterious literary concept"
+            <div className="relative rounded-xl overflow-hidden border border-gray-700 hover:border-yellow-600/50 transition-all duration-300 shadow-lg hover:shadow-yellow-400/20 h-full">
+              {/* Overlay remains untouched */}
+              <div className="absolute inset-0 bg-black opacity-30 z-10"></div>
+
+              {/* MODIFIED: Video now has a ref and no 'controls' attribute */}
+              <video
+                ref={videoRef}
+                src="/video.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="w-full h-full object-cover"
-              />
+                aria-label="Promotional video for the literary event"
+              >
+                Your browser does not support the video tag.
+              </video>
+
+              {/* NEW: Custom mute button */}
+              <button
+                onClick={toggleMute}
+                className="absolute bottom-4 right-4 z-20 bg-black/50 p-2 rounded-full text-white hover:bg-black/75 transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                aria-label={isMuted ? "Unmute video" : "Mute video"}
+              >
+                {isMuted ? (
+                  <VolumeX className="w-5 h-5" />
+                ) : (
+                  <Volume2 className="w-5 h-5" />
+                )}
+              </button>
             </div>
           </motion.div>
+          {/* === END VIDEO SECTION === */}
         </div>
 
+        {/* ... (no changes to the rest of the file) ... */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -224,12 +264,11 @@ const About = () => {
             ))}
           </div>
         </motion.div>
-
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          variants={{cardVariants}}
+          variants={{cardVariants}}      
           custom={0.2}
           className="relative overflow-hidden bg-black backdrop-blur-sm border border-yellow-600/30 rounded-2xl p-6 sm:p-8 mb-8 group hover:border-yellow-500/60 hover:shadow-2xl hover:shadow-yellow-400/15 transition-all duration-500"
         >
@@ -329,7 +368,6 @@ const About = () => {
             </div>
           </div>
         </motion.div>
-
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -358,6 +396,7 @@ const About = () => {
       </div>
 
       <style jsx>{`
+        /* ... (no changes to styles) ... */
         @keyframes shimmer {
           0% {
             background-position: -200% center;
