@@ -283,7 +283,7 @@ const ContactPage: React.FC = () => {
           </motion.div>
 
           <motion.h1
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-amber-300 via-yellow-400 to-orange-400 py-2 sm:py-4 mb-4 sm:mb-6 md:mb-8 leading-tight"
+            className="text-7xl max-md:4xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-amber-300 via-yellow-400 to-orange-400 py-2 sm:py-4 mb-4 sm:mb-6 md:mb-8 leading-tight"
             style={{
               fontFamily: "Brush Script MT, cursive",
               backgroundSize: "200% auto",

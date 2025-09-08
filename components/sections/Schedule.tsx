@@ -39,6 +39,7 @@ interface EventData {
   row: number;
 }
 
+// MODIFIED: Added Results & Awards to the main data array
 const eventsData: EventData[] = [
   // General Events
   {
@@ -210,6 +211,40 @@ const eventsData: EventData[] = [
     color: "bg-amber-700",
     hoverColor: "hover:bg-amber-600",
     row: 6,
+  },
+
+  // NEW: Results and Awards as dynamic data
+  {
+    id: "results",
+    title: "Results",
+    subtitle: "Unveiling Winners",
+    description:
+      "The moment of truth! Announcement of the results and scores from all the literary competitions held throughout the day.",
+    icon: "Trophy",
+    timeSlot: 11,
+    duration: 3,
+    venue: "AV Hall I",
+    participants: "All Attendees",
+    time: "2:00 PM - 3:00 PM",
+    color: "bg-yellow-700",
+    hoverColor: "hover:bg-yellow-600",
+    row: 1,
+  },
+  {
+    id: "awards",
+    title: "Awards Ceremony",
+    subtitle: "Celebrating Excellence",
+    description:
+      "The grand finale. Honoring the winners with awards, certificates, and accolades for their exceptional literary talents.",
+    icon: "Award",
+    timeSlot: 11,
+    duration: 2,
+    venue: "AV Hall I",
+    participants: "All Attendees",
+    time: "2:00 PM - 3:00 PM",
+    color: "bg-amber-600",
+    hoverColor: "hover:bg-amber-500",
+    row: 4,
   },
 ];
 
@@ -383,11 +418,12 @@ const EventTimeline: React.FC = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.05, // Faster stagger
+        staggerChildren: 0.05,
       },
     },
   };
 
+  // MODIFIED: Extended time slots to 3:00 PM
   const timeSlots = [
     "9:00 AM",
     "9:30 AM",
@@ -401,6 +437,7 @@ const EventTimeline: React.FC = () => {
     "1:30 PM",
     "2:00 PM",
     "2:30 PM",
+    "3:00 PM",
   ];
 
   const handleEventClick = (event: EventData): void => {
@@ -418,7 +455,6 @@ const EventTimeline: React.FC = () => {
       id="schedule"
       className="min-h-screen bg-black text-slate-200 py-20 px-4 sm:px-6 lg:px-8"
     >
-      {/* Subtle background pattern */}
       <div
         className="absolute inset-0 opacity-5"
         style={{
@@ -427,7 +463,6 @@ const EventTimeline: React.FC = () => {
       />
 
       <div className="relative max-w-7xl mx-auto">
-        {/* Header */}
         <motion.div
           className="text-center mb-16"
           variants={{
@@ -447,14 +482,12 @@ const EventTimeline: React.FC = () => {
               Event Schedule
             </span>
           </div>
-
           <h2 className="text-6xl font-extrabold mb-6">
             <span className="text-white">Timeline of </span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-400 font-manuscripts italic">
               Litlaya
             </span>
           </h2>
-
           <p className="text-xl text-slate-400 max-w-3xl mx-auto">
             A carefully orchestrated day of literary celebration, intellectual
             discourse, and artistic expression
@@ -524,35 +557,7 @@ const EventTimeline: React.FC = () => {
                 />
               ))}
 
-              {/* Results & Awards */}
-              <motion.div
-                className="flex flex-col justify-center items-center text-center p-4 rounded-lg bg-gradient-to-br from-amber-500 to-yellow-500 text-black border-2 border-amber-400 shadow-lg cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-                style={{
-                  gridColumnStart: 10,
-                  gridColumnEnd: 13,
-                  gridRowStart: 2,
-                  gridRowEnd: 6,
-                }}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                      type: "tween",
-                      duration: 0.3,
-                      ease: "easeOut",
-                    },
-                  },
-                }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <Award className="w-10 h-10 mb-2 animate-pulse" />
-                <h3 className="text-xl font-serif font-bold">Results &</h3>
-                <h3 className="text-xl font-serif font-bold">Awards</h3>
-                <p className="text-sm font-semibold mt-2">2:00 PM - 3:00 PM</p>
-                <p className="text-xs mt-1 opacity-80">Prize Distribution</p>
-              </motion.div>
+              {/* REMOVED: Hardcoded Results & Awards section is gone */}
             </motion.div>
           </div>
 
@@ -610,37 +615,9 @@ const EventTimeline: React.FC = () => {
                   />
                 ))}
 
-                {/* Results & Awards */}
-                <motion.div
-                  className="flex flex-col justify-center items-center text-center p-2 rounded-lg bg-gradient-to-br from-amber-500 to-yellow-500 text-black border-2 border-amber-400 shadow-lg cursor-pointer hover:shadow-xl transition-all duration-300"
-                  style={{
-                    gridColumnStart: 10,
-                    gridColumnEnd: 11,
-                    gridRowStart: 2,
-                    gridRowEnd: 6,
-                  }}
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: {
-                        type: "tween",
-                        duration: 0.3,
-                        ease: "easeOut",
-                      },
-                    },
-                  }}
-                >
-                  <Award className="w-6 h-6 mb-1 animate-pulse" />
-                  <h3 className="text-sm font-serif font-bold">Results</h3>
-                  <p className="text-xs font-semibold">2:00-3:00 PM</p>
-                  <p className="text-xs opacity-80">Awards</p>
-                </motion.div>
+                {/* REMOVED: Hardcoded Results & Awards section is gone */}
               </motion.div>
             </div>
-
-            {/* Mobile scroll indicator */}
             <motion.div
               className="flex justify-center mt-4"
               variants={{
@@ -691,11 +668,7 @@ const EventTimeline: React.FC = () => {
                 visible: {
                   opacity: 1,
                   y: 0,
-                  transition: {
-                    type: "tween",
-                    duration: 0.3,
-                    ease: "easeOut",
-                  },
+                  transition: { type: "tween", duration: 0.3, ease: "easeOut" },
                 },
               }}
             >
@@ -709,11 +682,7 @@ const EventTimeline: React.FC = () => {
                 visible: {
                   opacity: 1,
                   y: 0,
-                  transition: {
-                    type: "tween",
-                    duration: 0.3,
-                    ease: "easeOut",
-                  },
+                  transition: { type: "tween", duration: 0.3, ease: "easeOut" },
                 },
               }}
             >
@@ -727,11 +696,7 @@ const EventTimeline: React.FC = () => {
                 visible: {
                   opacity: 1,
                   y: 0,
-                  transition: {
-                    type: "tween",
-                    duration: 0.3,
-                    ease: "easeOut",
-                  },
+                  transition: { type: "tween", duration: 0.3, ease: "easeOut" },
                 },
               }}
             >
@@ -745,11 +710,7 @@ const EventTimeline: React.FC = () => {
                 visible: {
                   opacity: 1,
                   y: 0,
-                  transition: {
-                    type: "tween",
-                    duration: 0.3,
-                    ease: "easeOut",
-                  },
+                  transition: { type: "tween", duration: 0.3, ease: "easeOut" },
                 },
               }}
             >
@@ -787,11 +748,7 @@ const EventTimeline: React.FC = () => {
                 visible: {
                   opacity: 1,
                   y: 0,
-                  transition: {
-                    type: "tween",
-                    duration: 0.3,
-                    ease: "easeOut",
-                  },
+                  transition: { type: "tween", duration: 0.3, ease: "easeOut" },
                 },
               }}
             >
@@ -812,11 +769,7 @@ const EventTimeline: React.FC = () => {
                 visible: {
                   opacity: 1,
                   y: 0,
-                  transition: {
-                    type: "tween",
-                    duration: 0.3,
-                    ease: "easeOut",
-                  },
+                  transition: { type: "tween", duration: 0.3, ease: "easeOut" },
                 },
               }}
             >
@@ -825,7 +778,7 @@ const EventTimeline: React.FC = () => {
               </h4>
               <ul className="text-slate-300 space-y-1">
                 <li>• Renaissance Feast - Dining Hall</li>
-                <li>• Results & Awards Ceremony</li>
+                <li>• Results & Awards Ceremony - AV Hall I</li>
                 <li>• Prize Distribution</li>
                 <li>• Closing Remarks</li>
               </ul>

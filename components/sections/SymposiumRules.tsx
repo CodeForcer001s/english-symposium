@@ -269,7 +269,7 @@ const EventRules: React.FC = () => {
             </span>
           </div>
 
-          <h1 className="text-7xl max-md:6xl font-bold bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500 bg-clip-text text-transparent mb-8 font-manuscript">
+          <h1 className="text-6xl md:7xl font-bold bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500 bg-clip-text text-transparent mb-8 font-manuscript">
             Symposium Guidelines
           </h1>
 

@@ -48,7 +48,7 @@ export const eventsData: Event[] = [
     subtitle: "The Art of Spontaneity",
     tagline: "Think fast, talk faster.",
     description:
-      "An unconventional quiz where participants build stories on the fly, deliver dramatic speeches, and report on chaotic news, testing creativity, adaptability, and wit.",
+      "A dynamic literary event designed to test creativity, and presence of mind. From cracking synonym challenges to weaving instant stories and flipping perspectives in debate, it celebrates quick thinking and spontaneous expression.",
     icon: ScrollText,
     color: "from-yellow-600 via-amber-500 to-yellow-600",
     coverImage: "/litwit.jpg",
@@ -312,8 +312,7 @@ export const eventsData: Event[] = [
         title: "Preliminary Round - Anagrammed dialogues",
         description:
           "Participants will be presented with anagrammed dialogues from detective novels. With the help of provided clues, they must arrange the dialogues in the correct format within a 2-minute time limit. In the case of a tie, a 1-minute tie-breaker round will be conducted. The total number of rounds will be decided based on the number of participating teams.",
-        cardImage:
-          "/litcrypt-round-1.png",
+        cardImage: "/litcrypt-round-1.png",
         mysticalSymbol: "🔮",
         arcana: "The Moon",
       },
@@ -321,8 +320,7 @@ export const eventsData: Event[] = [
         title: "Final Round – Image Memory Challenge",
         description:
           "A detailed picture with multiple objects is shown for 30 seconds. After it's removed, participants must answer questions about the image (e.g., objects, colors, positions). Each correct answer earns points.",
-        cardImage:
-          "/litcrypt-round-2.png",
+        cardImage: "/litcrypt-round-2.png",
         mysticalSymbol: "👁️",
         arcana: "The Sun",
       },
@@ -394,8 +392,7 @@ export const eventsData: Event[] = [
         title: "Round 1: Extempore (Speak Your Mind)",
         description:
           "Participants pick a topic randomly and must speak for 2 minutes with only 30 seconds of preparation. Judging is based on confidence, clarity, vocabulary, relevance, and time management.",
-        cardImage:
-          "/eloquentia-round-1.jpg",
+        cardImage: "/eloquentia-round-1.jpg",
         mysticalSymbol: "🎤",
         arcana: "Strength",
       },
