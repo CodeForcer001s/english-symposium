@@ -57,7 +57,7 @@ export const eventsData: Event[] = [
     teamComposition: "2 members",
     venue: "AV Hall II",
     date: "September 13th, 2025",
-    time: "8:00 PM - 3:00 PM",
+    time: "8:00 AM - 3:00 PM",
     eventStructure: [
       {
         title: "Preliminary Round – Similar Sense",
@@ -145,7 +145,7 @@ export const eventsData: Event[] = [
     teamComposition: "2 - 3 Members",
     venue: "AV Hall III",
     date: "September 13th, 2025",
-    time: "8:00 PM - 3:00 PM",
+    time: "8:00 AM - 3:00 PM",
     eventStructure: [
       {
         title: "Prelims - Connect and conquer",
@@ -223,7 +223,7 @@ export const eventsData: Event[] = [
     registerLink:
       "https://conoscenza2025.stjosephstechnology.ac.in/registration/",
     date: "September 13th, 2025",
-    time: "8:00 PM - 3:00 PM",
+    time: "8:00 AM - 3:00 PM",
     eventStructure: [
       {
         title: "Preliminary Round",
@@ -306,7 +306,7 @@ export const eventsData: Event[] = [
     teamComposition: "3 Members",
     venue: "Library Conference Hall",
     date: "September 13th, 2025",
-    time: "8:00 PM - 3:00 PM",
+    time: "8:00 AM - 3:00 PM",
     eventStructure: [
       {
         title: "Preliminary Round - Anagrammed dialogues",
@@ -386,7 +386,7 @@ export const eventsData: Event[] = [
     registerLink:
       "https://conoscenza2025.stjosephstechnology.ac.in/registration/",
     date: "September 13th, 2025",
-    time: "8:00 PM - 3:00 PM",
+    time: "8:00 AM - 3:00 PM",
     eventStructure: [
       {
         title: "Round 1: Extempore (Speak Your Mind)",
